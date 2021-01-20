@@ -9,10 +9,10 @@
     <lastBuildDate>Fri, 15 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sangwoncoco.github.io/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[LeetCode] Top K Frequent Elements</title>
-      <link>https://sangwoncoco.github.io/post/algorithm/20210121-leetcode-top-k-frequent-elements/readme/</link>
+      <link>https://sangwoncoco.github.io/post/algorithm/20210115-leetcode-top-k-frequent-elements/readme/</link>
       <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://sangwoncoco.github.io/post/algorithm/20210121-leetcode-top-k-frequent-elements/readme/</guid>
+      <guid>https://sangwoncoco.github.io/post/algorithm/20210115-leetcode-top-k-frequent-elements/readme/</guid>
       <description>
         
           &lt;br/&gt;
@@ -84,7 +84,7 @@
 &lt;h2 id=&#34;핵심-아이디어&#34;&gt;핵심 아이디어&lt;/h2&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;저는 이 문제를 시간 복잡도 O(n)으로 해결하기 위해 두 개의 HashMap을 사용하였습니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://sangwoncoco.github.io/images/leetcode/347.png&#34; alt=&#34;Top K Frequent Elements&#34;&gt;&lt;/p&gt;
+&lt;p&gt;![Top K Frequent Elements](/images/leetcode/20210115 [LeetCode] Top K Frequent Elements/347.png)&lt;/p&gt;
 &lt;p&gt;사용한 HashMap의 의미는 다음과 같습니다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;HashMap&amp;lt;Integer, Integer&amp;gt; keyIsEle&lt;/strong&gt;
