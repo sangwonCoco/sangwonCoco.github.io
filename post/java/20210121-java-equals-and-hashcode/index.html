@@ -1,0 +1,835 @@
+
+<!DOCTYPE html>
+<html lang="en" data-figures="" class="page" data-mode="lit">
+  <head>
+<title>equals()와 hashcode()의 계약 | Retriever</title>
+<meta charset="utf-8">
+<meta name="generator" content="Hugo 0.80.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script async src="https://www.googletagmanager.com/gtag/js?id=XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'XXXXXXXXXX');
+</script>
+  
+<meta property="og:locale" content="en" />
+
+<meta property="og:type" content="article">
+<meta name="description" content="java equals hashcode">
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@janedoe">
+<meta name="twitter:title" content="equals()와 hashcode()의 계약" />
+<meta property="og:url" content="https://sangwoncoco.github.io/post/java/20210121-java-equals-and-hashcode/" />
+<meta property="og:title" content="equals()와 hashcode()의 계약" />
+<meta property="og:description" content="java equals hashcode" />
+<meta property="og:image" content="https://sangwoncoco.github.io/images/thumbnail.png" />
+<link rel="apple-touch-icon" sizes="180x180" href='https://sangwoncoco.github.io/icons/apple-touch-icon.png'>
+<link rel="icon" type="image/png" sizes="32x32" href='https://sangwoncoco.github.io/icons/favicon-32x32.png'>
+<link rel="manifest" href='https://sangwoncoco.github.io/icons/site.webmanifest'>
+<link rel="mask-icon" href='https://sangwoncoco.github.io/safari-pinned-tab.svg' color="#002538">
+<meta name="msapplication-TileColor" content="#002538">
+<meta name="theme-color" content="#002538">
+
+<link rel="canonical" href="https://sangwoncoco.github.io/post/java/20210121-java-equals-and-hashcode/">
+
+    
+
+    
+    
+    <link rel="preload" href="https://sangwoncoco.github.io/css/styles.37cea41fe2c1b43e2a17095e01eb999e8701c9f0ba06d4df0a9db514a215e26dfbdb8a606a36c9d3b54bb1c09fd4a9ce41ee8f6788a8c6b17067830f34396135.css" integrity = "sha512-N86kH&#43;LBtD4qFwleAeuZnocByfC6BtTfCp21FKIV4m3724pgajbJ07VLscCf1KnOQe6PZ4ioxrFwZ4MPNDlhNQ==" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://sangwoncoco.github.io/js/bundle.min.4e2b2e7204b61c625c9b04404f1f95d3385e075ca5112cc977ab50bebbb430b413597a4b4c990b72a1499ee4f2d9e4208ed181fcd964d619057166b8fffaddde.js" as="script" integrity=
+    "sha512-TisucgS2HGJcmwRATx&#43;V0zheB1ylESzJd6tQvru0MLQTWXpLTJkLcqFJnuTy2eQgjtGB/Nlk1hkFcWa4//rd3g==" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" type="text/css" href="https://sangwoncoco.github.io/css/styles.37cea41fe2c1b43e2a17095e01eb999e8701c9f0ba06d4df0a9db514a215e26dfbdb8a606a36c9d3b54bb1c09fd4a9ce41ee8f6788a8c6b17067830f34396135.css" integrity="sha512-N86kH&#43;LBtD4qFwleAeuZnocByfC6BtTfCp21FKIV4m3724pgajbJ07VLscCf1KnOQe6PZ4ioxrFwZ4MPNDlhNQ==" crossorigin="anonymous">
+    
+  </head>
+  
+  
+  
+    
+  <body data-code="15" data-lines="true" id="documentTop"> -->
+
+<header class="nav_header" >
+  <nav class="nav">
+    <a href='https://sangwoncoco.github.io/' class="nav_brand nav_item">
+      
+      <div class="nav_close">
+        <div>
+          <svg class="icon">
+  <use xlink:href="#open-menu"></use>
+</svg>
+          <svg class="icon">
+  <use xlink:href="#closeme"></use>
+</svg>
+        </div>
+      </div>
+    </a>
+    <div class='nav_body nav_body_left'>
+      
+      
+      
+        
+
+  <div class="nav_parent">
+    <a href="https://sangwoncoco.github.io/" class="nav_item">Home </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://sangwoncoco.github.io/archives/" class="nav_item">Archives </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://sangwoncoco.github.io/" class="nav_item">Links <img src='https://sangwoncoco.github.io/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <div class="nav_sub">
+      <span class="nav_child"></span>
+        <a href="https://github.com/sangwonCoco/sangwonCoco.github.io" class="nav_child nav_item">Blog Repository</a>
+        <a href="https://github.com/sangwonCoco" class="nav_child nav_item">Portfolio</a>
+    </div>
+  </div>
+      
+      <div class="nav_parent">
+        <a href="#" class="nav_item"></a>
+        <div class="nav_sub">
+          <span class="nav_child"></span>
+          
+          <a href="https://sangwoncoco.github.io/" class="nav_child nav_item">English</a>
+          
+          <a href="https://sangwoncoco.github.io/ko/" class="nav_child nav_item"></a>
+          
+        </div>
+      </div>
+      
+<div class='follow'>
+  <a href="https://github.com/sangwonCoco">
+    <svg class="icon">
+  <use xlink:href="#github"></use>
+</svg>
+  </a>
+  <a href="https://www.instagram.com/cocoleesw/?hl=ko">
+    <svg class="icon">
+  <use xlink:href="#instagram"></use>
+</svg>
+  </a>
+  <a href="https://www.facebook.com/profile.php?id=100003690235217">
+    <svg class="icon">
+  <use xlink:href="#facebook"></use>
+</svg>
+  </a>
+<div class="color_mode">
+  <input type="checkbox" class="color_choice" id="mode">
+</div>
+
+</div>
+
+    </div>
+  </nav>
+</header>
+
+    <main>
+  
+<div class="grid-inverse wrap content">
+  <article class="post_content">
+    <h1 class="post_title">equals()와 hashcode()의 계약</h1><div class="post_meta">
+  
+    <svg class="icon">
+  <use xlink:href="#calendar"></use>
+</svg>
+    <span class="post_date">
+      Jan 21, 2021</span>
+      <a href='https://sangwoncoco.github.io/tags/java' class="post_tag button button_translucent">Java
+      </a>
+      <a href='https://sangwoncoco.github.io/tags/hashcode' class="post_tag button button_translucent">hashcode
+      </a>
+</div>
+
+    
+  <div class="post_share">
+    Share on:
+    <a href="https://twitter.com/intent/tweet?text=equals%28%29%ec%99%80%20hashcode%28%29%ec%9d%98%20%ea%b3%84%ec%95%bd&url=https%3a%2f%2fsangwoncoco.github.io%2fpost%2fjava%2f20210121-java-equals-and-hashcode%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#twitter"></use>
+</svg>
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fsangwoncoco.github.io%2fpost%2fjava%2f20210121-java-equals-and-hashcode%2f&t=equals%28%29%ec%99%80%20hashcode%28%29%ec%9d%98%20%ea%b3%84%ec%95%bd" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#facebook"></use>
+</svg>
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#linkedin"></use>
+</svg>
+    </a>
+    <a href="https://sangwoncoco.github.io/post/java/20210121-java-equals-and-hashcode/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <use xlink:href="#copy"></use>
+</svg>
+    </a>
+  </div>
+
+    
+    <!-- page parameters, https://github.com/chipzoller/hugo-clarity#page-parameters -->
+<!-- command: hugo new {archetypes}/{path...}/{post-name.md} -->
+<blockquote>
+<h4 id="본-포스팅은-아래-내용에-대한-지식이-있어야-이해할-수-있는-내용-입니다">본 포스팅은 아래 내용에 대한 지식이 있어야 이해할 수 있는 내용 입니다.</h4>
+</blockquote>
+<ol>
+<li>Java에서 객체 참조에 대한 이해
+<ul>
+<li><a href="https://yaboong.github.io/java/2018/05/26/java-memory-management/">만약 모르신다면?</a></li>
+</ul>
+</li>
+<li>Hash 자료구조와 그와 관련된 hash function, hash key, bucket 등의 용어에 대한 이해
+<ul>
+<li><a href="https://www.youtube.com/watch?v=Vi0hauJemxA&amp;ab_channel=%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD">만약 모르신다면?</a></li>
+</ul>
+</li>
+</ol>
+<br/>
+<blockquote>
+<h2 id="목차">목차</h2>
+</blockquote>
+<ul>
+<li>목적</li>
+<li>equals() 기본 동작</li>
+<li>equals()를 오버라이딩 하는 경우</li>
+<li>hashcode() 존재 이유와 기본 동작</li>
+<li>equals()와 hashcode()는 계약 관계에 있다</li>
+<li>equals()만 오버라이딩 했을 때의 동작 (계약 위반)</li>
+<li>Hash Based Implementation에서 hashcode()를 활용하는지 확인해보자</li>
+<li>hashcode()를 오버라이딩 하는 다양한 방법</li>
+<li>난 이 객체 절대 Hash Based Implementaion의 Key로 사용 안할건데?</li>
+<li>결론</li>
+<li>Follow ups</li>
+<li>References</li>
+</ul>
+<br/>
+<blockquote>
+<h2 id="목적">목적</h2>
+</blockquote>
+<ul>
+<li>Java에서 equals()와 hashcode()의 기본 동작을 이해한다.</li>
+<li>왜 equals()와 hashcode()의 계약을 이해한다.</li>
+<li>equals()와 hashcode()의 계약 위반 시 발생하는 문제를 살펴본다.</li>
+<li>Hash Based Implementation에서 hashcode()를 활용하는지 직접 확인한다.</li>
+</ul>
+<br/>
+<blockquote>
+<h2 id="equals-기본-동작">equals 기본 동작</h2>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="c1">// equals() 구현 코드
+</span><span class="ln">2</span><span class="c1"></span><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">3</span>    <span class="k">return</span> <span class="o">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">obj</span><span class="o">);</span>
+<span class="ln">4</span><span class="o">}</span>
+</code></pre></div><ul>
+<li>위 코드는 Object 클래스에 구현된 equals()의 구현이다.</li>
+<li>인자로 받은 참조 주소와 자신의 주소(this)를 비교해서 같다면 true를 반환하는 것을 확인할 수 있다.</li>
+<li>여기서 중요한 포인트는 Object 클래스는 모든 객체들의 최상위 조상이다. 그러므로 Java의 모든 클래스들은 Object로 부터 상속 받은 equals() 를 포함하고 있으며 따로 오버라이딩을 하지 않는 이상 equals()의 동작은 Object 클래스에 구현된 기본 동작과 같다.</li>
+<li>그렇다면 equals()의 존재 목적은 무엇일까?
+<ul>
+<li>당연하게도 객체의 관계가 동등한지를 판단하기 위해서이다.</li>
+<li>아래는 JDK 문서에 작성되어 있는 equals()의 5가지 특징이다. equals()는 반드시 아래의 특징을 지키도록 구현해야 한다.</li>
+</ul>
+<ol>
+<li>reflexive (반사성)
+<ul>
+<li>null이 아닌 참조 x가 있을 때</li>
+<li>x.equals(x) -&gt; true 이다.</li>
+</ul>
+</li>
+<li>symmetric (대칭성)
+<ul>
+<li>null이 아닌 참조 x, y가 있을 때</li>
+<li>만약 x.equals(y) -&gt; true 라면</li>
+<li>y.equals(x) -&gt; true 이다.</li>
+</ul>
+</li>
+<li>transitive (전이성)
+<ul>
+<li>null이 아닌 참조 x, y, z가 있을 때</li>
+<li>만약 x.equals(y) -&gt; true 이고</li>
+<li>y.equals(z) -&gt; true 라면</li>
+<li>x.equals(z) -&gt; true 이다.</li>
+</ul>
+</li>
+<li>consistent (일관성)
+<ul>
+<li>null이 아닌 참조 x, y가 있을 때</li>
+<li>객체 비교에 사용된 정보가 수정되지 않은 경우에</li>
+<li>x.equals(y)는 항상 일관성 있는 결과 값을 반환한다.</li>
+</ul>
+</li>
+<li>null이 아닌 참조 x가 있을 때, x.equals(null) -&gt; false 이다.</li>
+</ol>
+</li>
+</ul>
+<br/>
+<blockquote>
+<h2 id="equals를-오버라이딩-하는-경우">equals()를 오버라이딩 하는 경우</h2>
+</blockquote>
+<ul>
+<li>프로그래밍을 하다 보면 equals()를 오버라이딩 해야 하는 경우가 있다.</li>
+<li>두 객체가 참조하는 객체 인스턴스의 레퍼런스(주소)를 비교하는 것이 아닌 실제 객체 인스턴스를 구성하는 멤버 변수들의 값들을 비교하여 두 객체의 동등성을 판단하고 싶은 경우가 이 경우다.</li>
+<li>대표적인 예로 문자열을 비교하는 경우를 생각해보자.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">String</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&#34;aa&#34;</span><span class="o">;</span>
+<span class="ln">2</span><span class="n">String</span> <span class="n">b</span> <span class="o">=</span> <span class="s">&#34;aa&#34;</span><span class="o">;</span>
+<span class="ln">3</span>
+<span class="ln">4</span><span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">b</span><span class="o">))</span> <span class="o">{</span>
+<span class="ln">5</span>  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;equals&#34;</span><span class="o">);</span>
+<span class="ln">6</span><span class="o">}</span>
+</code></pre></div><ul>
+<li>프로그래머는 객체가 참조하고 있는 인스턴스의 실제 내용인 a(&quot;aa&quot;)와 b(&quot;aa&quot;)를 비교하고 싶다.</li>
+<li>그러나 Object에 구현된 equals()의 기본 동작대로 라면 a(&quot;aa&quot;)와 b(&quot;aa&quot;)를 비교하는 것이 아닌 각 객체가 참조하고 있는 메모리 주소를 비교할 것이다.</li>
+<li>그렇기 때문에 프로그래머는 Object에 구현된 equals()대로 동작하지 않도록 하기 위해 입맛에 맞게 equals()를 오버라이딩 해주어야 한다.</li>
+<li>위 코드는 a, b 2개의 String을 비교하는 코드인데 놀랍게도 조건문의 결과가 true가 되어 &quot;equals&quot;가 출력된다.</li>
+<li>그 이유는 JDK에 구현된 String 클래스에서 equals()를 오버라이딩 해뒀기 때문이다.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">// String 클래스에서 오버라이딩된 equals()
+</span><span class="ln"> 2</span><span class="c1"></span><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">anObject</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 3</span>    <span class="k">if</span> <span class="o">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">anObject</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 4</span>        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="ln"> 5</span>    <span class="o">}</span>
+<span class="ln"> 6</span>    <span class="k">if</span> <span class="o">(</span><span class="n">anObject</span> <span class="k">instanceof</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 7</span>        <span class="n">String</span> <span class="n">aString</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span><span class="n">anObject</span><span class="o">;</span>
+<span class="ln"> 8</span>        <span class="k">if</span> <span class="o">(</span><span class="n">coder</span><span class="o">()</span> <span class="o">==</span> <span class="n">aString</span><span class="o">.</span><span class="na">coder</span><span class="o">())</span> <span class="o">{</span>
+<span class="ln"> 9</span>            <span class="k">return</span> <span class="n">isLatin1</span><span class="o">()</span> <span class="o">?</span> <span class="n">StringLatin1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">value</span><span class="o">,</span> <span class="n">aString</span><span class="o">.</span><span class="na">value</span><span class="o">)</span>
+<span class="ln">10</span>                              <span class="o">:</span> <span class="n">StringUTF16</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">value</span><span class="o">,</span> <span class="n">aString</span><span class="o">.</span><span class="na">value</span><span class="o">);</span>
+<span class="ln">11</span>        <span class="o">}</span>
+<span class="ln">12</span>    <span class="o">}</span>
+<span class="ln">13</span>    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="ln">14</span><span class="o">}</span>
+</code></pre></div><ul>
+<li>위는 String 클래스에서 오버라이딩된 equals()의 구현이다.</li>
+<li>어떤 사람은 구현 내용 중 첫 번째 조건문을 보고 &quot;뭐야? this == anObject? 자신과 똑같은 참조를 비교하네 Object랑 다른게 뭐지?&quot; 라고 생각할 수 있을 것 같다.</li>
+<li>근데 잘 생각해보자. 자신과 같은 주소를 가리키는 객체라면 그 내용도 같을 것이다.</li>
+<li>즉, 주소가 같다면 자기 자신을 자기 자신과 비교하는 것일테니 뒤에 내용은 확인할 필요 조차 없다는 것이다.</li>
+<li>본격적으로 두 개체의 내용이 같은지를 비교하는 것은 3번째 조건문 부터 이다.
+<ul>
+<li>본 포스팅에서는 String에 구현된 equals()의 구현 내용을 더 까보진 않는다.
+<ul>
+<li>이 이상 내부 구현을 파봤자 native 메서드는 나오지 않으니 String에 구현된 equals()의 실제 구현은 눈으로 다 확인할 수 있다.</li>
+<li>그러니 그 이상의 구현 내용이 궁굼하다면 본인이 직접 살펴보도록 하자.</li>
+</ul>
+</li>
+<li>중요한 포인트는 String 클래스의 equals()는 Object 클래스에  구현된 equals()의 기본 동작을 피하기 위해 원하는데로 오버라이딩 되었다는 것이다.</li>
+<li>즉 프로그래머가 정의한 클래스의 equals()도 Object 클래스의 equals() 기본 동작을 피하기 위해 원하는데로 오버라이딩 해야 한다는 것이다.</li>
+</ul>
+</li>
+</ul>
+<br/>
+<blockquote>
+<h2 id="hashcode-존재-이유와-기본-동작">hashcode() 존재 이유와 기본 동작</h2>
+</blockquote>
+<ul>
+<li>Object 클래스에 hashcode()가 정의도어 있기에 모든 객체는 hashcode()를 가지고 있다.</li>
+<li>그렇다면 hashcode()는 도대체 어떠한 목적을 위해서 존재하길래 모든 객체가 이것을 가지도록 한 것일까?</li>
+<li>JDK 문서와 구현 내용을 살펴보자.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="cm">/*
+</span><span class="ln"> 2</span><span class="cm">Returns a hash code value for the object. This method is supported for the benefit of hash tables such as those provided by java.util.HashMap.
+</span><span class="ln"> 3</span><span class="cm">
+</span><span class="ln"> 4</span><span class="cm">생략...
+</span><span class="ln"> 5</span><span class="cm">
+</span><span class="ln"> 6</span><span class="cm">As much as is reasonably practical, the hashCode method defined by class Object does return distinct integers for distinct objects. (The hashCode may or may not be implemented as some function of an object&#39;s memory address at some point in time.)
+</span><span class="ln"> 7</span><span class="cm">Returns:
+</span><span class="ln"> 8</span><span class="cm">a hash code value for this object.
+</span><span class="ln"> 9</span><span class="cm">*/</span>
+<span class="ln">10</span><span class="nd">@HotSpotIntrinsicCandidate</span>
+<span class="ln">11</span><span class="kd">public</span> <span class="kd">native</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">();</span>
+</code></pre></div><ul>
+<li>아쉽게도 hashcode()는 native 메서드 이기에 상세 구현 내용은 살펴볼 수 없었다.
+<ul>
+<li>구현 내용이 궁굼하다면? <a href="http://hg.openjdk.java.net/jdk8/jdk8/hotspot/file/tip/src/share/vm/runtime/synchronizer.cpp#l601">Here</a></li>
+</ul>
+</li>
+<li>그러나 위 주석만으로 hashcode()의 역할과 용도를 파악하기에는 충분하다.
+<ul>
+<li>[역할] Returns a hash code value for the object.
+<ul>
+<li>해당 객체를 위한 hash code를 계산하고 반환한다.</li>
+</ul>
+</li>
+<li>[용도] This method is supported for the benefit of hash tables such as those provided by java.util.HashMap.
+<ul>
+<li>Hash Based Implementation(HashMap, HashTable, HashSet)들을 위해 지원되는 메서드이다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>역할</strong>
+<ul>
+<li>hash code를 계산하고 반환하는 것은 알겠는데 여기서 의문점이 한 가지 생긴다.</li>
+<li><strong>&quot;hash code를 계산해내는 기준이 뭐지?&quot;</strong></li>
+<li>hashcode()가 hash code를 계산해내는 기본 방식은 객체 인스턴스가 위치해 있는 메모리 주소이다. (자세한 내용은 위 native 메서드를 까보아야 하는데.. 난 포기다..)</li>
+<li>각 객체 인스턴스는 고유한 메모리 영역을 가지기에 각 객체 인스턴스의 hash code는 고유한 값이란 것을 알 수 있다.</li>
+<li>뒤에서 다루겠지만 Java 언어에서는 hashcode()를 오버라이딩할 수 있도록 설계 하였다.</li>
+<li>hashcode()의 수행 결과 리턴 값은 고유한 값을 반환해야 하는데 왜 Java 언어는 프로그래머가 hashcode()를 오버라이딩 해서 기본 동작을 오염시킬 여지를 남기도록 설계한 것일까?</li>
+<li>그 이유는 hashcode()는 equals()와 계약 관계에 있으며 이 계약은 Hash Based Implementation과 관련이 있으니 기억해 두고 있기 바란다.</li>
+<li>또한 프로그래머가 이 계약을 위반 시 컴파일 시에 잡아주는 것은 아니며 안전한 소프트웨어를 개발하기 위해 Java 언어에서 권고하는 계약 정도라고 알아두면 좋을 듯하다.</li>
+</ul>
+</li>
+<li><strong>용도</strong>
+<ul>
+<li>주석에 따르면 hashcode()는 &quot;Hash Based Implementation(HashMap, HashTable, HashSet)들을 위해 지원되는 메서드&quot;라고 한다.</li>
+<li>이 문장을 이해하기 위해서는 아래 내용들을 이해하고 있어야 하는데 이 내용은 해당 포스팅의 범주를 벗어나므로 다루지 않는다.
+<ul>
+<li>Hash 자료구조에 대한 이해</li>
+<li>Java에서 Hash Based Implementation(HashMap, HashTable, HashSet, 등)이 Hash 자료구조를 기반으로 동작한다는 것에 대gks 이해</li>
+</ul>
+</li>
+<li>다시 본 내용으로 돌아와서 이야기를 계속하자면</li>
+<li>hashcode()를 이용해서 객체의 고유한 hash code를 얻어내고 이 값을 Hash Based Implementation의 Key 값으로 사용하겠다는 것이다.</li>
+<li><strong>즉 hashcode()는 Hash Based Implementation을 위한 것이다.</strong></li>
+</ul>
+</li>
+</ul>
+<br/>
+<blockquote>
+<h2 id="equals와-hashcode는-계약-관계에-있다">equals()와 hashcode()는 계약 관계에 있다</h2>
+</blockquote>
+<ul>
+<li>
+<p>본 내용을 설명하기 이전에 우선 <strong>계약</strong>에 대해서 잠시 설명하겠다.</p>
+<ul>
+<li>Java 언어에서 계약이란게 무슨 의미일까?
+<ul>
+<li>상세한 의미는 나도 잘 모르겠다. 그러나 나는 아래와 같이 이해하고 있다.</li>
+<li><strong>&quot;계약이란 프로그래머가 이것을 어길 시 컴파일 시점에 잡아주지는 않으나 런타임 시에 발생할 수 있는 문제를 예방하기 위해(즉, 안전한 소프트웨어를 개발하기 위해) 지켜야 하는 사항&quot;</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>나는 위에서 <strong>계약</strong>을 &quot;런타임 시에 발생할 수 있는 문제를 예방하기 위해 안전한 소프트웨어를 개발하기 위한 것&quot;이라고 정의 했다.</p>
+</li>
+<li>
+<p>그러면 아래와 같은 의문이 들 것이다.</p>
+<ol>
+<li>equals()와 hashcode()는 어떤 계약 관계에 있는가?</li>
+<li>이 계약을 지키는 것이 어떻게 안전한 소프트웨어를 만드는데 기여 하는가?</li>
+</ol>
+</li>
+<li>
+<p>우선 1번 의문을 풀기 위해 어떤 계약인지 살펴보자.</p>
+</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="cm">/*
+</span><span class="ln">2</span><span class="cm">The general contract of hashCode is:
+</span><span class="ln">3</span><span class="cm">
+</span><span class="ln">4</span><span class="cm">- Whenever it is invoked on the same object more than once during an execution of a Java application, the hashCode method must consistently return the same integer, provided no information used in equals comparisons on the object is modified. This integer need not remain consistent from one execution of an application to another execution of the same application.
+</span><span class="ln">5</span><span class="cm">
+</span><span class="ln">6</span><span class="cm">- If two objects are equal according to the equals(Object) method, then calling the hashCode method on each of the two objects must produce the same integer result.
+</span><span class="ln">7</span><span class="cm">
+</span><span class="ln">8</span><span class="cm">- It is not required that if two objects are unequal according to the equals(Object) method, then calling the hashCode method on each of the two objects must produce distinct integer results. However, the programmer should be aware that producing distinct integer results for unequal objects may improve the performance of hash tables.
+</span><span class="ln">9</span><span class="cm">*/</span>
+</code></pre></div><ul>
+<li>
+<p>너무 길다. 간단하게 요약하자면 아래와 같다. (<strong>사실 요약도 전혀 간단하지 않다</strong>)</p>
+<ol>
+<li>java application 실행 중, 객체 A의 equals()를 위해 사용되는 정보가 바뀌지 않은 경우 hashcode() 호출 결과는 항상 같다.</li>
+<li>두 객체가 equals()에 의해 동등함이 증명된다면, 두 객체 각자 hashcode()를 호출 했을 때의 결과 값이 항상 같다.</li>
+<li>두 객체가 equals()에 의해 동등함이 증명되지 않는다면, 두 객체 각자 hashcode()를 호출 했을 때의 결과 값이 항상 같을 필요 없다.
+<ul>
+<li>이 경우 hashcode() 결과 값이 완전 달라야 한다고 생각할 수 있지만 hashcode의 범위는 int로 한정되어 있기에 다른 고유한 객체로 부터 같은 hashcode가 생성되는 경우가 있다.</li>
+<li>이를 이해하기 위해서는 Hash 자료구조의 <strong>충돌</strong>에 대한 이해가 필요로 된다.</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>즉
+<ul>
+<li>equals()로 인해 두 객체의 동등함이 증명된다면 두 객체의 hashcode() 호출 결과는 반드시 같다.</li>
+<li>그러나 동등함이 증명되지 않는다고 반드시 두 객체의 hashcode() 호출 결과가 다른건 아니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>이제 2번 의문을 풀어보자. 그런데 이 의문을 풀기 이전에 아래 내용을 이해해야 한다.</p>
+<ol>
+<li>equals()를 오버라이딩 하는 프로그래머의 의도
+<ul>
+<li>위에서 다룬 <strong>equals() 기본 동작</strong>, <strong>equals()를 오버라이딩 하는 경우</strong> 파트에서도 살펴봤듯 우리는 아래와 같은 사실을 알고 있다.</li>
+<li>프로그래머가 정의한 클래스는 equals()를 가지고 있으며 이것을 따로 오버라이딩 하지 않는 이상 Object 클래스에 정의된 대로 동작한다.</li>
+<li>그러므로 equals()를 오버라이딩 하는 이유는 같은 타입을 가진 두 객체의 동등성을 판단하는 기준을 수정하기 위해서이다.</li>
+</ul>
+</li>
+<li>&quot;hashcode()의 결과 값은 Hash Based Implementation의 동작에 영향을 끼친다&quot;는 사실
+<ul>
+<li>hashcode()의 결과 값은 객체 자신에게만 고유한 int 값이다.</li>
+<li>hashcode()의 결과 값은 Hash Based Implementation의 Key값으로 사용된다.</li>
+<li>hashcode()는 프로그래머에 의해 오버라이딩될 수 있다.</li>
+<li>hashcode()의 결과 값은 Hash Based Implementation의 동작에 영향을 미친다.</li>
+<li>즉, 계약을 지키지 않거나 hashcode()를 잘못 오버라이딩 할 경우 Hash Baesd Implementation의 동작에 악영향을 끼친다.
+<ul>
+<li>이 악영향으로 인해 프로그램이 오동작하게 만든다.</li>
+<li>즉 불안전한 소프트웨어를 만들게 된다.</li>
+<li>이에 대한 예시는 다음 파트인 **equals()만 오버라아딩 했을 때의 동작 (계약 위반)**에서 다룬다,
+<ul>
+<li>참고로 equals(), hahscode() 모두 오버라이딩 했지만 hashcode()를 잘못 오버라이딩 한 경우도 계약 위반에 해당한다. 그러나 본 포스팅에서는 이에 대한 내용은 다루지 않는다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<br/>
+<blockquote>
+<h2 id="equals만-오버라이딩-했을-때의-동작-계약-위반">equals()만 오버라이딩 했을 때의 동작 (계약 위반)</h2>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+<span class="ln"> 2</span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="ln"> 3</span>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span>    <span class="kd">public</span> <span class="nf">User</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 6</span>        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+<span class="ln"> 7</span>        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+<span class="ln"> 8</span>    <span class="o">}</span>
+<span class="ln"> 9</span>
+<span class="ln">10</span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln">11</span>        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">;</span>
+<span class="ln">12</span>    <span class="o">}</span>
+<span class="ln">13</span>
+<span class="ln">14</span>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln">15</span>        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">age</span><span class="o">;</span>
+<span class="ln">16</span>    <span class="o">}</span>
+<span class="ln">17</span>
+<span class="ln">18</span>    <span class="nd">@Override</span>
+<span class="ln">19</span>    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">20</span>        <span class="k">if</span> <span class="o">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">obj</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="ln">21</span>
+<span class="ln">22</span>        <span class="k">if</span> <span class="o">(</span><span class="n">obj</span> <span class="k">instanceof</span> <span class="n">User</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">23</span>            <span class="n">User</span> <span class="n">uobj</span> <span class="o">=</span> <span class="o">(</span><span class="n">User</span><span class="o">)</span> <span class="n">obj</span><span class="o">;</span>
+<span class="ln">24</span>            <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">==</span> <span class="n">uobj</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">==</span> <span class="n">uobj</span><span class="o">.</span><span class="na">getAge</span><span class="o">())</span> <span class="o">{</span>
+<span class="ln">25</span>                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="ln">26</span>            <span class="o">}</span>
+<span class="ln">27</span>        <span class="o">}</span>
+<span class="ln">28</span>
+<span class="ln">29</span>        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="ln">30</span>    <span class="o">}</span>
+<span class="ln">31</span><span class="o">}</span>
+<span class="ln">32</span>
+<span class="ln">33</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">App</span> <span class="o">{</span>
+<span class="ln">34</span>
+<span class="ln">35</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>  <span class="o">{</span>
+<span class="ln">36</span>        <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">User</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">hashmap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="ln">37</span>
+<span class="ln">38</span>        <span class="n">User</span> <span class="n">danbi</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">(</span><span class="s">&#34;danbi&#34;</span><span class="o">,</span> <span class="n">27</span><span class="o">);</span>
+<span class="ln">39</span>        <span class="n">User</span> <span class="n">fakeDanbi</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">(</span><span class="s">&#34;danbi&#34;</span><span class="o">,</span> <span class="n">27</span><span class="o">);</span>
+<span class="ln">40</span>
+<span class="ln">41</span>        <span class="k">if</span> <span class="o">(</span><span class="n">danbi</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">fakeDanbi</span><span class="o">))</span> <span class="o">{</span>
+<span class="ln">42</span>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;같다&#34;</span><span class="o">);</span>
+<span class="ln">43</span>        <span class="o">}</span>
+<span class="ln">44</span>
+<span class="ln">45</span>        <span class="n">hashmap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">danbi</span><span class="o">,</span> <span class="s">&#34;&#34;</span><span class="o">);</span>
+<span class="ln">46</span>        <span class="n">hashmap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">fakeDanbi</span><span class="o">,</span> <span class="s">&#34;&#34;</span><span class="o">);</span>
+<span class="ln">47</span>
+<span class="ln">48</span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;end...&#34;</span><span class="o">);</span>
+<span class="ln">49</span>    <span class="o">}</span>
+<span class="ln">50</span><span class="o">}</span>
+</code></pre></div><ul>
+<li>위 예제 실행 시 콘솔에 **&quot;같다&quot;**가 출력된다.</li>
+<li>왜냐하면 danbi와 faeDanbi의 메모리 주소는 다르지만 User 클래스에서 equals()를 오버라이딩 했기 때문이다.</li>
+<li>이때 프로그래머는 프로그램 내에서 User 객체의 name과 age 두 필드만 같은 값을 가진다면 두 객체는 동등하게 판명나도록 equals()를 구현했다.</li>
+<li>그러면 이 두 객체를 hashmap에 삽입하면 어떻게 동작해야 할까?</li>
+<li>당연히 계약에 의거하여 두 객체는 같은 hashcode를 가지며 hashmap 내의 같은 버킷에 중복 삽입되어야 한다.</li>
+<li>그러나 디버거를 통해 메모리를 살펴보면 hashmap은 아래의 상태를 가진다.</li>
+</ul>
+<p><img src="/images/java/20210121-Java-equals-and-hashcode/hashmap_state.png" alt="HashMap State"></p>
+<ul>
+<li>분명 두 객체는 프로그램 상에서 동일하게 판명 되어야 하며 Hash Based Implementation의 동일한 버킷에 데이터가 삽입 되어야 한다.</li>
+<li>그러나 프로그램 상에서 동일하다고 판명난 두 객체 danbi와 fakeDanbi는 HashMap의 다른 버킷에 삽입되 자리잡고 있다.</li>
+<li>이런 현상이 발생한 이유는 프로그래머가 equals()와 hashcode()의 계약을 위반했기 때문이다.</li>
+<li>Object 클래스에 구현된 equals()와 hashcode()의 기본 동작은 계약을 준수하고 있는 상태이다.</li>
+<li>그러나 프로그래머가 만든 User 클래스는 equals()의 기본 동작을 자신의 입맞에 맞게 오버라이딩 했지만 hashcode()는 Object() 클래스의 기본 동작을 따른다.</li>
+<li>즉 User 클래스는 equals()와 hashcode()의 계약을 위반하고 있는 상태이며 프로그래머가 의도하지 않은 동작을 발생시키는 원인이 된 것이다.</li>
+<li>이러한 현상을 해결하기 위해서는 계약을 준수하도록 hashcode()를 올바른 방법으로 오버라이딩 해줘야 한다.
+<ul>
+<li>본 포스팅에서는 hashcode()를 올바르게 오버라이딩 하는 방법에 대해서는 다루지 않는다.</li>
+</ul>
+</li>
+</ul>
+<br/>
+<blockquote>
+<h2 id="hash-based-implementation에서-hashcode를-활용하는지-확인해보자">Hash Based Implementation에서 hashcode()를 활용하는지 확인해보자</h2>
+</blockquote>
+<ul>
+<li>HashMap 클래스의 put() 메서드의 일부를 살펴보며 정말로 hashcode를 활용하여 버켓의 Key 값을 얻어내는지 확인해보자.</li>
+</ul>
+<br/>
+<p><img src="/images/java/20210121-Java-equals-and-hashcode/stackframe.png" alt="stackframe"></p>
+<br/>
+<p><img src="/images/java/20210121-Java-equals-and-hashcode/use_hashcode.png" alt="hashcode"></p>
+<br/>
+<ul>
+<li>첫 번째 사진은 두 번째 사진에 왔을 때의 stack frame이다.</li>
+<li>stack frame 확인 결과 main()에서 HashMap 클래스의 put()을 호출했고 put()에서 hash()를 호출한다.</li>
+<li>그리고 두 번째 사진을 보시면 hash()에서는 Object key를 인자로 받아 key에서 hashcode()를 호출하는 것을 확인할 수 있다.</li>
+<li>그러면 정말로 여기서 만든 key를 활용하여 데이터를 삽입하는지 살펴보자.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span>    <span class="kd">final</span> <span class="n">V</span> <span class="nf">putVal</span><span class="o">(</span><span class="kt">int</span> <span class="n">hash</span><span class="o">,</span> <span class="n">K</span> <span class="n">key</span><span class="o">,</span> <span class="n">V</span> <span class="n">value</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">onlyIfAbsent</span><span class="o">,</span>
+<span class="ln"> 2</span>                   <span class="kt">boolean</span> <span class="n">evict</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 3</span>        <span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;[]</span> <span class="n">tab</span><span class="o">;</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">p</span><span class="o">;</span> <span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="n">i</span><span class="o">;</span>
+<span class="ln"> 4</span>        <span class="c1">// 1. 테이블이 null이거나 길이가 0일 때 테이블 크기를 초기화 혹은 리사이징 하는 작업
+</span><span class="ln"> 5</span><span class="c1"></span>        <span class="k">if</span> <span class="o">((</span><span class="n">tab</span> <span class="o">=</span> <span class="n">table</span><span class="o">)</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="o">(</span><span class="n">n</span> <span class="o">=</span> <span class="n">tab</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span>
+<span class="ln"> 6</span>            <span class="n">n</span> <span class="o">=</span> <span class="o">(</span><span class="n">tab</span> <span class="o">=</span> <span class="n">resize</span><span class="o">()).</span><span class="na">length</span><span class="o">;</span>
+<span class="ln"> 7</span>        
+<span class="ln"> 8</span>        <span class="k">if</span> <span class="o">((</span><span class="n">p</span> <span class="o">=</span> <span class="n">tab</span><span class="o">[</span><span class="n">i</span> <span class="o">=</span> <span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="o">&amp;</span> <span class="n">hash</span><span class="o">])</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+<span class="ln"> 9</span>            <span class="c1">// 2. 버킷이 null인 경우 새로운 노드 삽입
+</span><span class="ln">10</span><span class="c1"></span>            <span class="n">tab</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">newNode</span><span class="o">(</span><span class="n">hash</span><span class="o">,</span> <span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+<span class="ln">11</span>        <span class="k">else</span> <span class="o">{</span>
+<span class="ln">12</span>            <span class="c1">// 3. 버킷이 null이 아닌 경우 이미 해당 버킷에 노드가 들어가 있으니 충돌 회피를 하는 듯하다?
+</span><span class="ln">13</span><span class="c1"></span>            <span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">e</span><span class="o">;</span> <span class="n">K</span> <span class="n">k</span><span class="o">;</span>
+<span class="ln">14</span>            <span class="k">if</span> <span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">hash</span> <span class="o">==</span> <span class="n">hash</span> <span class="o">&amp;&amp;</span>
+<span class="ln">15</span>                <span class="o">((</span><span class="n">k</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="na">key</span><span class="o">)</span> <span class="o">==</span> <span class="n">key</span> <span class="o">||</span> <span class="o">(</span><span class="n">key</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">key</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">k</span><span class="o">))))</span>
+<span class="ln">16</span>                <span class="n">e</span> <span class="o">=</span> <span class="n">p</span><span class="o">;</span>
+<span class="ln">17</span>            <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">p</span> <span class="k">instanceof</span> <span class="n">TreeNode</span><span class="o">)</span>
+<span class="ln">18</span>                <span class="n">e</span> <span class="o">=</span> <span class="o">((</span><span class="n">TreeNode</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;)</span><span class="n">p</span><span class="o">).</span><span class="na">putTreeVal</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">tab</span><span class="o">,</span> <span class="n">hash</span><span class="o">,</span> <span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
+<span class="ln">19</span>            <span class="k">else</span> <span class="o">{</span>
+<span class="ln">20</span>                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">binCount</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="o">;</span> <span class="o">++</span><span class="n">binCount</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">21</span>                    <span class="k">if</span> <span class="o">((</span><span class="n">e</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="na">next</span><span class="o">)</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">22</span>                        <span class="n">p</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">newNode</span><span class="o">(</span><span class="n">hash</span><span class="o">,</span> <span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+<span class="ln">23</span>                        <span class="k">if</span> <span class="o">(</span><span class="n">binCount</span> <span class="o">&gt;=</span> <span class="n">TREEIFY_THRESHOLD</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="c1">// -1 for 1st
+</span><span class="ln">24</span><span class="c1"></span>                            <span class="n">treeifyBin</span><span class="o">(</span><span class="n">tab</span><span class="o">,</span> <span class="n">hash</span><span class="o">);</span>
+<span class="ln">25</span>                        <span class="k">break</span><span class="o">;</span>
+<span class="ln">26</span>                    <span class="o">}</span>
+<span class="ln">27</span>                    <span class="k">if</span> <span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">hash</span> <span class="o">==</span> <span class="n">hash</span> <span class="o">&amp;&amp;</span>
+<span class="ln">28</span>                        <span class="o">((</span><span class="n">k</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">key</span><span class="o">)</span> <span class="o">==</span> <span class="n">key</span> <span class="o">||</span> <span class="o">(</span><span class="n">key</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">key</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">k</span><span class="o">))))</span>
+<span class="ln">29</span>                        <span class="k">break</span><span class="o">;</span>
+<span class="ln">30</span>                    <span class="n">p</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span>
+<span class="ln">31</span>                <span class="o">}</span>
+<span class="ln">32</span>            <span class="o">}</span>
+<span class="ln">33</span>            <span class="k">if</span> <span class="o">(</span><span class="n">e</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// existing mapping for key
+</span><span class="ln">34</span><span class="c1"></span>                <span class="n">V</span> <span class="n">oldValue</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
+<span class="ln">35</span>                <span class="k">if</span> <span class="o">(!</span><span class="n">onlyIfAbsent</span> <span class="o">||</span> <span class="n">oldValue</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+<span class="ln">36</span>                    <span class="n">e</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+<span class="ln">37</span>                <span class="n">afterNodeAccess</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+<span class="ln">38</span>                <span class="k">return</span> <span class="n">oldValue</span><span class="o">;</span>
+<span class="ln">39</span>            <span class="o">}</span>
+<span class="ln">40</span>        <span class="o">}</span>
+<span class="ln">41</span>        <span class="o">++</span><span class="n">modCount</span><span class="o">;</span>
+<span class="ln">42</span>        <span class="k">if</span> <span class="o">(++</span><span class="n">size</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="o">)</span>
+<span class="ln">43</span>            <span class="n">resize</span><span class="o">();</span>
+<span class="ln">44</span>        <span class="n">afterNodeInsertion</span><span class="o">(</span><span class="n">evict</span><span class="o">);</span>
+<span class="ln">45</span>        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">46</span>    <span class="o">}</span>
+</code></pre></div><ul>
+<li>putVal()은 hash() 종료 이후 put()에서 호출하는 메서드이다.</li>
+<li>모든 코드를 살펴볼 순 없고 주석 1, 2, 3번만 간단하게 살펴보자. (<strong>이 모든 것은 나의 추측일 뿐 이다..</strong>)
+<ol>
+<li>테이블이 null이거나 길이가 0일 때 테이블 크기를 초기화 혹은 리사이징 하는 작업인 듯 하다.</li>
+<li>노드를 삽입하려는 버킷이 null인 경우 해당 버킷은 비어있는 것이니 새로운 노드를 만들어 바로 삽입하는 코드인 듯 하다.</li>
+<li>노드를 삽입하려는 버킷이 null이 아니기에(이미 어떤 데이터가 들어가 있기에) 충돌이 발생하므로 충돌 회피를 위해 특정 작업을 수행하는 코드인 듯 하다.</li>
+</ol>
+</li>
+</ul>
+<h3 id="위-코드에-대한-설명은-지극히-나의-추측일-뿐이라는-것을-명심하자"><em>위 코드에 대한 설명은 지극히 나의 추측일 뿐이라는 것을 명심하자.</em></h3>
+<br/>
+<blockquote>
+<h2 id="hashcode를-재정의하는-다양한-방법">hashcode를 재정의하는 다양한 방법</h2>
+</blockquote>
+<ul>
+<li>마무리 하기 전에 hashcode()를 재정의하는 몇 가지 방법에 대해 언급하겠다.
+<ol>
+<li>IntelliJ IDE 사용</li>
+<li>lombok</li>
+<li>org.apache.commons.lang</li>
+<li>org.apache.commons.lang3</li>
+</ol>
+</li>
+</ul>
+<br/>
+<blockquote>
+<h2 id="난-이-객체-hash-based-implentation의-key-값으로-절대-사용하지-않을건데요">난 이 객체 Hash Based Implentation의 Key 값으로 절대 사용하지 않을건데요?</h2>
+</blockquote>
+<ul>
+<li>하지 말라는데 하라는 청개구리 같은 사람도 분명 있을 것이다.</li>
+<li>근거는 &quot;내가 만든 객체는 Hash Based Implementation의 Key 값으로 절대 사용 안할건데?&quot; 이다.</li>
+<li>혼자 만드는 소프트웨어이고 그것을 당신 혼자 사용할 거라면 상관 없다. 마음데로 해라.</li>
+<li>그러나 회사에서 소프트웨어를 만드는 것이라면 절대 그렇게 하지말았으면 한다.</li>
+<li>최초에 당신이 그 코드를 짰더라도 당신이 그 회사에서 그 소프트웨어의 명운이 다할 때 까지 있을거란 보장도 없을 뿐 더러 그렇다 하더라도 평생 혼자 작업할게 아니지 않은가.</li>
+<li>누군가가 실수로 계약을 위반한 객체를 Hash Based Implementation의 Key 값으로 사용하여 장애의 원인이 된다면? 그래서 회사에 악영향을 끼친다면?</li>
+<li>그리고 그 소프트웨어를 개발하는 당신도 그 실수를 하지 않을거란 장담할 수 없다.</li>
+<li>그렇기에 이런 계약을 위반하는 것은 시스템에서 언제 터질 지 모르는 지뢰를 설치해 놓은 것이나 다름없단 사실을 명심하자.</li>
+</ul>
+<br/>
+<blockquote>
+<h1 id="결론">결론</h1>
+</blockquote>
+<ul>
+<li>equals()와 hashcode()는 계약 이다.
+<ul>
+<li>equals() 오버라이딩 시 hashcode()도 올바른 방법으로 오버라이딩 해주도록 하자.</li>
+</ul>
+</li>
+<li>이 계약을 위반하는 것은 소프트웨어에 잠재적인 버그를 심어 놓은 것이나 다름 없단 사실을 명심하자.</li>
+</ul>
+<br/>
+<blockquote>
+<h1 id="follow-ups">Follow Ups</h1>
+</blockquote>
+<ul>
+<li>Hashcode를 올바르게 오버라이딩하는 규칙</li>
+<li>native method인 hashcode() 작동 방식</li>
+</ul>
+<br/>
+<blockquote>
+<h1 id="reference">Reference</h1>
+</blockquote>
+<ul>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html">https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html</a></li>
+<li><a href="https://stackoverflow.com/questions/2265503/why-do-i-need-to-override-the-equals-and-hashcode-methods-in-java">https://stackoverflow.com/questions/2265503/why-do-i-need-to-override-the-equals-and-hashcode-methods-in-java</a></li>
+<li><a href="https://www.youtube.com/watch?v=Vi0hauJemxA&amp;ab_channel=%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD">https://www.youtube.com/watch?v=Vi0hauJemxA&amp;ab_channel=%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD</a></li>
+<li><a href="https://yaboong.github.io/java/2018/05/26/java-memory-management/">https://yaboong.github.io/java/2018/05/26/java-memory-management/</a></li>
+<li><a href="http://hg.openjdk.java.net/jdk8/jdk8/hotspot/file/tip/src/share/vm/runtime/synchronizer.cpp#l537">http://hg.openjdk.java.net/jdk8/jdk8/hotspot/file/tip/src/share/vm/runtime/synchronizer.cpp#l537</a></li>
+</ul>
+
+    
+      
+    
+  </article>
+<aside class="sidebar">
+  <section class="sidebar_inner">
+    
+    
+    <div>
+      <h2 class="mt-4 taxonomy" id="categories-section">Categories</h2>
+      <nav class="tags_nav">
+        <a href='https://sangwoncoco.github.io/categories/java/' class="post_tag button button_translucent">
+          JAVA
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://sangwoncoco.github.io/categories/leetcode/' class="post_tag button button_translucent">
+          LEETCODE
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+      </nav>
+    </div>
+    <div>
+      <h2 class="mt-4 taxonomy" id="tags-section">Tags</h2>
+      <nav class="tags_nav">
+        <a href='https://sangwoncoco.github.io/tags/hashcode/' class="post_tag button button_translucent">
+          HASHCODE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://sangwoncoco.github.io/tags/hashmap/' class="post_tag button button_translucent">
+          HASHMAP
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://sangwoncoco.github.io/tags/java/' class="post_tag button button_translucent">
+          JAVA
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://sangwoncoco.github.io/tags/priority-queue/' class="post_tag button button_translucent">
+          PRIORITY-QUEUE
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+      </nav>
+    </div>
+    <h2 class="mt-4">Recent Posts</h2>
+    <ul class="flex-column">
+      <li>
+        <a href="https://sangwoncoco.github.io/post/leetcode/20210115-leetcode-347-top-k-frequent-elements/" class="nav-link">[LeetCode] Top K Frequent Elements</a>
+      </li>
+    </ul>
+  </section>
+</aside>
+
+</div>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.001 18.001" id="twitter">
+    <path d="M15.891 4.013c.808-.496 1.343-1.173 1.605-2.034a8.68 8.68 0 0 1-2.351.861c-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078a3.56 3.56 0 0 0-1.076 2.605c0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388a3.623 3.623 0 0 0 2.115 1.291c-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841a3.652 3.652 0 0 0 2.152.743C4.148 14.173 2.625 14.69.902 14.69c-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974a10.77 10.77 0 0 0 1.172-4.892v-.468a7.788 7.788 0 0 0 1.84-1.921 8.142 8.142 0 0 1-2.11.593z"
+      ></path>
+  </symbol>
+  <symbol aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="mail">
+    <path  d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="calendar">
+    <path d="M452 40h-24V0h-40v40H124V0H84v40H60C26.916 40 0 66.916 0 100v352c0 33.084 26.916 60 60 60h392c33.084 0 60-26.916 60-60V100c0-33.084-26.916-60-60-60zm20 412c0 11.028-8.972 20-20 20H60c-11.028 0-20-8.972-20-20V188h432v264zm0-304H40v-48c0-11.028 8.972-20 20-20h24v40h40V80h264v40h40V80h24c11.028 0 20 8.972 20 20v48z"></path>
+    <path d="M76 230h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 310h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 390h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80-80h40v40h-40z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="github">
+    <path d="M255.968 5.329C114.624 5.329 0 120.401 0 262.353c0 113.536 73.344 209.856 175.104 243.872 12.8 2.368 17.472-5.568 17.472-12.384 0-6.112-.224-22.272-.352-43.712-71.2 15.52-86.24-34.464-86.24-34.464-11.616-29.696-28.416-37.6-28.416-37.6-23.264-15.936 1.728-15.616 1.728-15.616 25.696 1.824 39.2 26.496 39.2 26.496 22.848 39.264 59.936 27.936 74.528 21.344 2.304-16.608 8.928-27.936 16.256-34.368-56.832-6.496-116.608-28.544-116.608-127.008 0-28.064 9.984-51.008 26.368-68.992-2.656-6.496-11.424-32.64 2.496-68 0 0 21.504-6.912 70.4 26.336 20.416-5.696 42.304-8.544 64.096-8.64 21.728.128 43.648 2.944 64.096 8.672 48.864-33.248 70.336-26.336 70.336-26.336 13.952 35.392 5.184 61.504 2.56 68 16.416 17.984 26.304 40.928 26.304 68.992 0 98.72-59.84 120.448-116.864 126.816 9.184 7.936 17.376 23.616 17.376 47.584 0 34.368-.32 62.08-.32 70.496 0 6.88 4.608 14.88 17.6 12.352C438.72 472.145 512 375.857 512 262.353 512 120.401 397.376 5.329 255.968 5.329z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" id="gitlab">
+    <path d="M12.3 74.7h54L43.3 3c-1-3.6-6.4-3.6-7.6 0L12.3 74.8z" />
+    <path d="M12.3 74.7L.5 111c-1 3.2 0 6.8 3 8.8l101.6 74-92.5-119z"/>
+    <path d="M105 193.7l-38.6-119h-54l92.7 119z"/>
+    <path d="M105 193.7l38.7-119H66.4l38.7 119z"/>
+    <path d="M105 193.7l38.7-119H198l-93 119z"/>
+    <path d="M198 74.7l11.6 36.2c1 3 0 6.6-3 8.6l-101.5 74 93-119z"/>
+    <path d="M198 74.7h-54.3L167 3c1.2-3.6 6.4-3.6 7.6 0L198 74.8z"/> 
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="rss">
+    <circle cx="3.429" cy="20.571" r="3.429"></circle>
+    <path d="M11.429 24h4.57C15.999 15.179 8.821 8.001 0 8v4.572c6.302.001 11.429 5.126 11.429 11.428z"></path>
+    <path d="M24 24C24 10.766 13.234 0 0 0v4.571c10.714 0 19.43 8.714 19.43 19.429z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="linkedin">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h362c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zM181 406h-60V196h60zm0-240h-60v-60h60zm210 240h-60V286c0-16.54-13.46-30-30-30s-30 13.46-30 30v120h-60V196h60v11.309C286.719 202.422 296.93 196 316 196c40.691.043 75 36.547 75 79.688zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="arrow">
+    <path d="M604.501 440.509L325.398 134.956c-5.331-5.357-12.423-7.627-19.386-7.27-6.989-.357-14.056 1.913-19.387 7.27L7.499 440.509c-9.999 10.024-9.999 26.298 0 36.323s26.223 10.024 36.222 0l262.293-287.164L568.28 476.832c9.999 10.024 26.222 10.024 36.221 0 9.999-10.023 9.999-26.298 0-36.323z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="carly">
+    <path d="M504.971 239.029L448 182.059V84c0-46.317-37.682-84-84-84h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c19.851 0 36 16.149 36 36v108c0 6.365 2.529 12.47 7.029 16.971L454.059 256l-47.029 47.029A24.002 24.002 0 0 0 400 320v108c0 19.851-16.149 36-36 36h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c46.318 0 84-37.683 84-84v-98.059l56.971-56.971c9.372-9.372 9.372-24.568 0-33.941zM112 192V84c0-19.851 16.149-36 36-36h44c13.255 0 24-10.745 24-24S205.255 0 192 0h-44c-46.318 0-84 37.683-84 84v98.059l-56.971 56.97c-9.373 9.373-9.373 24.568 0 33.941L64 329.941V428c0 46.317 37.682 84 84 84h44c13.255 0 24-10.745 24-24s-10.745-24-24-24h-44c-19.851 0-36-16.149-36-36V320c0-6.365-2.529-12.47-7.029-16.971L57.941 256l47.029-47.029A24.002 24.002 0 0 0 112 192z"></path>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M23 2.75A2.75 2.75 0 0 0 20.25 0H8.75A2.75 2.75 0 0 0 6 2.75v13.5A2.75 2.75 0 0 0 8.75 19h11.5A2.75 2.75 0 0 0 23 16.25zM18.25 14.5h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5z"></path>
+    <path d="M8.75 20.5a4.255 4.255 0 0 1-4.25-4.25V2.75c0-.086.02-.166.025-.25H3.75A2.752 2.752 0 0 0 1 5.25v16A2.752 2.752 0 0 0 3.75 24h12a2.752 2.752 0 0 0 2.75-2.75v-.75z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" id="closeme">
+    <path d="M284.286 256.002L506.143 34.144c7.811-7.811 7.811-20.475 0-28.285-7.811-7.81-20.475-7.811-28.285 0L256 227.717 34.143 5.859c-7.811-7.811-20.475-7.811-28.285 0-7.81 7.811-7.811 20.475 0 28.285l221.857 221.857L5.858 477.859c-7.811 7.811-7.811 20.475 0 28.285a19.938 19.938 0 0 0 14.143 5.857 19.94 19.94 0 0 0 14.143-5.857L256 284.287l221.857 221.857c3.905 3.905 9.024 5.857 14.143 5.857s10.237-1.952 14.143-5.857c7.811-7.811 7.811-20.475 0-28.285L284.286 256.002z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="open-menu">
+    <path d="M492 236H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0-160H20C8.954 76 0 84.954 0 96s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0 320H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="instagram">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id=youtube>
+    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="stackoverflow">
+    <path d="M21 27v-8h3v11H0V19h3v8h18z"></path><path d="M17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zm3.7 14.7L10.6 6.4l1.7-2 10.2 8.5-1.7 2zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm-1.8 6.8l13.56 1.96.17-2.38-13.26-2.55-.47 2.97zM19 25H5v-3h14v3z"></path>
+  </symbol>
+</svg>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<footer class="footer">
+  <div class="footer_inner wrap pale">
+    <img src='https://sangwoncoco.github.io/icons/apple-touch-icon.png' class="icon icon_2 transparent">
+    
+    <p>Copyright 2021-<span class="year"></span> sangwon lee</p><a class="to_top" href="#documentTop">
+  <svg class="icon">
+  <use xlink:href="#arrow"></use>
+</svg>
+</a>
+
+  </div>
+</footer>
+
+    <script type="text/javascript" src="https://sangwoncoco.github.io/js/bundle.min.4e2b2e7204b61c625c9b04404f1f95d3385e075ca5112cc977ab50bebbb430b413597a4b4c990b72a1499ee4f2d9e4208ed181fcd964d619057166b8fffaddde.js" integrity="sha512-TisucgS2HGJcmwRATx&#43;V0zheB1ylESzJd6tQvru0MLQTWXpLTJkLcqFJnuTy2eQgjtGB/Nlk1hkFcWa4//rd3g==" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
