@@ -39,6 +39,10 @@
 &lt;td&gt;Top K Frequent Elements&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;유형&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Hash, Heap&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;strong&gt;바로가기&lt;/strong&gt;&lt;/td&gt;
 &lt;td&gt;&lt;a href=&#34;https://leetcode.com/problems/top-k-frequent-elements/&#34;&gt;LINK&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
