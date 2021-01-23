@@ -96,23 +96,23 @@
 &lt;li&gt;
 &lt;p&gt;문제 살펴보기&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;비어 있지 않은 String s와 비어 있지 않은 단어들을 담긴 List&lt;String&gt;들을 가진 wordDict가 메서드의 인자로 주어진다.&lt;/li&gt;
-&lt;li&gt;문자열 s가 wordDict로 구성된 단어들로 깔끔하게 다 쪼개지는지 판단하는 문제이다.&lt;/li&gt;
-&lt;li&gt;문자열 s를 쪼개기 위해 wordDict 내의 단어를 재사용할 수 있다.&lt;/li&gt;
+&lt;li&gt;비지 않은 String s와 비지 않은 단어들을 담긴 List&lt;String&gt;들을 가진 wordDict가 메서드의 인자로 주어진다.&lt;/li&gt;
+&lt;li&gt;문자열 s가 wordDict 내의 단어들로 깔끔하게 다 쪼개지는지 판단하는 문제이다.&lt;/li&gt;
+&lt;li&gt;문자열 s를 쪼개기 위해 wordDict 내의 단어들을 얼마든지 재사용할 수 있다.&lt;/li&gt;
 &lt;li&gt;wordDict 내에는 중복되는 단어가 없다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;아이디어&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;현재 문자열에서 특정 인덱스를 기준으로 탐색 할 수 있는 모든 단어를 DFS 방식으로 탐색한다.&lt;/li&gt;
+&lt;li&gt;문자열 s의 0번째 인덱스부터 모든 단어(wordDict 내의 단어들)를 비교해가며 DFS 방식으로 탐색한다.&lt;/li&gt;
 &lt;li&gt;만약 탐색 불가능한 경로의 경우 HashMap에 등록한다.&lt;/li&gt;
-&lt;li&gt;특정 문자열 상태로 진입했을 때 이전에 방문했던 경로였는지 확인한 후 방문 이력이 있다면 해당 상태의 문자열에서는 더 이상 탐색하지 않는다. (가지치기)&lt;/li&gt;
-&lt;li&gt;자세한 설명은 생략하기 아래 두 개의 예시를 확인하자.&lt;/li&gt;
+&lt;li&gt;특정 경로로 진입했을 때 이전에 방문했던 경로라면 더 이상 탐색하는 것이 의미 없으므로 해당 경로의 탐색을 중단한다. (가지치기)&lt;/li&gt;
+&lt;li&gt;자세한 설명은 생략한다. 아래 두 예시를 확인하자.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;첫-번째-예시-답을-찾았을-때&#34;&gt;첫 번째 예시 (답을 찾았을 때)&lt;/h4&gt;
+&lt;h4 id=&#34;첫-번째-예시-답을-찾았을-때&#34;&gt;&lt;em&gt;첫 번째 예시 (답을 찾았을 때)&lt;/em&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;img src=&#34;https://sangwoncoco.github.io/images/leetcode/20210121-leetcode-139/a_1.png&#34; alt=&#34;1&#34;&gt;
 &lt;img src=&#34;https://sangwoncoco.github.io/images/leetcode/20210121-leetcode-139/a_2.png&#34; alt=&#34;2&#34;&gt;
 &lt;img src=&#34;https://sangwoncoco.github.io/images/leetcode/20210121-leetcode-139/a_3.png&#34; alt=&#34;3&#34;&gt;
@@ -120,7 +120,7 @@
 &lt;img src=&#34;https://sangwoncoco.github.io/images/leetcode/20210121-leetcode-139/a_5.png&#34; alt=&#34;5&#34;&gt;
 &lt;img src=&#34;https://sangwoncoco.github.io/images/leetcode/20210121-leetcode-139/a_6.png&#34; alt=&#34;6&#34;&gt;
 &lt;img src=&#34;https://sangwoncoco.github.io/images/leetcode/20210121-leetcode-139/a_7.png&#34; alt=&#34;7&#34;&gt;&lt;/p&gt;
-&lt;h4 id=&#34;두-번째-예시-답을-찾지-못할-때&#34;&gt;두 번째 예시 (답을 찾지 못할 때)&lt;/h4&gt;
+&lt;h4 id=&#34;두-번째-예시-답을-찾지-못할-때&#34;&gt;&lt;em&gt;두 번째 예시 (답을 찾지 못할 때)&lt;/em&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;img src=&#34;https://sangwoncoco.github.io/images/leetcode/20210121-leetcode-139/b_1.png&#34; alt=&#34;1&#34;&gt;
 &lt;img src=&#34;https://sangwoncoco.github.io/images/leetcode/20210121-leetcode-139/b_2.png&#34; alt=&#34;2&#34;&gt;
 &lt;img src=&#34;https://sangwoncoco.github.io/images/leetcode/20210121-leetcode-139/b_3.png&#34; alt=&#34;3&#34;&gt;
@@ -135,15 +135,15 @@
 &lt;ul&gt;
 &lt;li&gt;실수
 &lt;ul&gt;
-&lt;li&gt;처음에 백트래킹 방식이 아닌 DFS로 완탐을 시도했다.&lt;/li&gt;
-&lt;li&gt;DFS로 완탐을 시도할 경우 답은 구할 수 있지만 아래와 같은 테케에서 TLE 발생한다.&lt;/li&gt;
-&lt;li&gt;해결책으로 이미 한 번 방문했던 경로를 기록해뒀다가 같은 경로를 다시 방문 시 가지치기를 해야 할 필요를 느꼈다.
+&lt;li&gt;처음에 백트래킹 방식이 아닌 단순 DFS로 완전 탐색 했다.&lt;/li&gt;
+&lt;li&gt;이 경우 아래와 같은 테스트 케이스에서 TLE가 발생한다.&lt;/li&gt;
+&lt;li&gt;이를 해결하기 위해 이미 한 번 방문했던 경로를 기록해뒀다가 매번 특정 경로에 진입할 때 마다 방문 이력이 있는 경로인지 확인함으로써 최적화 해야 할 필요성을 느껴 backtracking 기법을 적용했다.
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-JAVA&#34; data-lang=&#34;JAVA&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Last&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;executed&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab&amp;#34;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;a&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;aa&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;aaa&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;aaaa&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;aaaaa&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;aaaaaa&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;aaaaaaa&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;aaaaaaaa&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;aaaaaaaaa&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;aaaaaaaaaa&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;그래서 HashMap을 활용해 메모이제이션 역할을 수행하도록 하였다.&lt;/li&gt;
-&lt;li&gt;다음부터는 DFS 방식의 완탐 시에 최적화를 위해 항상 가지치기를 염두해 두어야 겠다.&lt;/li&gt;
+&lt;li&gt;다음부터는 DFS 방식의 완전 탐색 시에 항상 최적화(backtracking 적용)를 염두해 두어야 겠다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -169,9 +169,9 @@
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;            &lt;span class=&#34;c1&#34;&gt;// 완탐 (dfs)
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dict&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;wordDict&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dict&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;len&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;substring&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dict&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()).&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;equals&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dict&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 다음에 탐색할 문자열 범위가 유효하다면? 그리고 다음에 탐색할 문자열이 리스트 내에 존재한다면? 탐색 시작
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;                    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;backtrack&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dict&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;wordDict&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;failResStrMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// backtrack() 함수 호출 결과가 true라면 정답을 찾은 것이므로 탐색 종료
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;word&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;wordDict&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;word&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;len&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;substring&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;word&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()).&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;equals&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;word&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 다음에 탐색할 문자열 범위가 유효하다면? 그리고 다음에 탐색할 문자열이 리스트 내에 존재한다면? 탐색 시작
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;                    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;backtrack&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;word&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;wordDict&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;failResStrMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// backtrack() 함수 호출 결과가 true라면 정답을 찾은 것이므로 탐색 종료
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;                        &lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;                        &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;                    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
@@ -191,7 +191,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;br/&gt;
 &lt;blockquote&gt;
-&lt;h3 id=&#34;아이디어-dp-feat-틀림-자세한-건-아래에서-설명&#34;&gt;아이디어 (DP) (feat, 틀림. 자세한 건 아래에서 설명)&lt;/h3&gt;
+&lt;h3 id=&#34;아이디어-dp-feat-틀림-자세한-건-아래에서-설명&#34;&gt;아이디어 (DP) (feat. 틀림, 자세한 건 아래에서 설명)&lt;/h3&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;dp
@@ -203,7 +203,7 @@
 &lt;/li&gt;
 &lt;li&gt;점화식
 &lt;ul&gt;
-&lt;li&gt;dp[i] = dp[t] &amp;amp;&amp;amp; wordSet.contains(s.substring(t+1, i+1))&lt;/li&gt;
+&lt;li&gt;dp[i] = dp[t] &amp;amp;&amp;amp; wordSet.contains(s.substring(t, i))&lt;/li&gt;
 &lt;li&gt;sub problem: dp[t]&lt;/li&gt;
 &lt;li&gt;super problem: dp[i]&lt;/li&gt;
 &lt;/ul&gt;
@@ -264,10 +264,17 @@
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;aaaa&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;aaa&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;이유는 앞에서 부터 길이가 짧은 substring부터 set에 존재하는지 확인하기 때문에 이 경우는 &amp;quot;aaa_aaa_a&amp;quot;로 분할된다.&lt;/li&gt;
-&lt;li&gt;링크에서 제시한 사람의 코드를 최적화 시킬 수 있다고 ppt 다 만들고, 코드를 짜서 돌려보니 보기 좋게 저런 테스트 케이스에서 실패한다. ㅂㄷㅂㄷㅂㄷ...&lt;/li&gt;
-&lt;li&gt;결국은 가장 긴 substring  부터 set에 존재하는지 확인하기 위해 O(n^2)으로 구현해야 한다.&lt;/li&gt;
-&lt;li&gt;다음부터는 ppt 먼저 만들지 말고 내가 생각한 아이디어가 유효한지 코드 부터 짜서 돌려보고 정답을 도출할 수 있는 아이디어라면 그때 ppt로 만들어야 겠다. ㅂㄷㅂㄷ&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;그래도 좋은 시도였다&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&amp;quot;링크에서 제시된 코드를 최적화 할 수 있다&amp;quot;라고 생각했다.&lt;/li&gt;
+&lt;li&gt;생각한건 문제가 되지 않는다.&lt;/li&gt;
+&lt;li&gt;문제는 그 이후의 나의 행동이다.&lt;/li&gt;
+&lt;li&gt;코드를 최적화 시킬 수 있다고 확신하고 블로그에 업로드 할 ppt를 먼저 만드는게 아니라 아이디어가 유효한지 검증하는 과정이 우선됐어야 했다.&lt;/li&gt;
+&lt;li&gt;이건 굉장히 안좋은 습관이다. 내가 가진 생각, 아이디어를 나 스스로 의심하지 않고 있다는 방증이다.&lt;/li&gt;
+&lt;li&gt;이러한 습관은 단순한 시간 낭비 뿐 만 아니라 어떤 경우는 나 혹은 누군가에게 굉장히 크리티컬한 영향을 미칠 수 있다는 사실을 명심하자.&lt;/li&gt;
+&lt;li&gt;다시 본론으로 돌아가자면...&lt;/li&gt;
+&lt;li&gt;결국은 가장 긴 substring 부터 set에 존재하는지 확인하기 위해 O(n^2)으로 구현해야 한다.&lt;/li&gt;
+&lt;li&gt;그게 아니라면 문자열 맨 앞에서부터 매번 가장 길이가 긴 문자열 부터 차례로 비교해주는 방식으로 구현할 수도 있다. 이때 시간 복잡도는 O(n*k)가 되며 k가 n보다 클 경우 O(n^2) 보다 느리다.&lt;/li&gt;
+&lt;li&gt;다음부터는 ppt 먼저 만들지 말고 내가 생각한 아이디어가 유효한지 코드 부터 짜서 돌려보고 정답을 도출할 수 있는 아이디어라면 그때 ppt로 만들어야 겠다. ㅠㅠㅠ&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;그래도 좋은 시도였다. 막연히 &amp;quot;O(n) 솔루션으로 풀 수 있는데...&amp;quot; 라고 생각만 했다면 이런 경우의 테스트 케이스를 통과하지 못한다는 사실을 인지하지 못했을 테니까 말이다.&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;br/&gt;
@@ -276,12 +283,14 @@
 &lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;사실 이 문제를 푼 이유는 DP 유형을 연습하기 위해서였다.&lt;/li&gt;
-&lt;li&gt;그러나 DP로는 해결 방법이 보이지 않는데 DFS 방식으로 접근하면 풀 수 있을 것 같았다.&lt;/li&gt;
-&lt;li&gt;근데 DFS로 완전 탐색을 진행하니 TLE가 발생했다.&lt;/li&gt;
-&lt;li&gt;그래서 이미 한 번 탐색을 진행했으나 단어를 완벽히 쪼갤 수 없었던 경우를 HashMap에 저장해뒀다가 다음 탐색에서 아직 한 번도 탐색하지 않았던 경우인지 확인하는 용도로 활용하여 TLE를 해결하니 코드가 Accepted 되었다. (Backtracking)&lt;/li&gt;
+&lt;li&gt;그러나 DP로는 해결 방법이 보이지 았았다.&lt;/li&gt;
+&lt;li&gt;근데 DFS 방식으로 구현하면 답을 도출할 수 있을 것 같아 DFS로 구현했고 TLE가 발생했다.&lt;/li&gt;
+&lt;li&gt;원인은 이미 한 번 방문했던 경로도 계속해서 반복 탐색하기 때문에 비효율적이였다.&lt;/li&gt;
+&lt;li&gt;그래서 이미 한 번 탐색을 진행했으나 단어를 완벽히 쪼갤 수 없었던 경로를 HashMap에 저장했다. (지금 생각해보니 특정 경로로 진입했을 때의 문자열만 저장하면 되니 HashMap이 아닌 HashSet이 적합할 듯 하다.)&lt;/li&gt;
+&lt;li&gt;그리고 매번 특정 경로에 진입할 때 마다 이미 방문 이력이 있던 경로인지 확인하고 만약 이미 방문했다면 더 이상 해동 경로를 탐색하지 않도록 backtracking 기법을 적용함으로써 TLE를 해결했다.&lt;/li&gt;
 &lt;li&gt;문제를 해결한 후 다른 사람들의 DP 솔루션을 보니 사고 방식이 신기했다.&lt;/li&gt;
-&lt;li&gt;나는 문자를 단어 단위, 즉 sub word 단위로 쪼갤려고 생각했는데 다른 사람들은 문자 단위로 쪼개서 super problem과 sub problem으로 나눈 것이다.&lt;/li&gt;
-&lt;li&gt;코딩테스트에서 문제를 마주할 때 전혀 해결 방법이 보이지 않는 경우 기존 사고의 방식을 벗어나도록 훈련을 해야 겠다.&lt;/li&gt;
+&lt;li&gt;나는 문자열 s를 단어 단위, 즉 sub word 단위로 쪼갤려고 생각했는데 다른 사람들은 하나의 문자 단위로 쪼개서 super problem과 sub problem으로 나누고 점화식을 도출한 것이다.&lt;/li&gt;
+&lt;li&gt;이는 내가 생각할 수 있는 기존의 사고 방식과는 거리가 멀어서 신선한 충격을 받았다.&lt;/li&gt;
 &lt;/ul&gt;
 
         
@@ -289,7 +298,7 @@
     </item>
     
     <item>
-      <title>equals()와 hashcode()의 계약</title>
+      <title>equals()와 hashcode()</title>
       <link>https://sangwoncoco.github.io/post/java/20210121-java-equals-and-hashcode/</link>
       <pubDate>Thu, 21 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -302,7 +311,7 @@
 &lt;h4 id=&#34;본-포스팅은-아래-내용에-대한-지식이-있어야-이해할-수-있는-내용-입니다&#34;&gt;본 포스팅은 아래 내용에 대한 지식이 있어야 이해할 수 있는 내용 입니다.&lt;/h4&gt;
 &lt;/blockquote&gt;
 &lt;ol&gt;
-&lt;li&gt;Java에서 객체 참조에 대한 이해
+&lt;li&gt;Java의 메모리 모델
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://yaboong.github.io/java/2018/05/26/java-memory-management/&#34;&gt;만약 모르신다면?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -320,15 +329,15 @@
 &lt;ul&gt;
 &lt;li&gt;목적&lt;/li&gt;
 &lt;li&gt;equals() 기본 동작&lt;/li&gt;
-&lt;li&gt;equals()를 오버라이딩 하는 경우&lt;/li&gt;
+&lt;li&gt;equals()를 오버라이딩 하는 이유&lt;/li&gt;
 &lt;li&gt;hashcode() 존재 이유와 기본 동작&lt;/li&gt;
 &lt;li&gt;equals()와 hashcode()는 계약 관계에 있다&lt;/li&gt;
 &lt;li&gt;equals()만 오버라이딩 했을 때의 동작 (계약 위반)&lt;/li&gt;
-&lt;li&gt;Hash Based Implementation에서 hashcode()를 활용하는지 확인해보자&lt;/li&gt;
+&lt;li&gt;Hash Based Implementation에서 hashcode()를 어떻게 활용하는지 확인해보자&lt;/li&gt;
 &lt;li&gt;hashcode()를 오버라이딩 하는 다양한 방법&lt;/li&gt;
 &lt;li&gt;난 이 객체 절대 Hash Based Implementaion의 Key로 사용 안할건데?&lt;/li&gt;
 &lt;li&gt;결론&lt;/li&gt;
-&lt;li&gt;Follow ups&lt;/li&gt;
+&lt;li&gt;Follow Ups&lt;/li&gt;
 &lt;li&gt;References&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br/&gt;
@@ -343,20 +352,20 @@
 &lt;/ul&gt;
 &lt;br/&gt;
 &lt;blockquote&gt;
-&lt;h2 id=&#34;equals-기본-동작&#34;&gt;equals 기본 동작&lt;/h2&gt;
+&lt;h2 id=&#34;equals-기본-동작&#34;&gt;equals() 기본 동작&lt;/h2&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// equals() 구현 코드
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;boolean&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;equals&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;obj&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;this&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;obj&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;위 코드는 Object 클래스에 구현된 equals()의 구현이다.&lt;/li&gt;
+&lt;li&gt;위 코드는 Object 클래스에 구현된 equals()의 구현 내용 이다.&lt;/li&gt;
 &lt;li&gt;인자로 받은 참조 주소와 자신의 주소(this)를 비교해서 같다면 true를 반환하는 것을 확인할 수 있다.&lt;/li&gt;
-&lt;li&gt;여기서 중요한 포인트는 Object 클래스는 모든 객체들의 최상위 조상이다. 그러므로 Java의 모든 클래스들은 Object로 부터 상속 받은 equals() 를 포함하고 있으며 따로 오버라이딩을 하지 않는 이상 equals()의 동작은 Object 클래스에 구현된 기본 동작과 같다.&lt;/li&gt;
+&lt;li&gt;여기서 중요한 포인트는 Object 클래스는 모든 객체들의 최상위 조상이다. 그러므로 Java의 모든 클래스들은 Object로 부터 상속 받은 equals()를 포함하고 있으며 따로 오버라이딩 하지 않는 이상 equals()의 동작은 Object 클래스의 기본 동작과 동일하다.&lt;/li&gt;
 &lt;li&gt;그렇다면 equals()의 존재 목적은 무엇일까?
 &lt;ul&gt;
 &lt;li&gt;당연하게도 객체의 관계가 동등한지를 판단하기 위해서이다.&lt;/li&gt;
-&lt;li&gt;아래는 JDK 문서에 작성되어 있는 equals()의 5가지 특징이다. equals()는 반드시 아래의 특징을 지키도록 구현해야 한다.&lt;/li&gt;
+&lt;li&gt;아래는 JDK8 문서에 작성된 있는 equals()의 5가지 특징이다. equals()는 반드시 아래의 특징을 지키도록 구현해야 한다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;ol&gt;
 &lt;li&gt;reflexive (반사성)
@@ -393,11 +402,11 @@
 &lt;/ul&gt;
 &lt;br/&gt;
 &lt;blockquote&gt;
-&lt;h2 id=&#34;equals를-오버라이딩-하는-경우&#34;&gt;equals()를 오버라이딩 하는 경우&lt;/h2&gt;
+&lt;h2 id=&#34;equals를-오버라이딩-하는-이유&#34;&gt;equals()를 오버라이딩 하는 이유&lt;/h2&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;프로그래밍을 하다 보면 equals()를 오버라이딩 해야 하는 경우가 있다.&lt;/li&gt;
-&lt;li&gt;두 객체가 참조하는 객체 인스턴스의 레퍼런스(주소)를 비교하는 것이 아닌 실제 객체 인스턴스를 구성하는 멤버 변수들의 값들을 비교하여 두 객체의 동등성을 판단하고 싶은 경우가 이 경우다.&lt;/li&gt;
+&lt;li&gt;프로그래밍을 하다 보면 equals()를 오버라이딩 해야할 때가 있다. (&lt;em&gt;많다.&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;두 객체가 참조하는 인스턴스의 레퍼런스(주소)를 비교하는 것이 아닌 실제 객체 인스턴스를 구성하는 멤버 변수들의 값들을 비교하여 두 객체의 동등성을 판단하고 싶은 경우가 이 경우다.&lt;/li&gt;
 &lt;li&gt;대표적인 예로 문자열을 비교하는 경우를 생각해보자.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;aa&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
@@ -408,10 +417,11 @@
 &lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;프로그래머는 객체가 참조하고 있는 인스턴스의 실제 내용인 a(&amp;quot;aa&amp;quot;)와 b(&amp;quot;aa&amp;quot;)를 비교하고 싶다.&lt;/li&gt;
-&lt;li&gt;그러나 Object에 구현된 equals()의 기본 동작대로 라면 a(&amp;quot;aa&amp;quot;)와 b(&amp;quot;aa&amp;quot;)를 비교하는 것이 아닌 각 객체가 참조하고 있는 메모리 주소를 비교할 것이다.&lt;/li&gt;
-&lt;li&gt;그렇기 때문에 프로그래머는 Object에 구현된 equals()대로 동작하지 않도록 하기 위해 입맛에 맞게 equals()를 오버라이딩 해주어야 한다.&lt;/li&gt;
-&lt;li&gt;위 코드는 a, b 2개의 String을 비교하는 코드인데 놀랍게도 조건문의 결과가 true가 되어 &amp;quot;equals&amp;quot;가 출력된다.&lt;/li&gt;
-&lt;li&gt;그 이유는 JDK에 구현된 String 클래스에서 equals()를 오버라이딩 해뒀기 때문이다.&lt;/li&gt;
+&lt;li&gt;그러나 Object에 구현된 equals()의 기본 동작은 두 객체의 레퍼런스를 비교하는 것이다.&lt;/li&gt;
+&lt;li&gt;그러므로 a(&amp;quot;aa&amp;quot;)와 b(&amp;quot;aa&amp;quot;)를 비교하는 것이 아닌 각 객체가 참조하고 있는 레퍼런스를 비교할 것이다.&lt;/li&gt;
+&lt;li&gt;그렇기 때문에 프로그래머는 자신의 입맞에 맞게 equals()를 오버라이딩 해줘야 한다.&lt;/li&gt;
+&lt;li&gt;위 코드는 a, b 2개의 String을 비교하는 코드인데 놀랍게도 조건문의 결과가 true로 판명나 &amp;quot;equals&amp;quot;가 출력된다.&lt;/li&gt;
+&lt;li&gt;그 이유는 JDK에 구현된 String 클래스에서 equals()를 미리 오버라이딩 해뒀기 때문이다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// String 클래스에서 오버라이딩된 equals()
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;boolean&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;equals&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;anObject&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
@@ -440,8 +450,8 @@
 &lt;li&gt;그러니 그 이상의 구현 내용이 궁굼하다면 본인이 직접 살펴보도록 하자.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;중요한 포인트는 String 클래스의 equals()는 Object 클래스에  구현된 equals()의 기본 동작을 피하기 위해 원하는데로 오버라이딩 되었다는 것이다.&lt;/li&gt;
-&lt;li&gt;즉 프로그래머가 정의한 클래스의 equals()도 Object 클래스의 equals() 기본 동작을 피하기 위해 원하는데로 오버라이딩 해야 한다는 것이다.&lt;/li&gt;
+&lt;li&gt;중요한 포인트는 String 클래스의 equals()는 Object 클래스에 구현된 equals()의 기본 동작을 피하기 위해 오버라이딩 되었다는 것이다.&lt;/li&gt;
+&lt;li&gt;즉 프로그래머가 정의한 클래스의 equals()도 Object 클래스의 equals() 기본 동작을 피하기 위해서는 입맞에 맞게 오버라이딩 해야 한다는 것이다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -450,9 +460,9 @@
 &lt;h2 id=&#34;hashcode-존재-이유와-기본-동작&#34;&gt;hashcode() 존재 이유와 기본 동작&lt;/h2&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;Object 클래스에 hashcode()가 정의도어 있기에 모든 객체는 hashcode()를 가지고 있다.&lt;/li&gt;
-&lt;li&gt;그렇다면 hashcode()는 도대체 어떠한 목적을 위해서 존재하길래 모든 객체가 이것을 가지도록 한 것일까?&lt;/li&gt;
-&lt;li&gt;JDK 문서와 구현 내용을 살펴보자.&lt;/li&gt;
+&lt;li&gt;Object 클래스에 hashcode()가 정의돼 있기에 모든 객체는 hashcode()를 사용할 수 있다.&lt;/li&gt;
+&lt;li&gt;그렇다면 hashcode()는 도대체 어떤 목적을 위해서 존재하길래 모든 객체가 사용할 수 있게 디자인된 것일까?&lt;/li&gt;
+&lt;li&gt;우선 JDK 문서와 구현 내용을 살펴보자.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/*
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;Returns a hash code value for the object. This method is supported for the benefit of hash tables such as those provided by java.util.HashMap.
@@ -480,7 +490,7 @@
 &lt;/li&gt;
 &lt;li&gt;[용도] This method is supported for the benefit of hash tables such as those provided by java.util.HashMap.
 &lt;ul&gt;
-&lt;li&gt;Hash Based Implementation(HashMap, HashTable, HashSet)들을 위해 지원되는 메서드이다.&lt;/li&gt;
+&lt;li&gt;Hash Based Implementation(HashMap, HashTable, HashSet, 등)들을 위해 지원되는 메서드이다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -490,9 +500,9 @@
 &lt;li&gt;hash code를 계산하고 반환하는 것은 알겠는데 여기서 의문점이 한 가지 생긴다.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;&amp;quot;hash code를 계산해내는 기준이 뭐지?&amp;quot;&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;hashcode()가 hash code를 계산해내는 기본 방식은 객체 인스턴스가 위치해 있는 메모리 주소이다. (자세한 내용은 위 native 메서드를 까보아야 하는데.. 난 포기다..)&lt;/li&gt;
-&lt;li&gt;각 객체 인스턴스는 고유한 메모리 영역을 가지기에 각 객체 인스턴스의 hash code는 고유한 값이란 것을 알 수 있다.&lt;/li&gt;
-&lt;li&gt;뒤에서 다루겠지만 Java 언어에서는 hashcode()를 오버라이딩할 수 있도록 설계 하였다.&lt;/li&gt;
-&lt;li&gt;hashcode()의 수행 결과 리턴 값은 고유한 값을 반환해야 하는데 왜 Java 언어는 프로그래머가 hashcode()를 오버라이딩 해서 기본 동작을 오염시킬 여지를 남기도록 설계한 것일까?&lt;/li&gt;
+&lt;li&gt;각 객체 인스턴스는 고유한 메모리 주소를 가지기에 각 객체 인스턴스의 hash code는 고유한 값이란 것을 알 수 있다.&lt;/li&gt;
+&lt;li&gt;뒤에서 다루겠지만 Java 언어는 hashcode()를 오버라이딩할 수 있도록 설계 되었다.&lt;/li&gt;
+&lt;li&gt;hashcode()의 수행 결과 리턴 값은 고유한 값을 반환해야 하는데 왜 Java 언어는 프로그래머가 hashcode()를 오버라이딩 해서 프로그래머가 기본 동작을 오염시킬 여지를 남기도록 설계한 것일까?&lt;/li&gt;
 &lt;li&gt;그 이유는 hashcode()는 equals()와 계약 관계에 있으며 이 계약은 Hash Based Implementation과 관련이 있으니 기억해 두고 있기 바란다.&lt;/li&gt;
 &lt;li&gt;또한 프로그래머가 이 계약을 위반 시 컴파일 시에 잡아주는 것은 아니며 안전한 소프트웨어를 개발하기 위해 Java 언어에서 권고하는 계약 정도라고 알아두면 좋을 듯하다.&lt;/li&gt;
 &lt;/ul&gt;
@@ -500,15 +510,15 @@
 &lt;li&gt;&lt;strong&gt;용도&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;주석에 따르면 hashcode()는 &amp;quot;Hash Based Implementation(HashMap, HashTable, HashSet)들을 위해 지원되는 메서드&amp;quot;라고 한다.&lt;/li&gt;
-&lt;li&gt;이 문장을 이해하기 위해서는 아래 내용들을 이해하고 있어야 하는데 이 내용은 해당 포스팅의 범주를 벗어나므로 다루지 않는다.
+&lt;li&gt;이 문장을 이해하기 위해서는 아래 내용들을 알고 있어야 하는데 이 내용은 해당 포스팅의 범주를 벗어나므로 다루지 않는다.
 &lt;ul&gt;
-&lt;li&gt;Hash 자료구조에 대한 이해&lt;/li&gt;
-&lt;li&gt;Java에서 Hash Based Implementation(HashMap, HashTable, HashSet, 등)이 Hash 자료구조를 기반으로 동작한다는 것에 대gks 이해&lt;/li&gt;
+&lt;li&gt;Hash 자료구조&lt;/li&gt;
+&lt;li&gt;Java에서 Hash Based Implementation(HashMap, HashTable, HashSet, 등)이 Hash 자료구조를 기반으로 동작한다는 것&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;다시 본 내용으로 돌아와서 이야기를 계속하자면&lt;/li&gt;
 &lt;li&gt;hashcode()를 이용해서 객체의 고유한 hash code를 얻어내고 이 값을 Hash Based Implementation의 Key 값으로 사용하겠다는 것이다.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;즉 hashcode()는 Hash Based Implementation을 위한 것이다.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;즉 &amp;quot;hashcode()는 Hash Based Implementation의 key를 계산하기 위해 존재한다.&amp;quot;라고 할 수 있다.&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -529,7 +539,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;나는 위에서 &lt;strong&gt;계약&lt;/strong&gt;을 &amp;quot;런타임 시에 발생할 수 있는 문제를 예방하기 위해 안전한 소프트웨어를 개발하기 위한 것&amp;quot;이라고 정의 했다.&lt;/p&gt;
+&lt;p&gt;나는 위에서 &lt;strong&gt;계약&lt;/strong&gt;을 &amp;quot;런타임 시에 발생할 수 있는 문제를 예방하기 위해 지켜야 하는 것이며 계약을 따르는 것은 안전한 소프트웨어를 개발하는 것에 기여한다.&amp;quot;라고 정의 했다.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;그러면 아래와 같은 의문이 들 것이다.&lt;/p&gt;
@@ -556,11 +566,12 @@
 &lt;p&gt;너무 길다. 간단하게 요약하자면 아래와 같다. (&lt;strong&gt;사실 요약도 전혀 간단하지 않다&lt;/strong&gt;)&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;java application 실행 중, 객체 A의 equals()를 위해 사용되는 정보가 바뀌지 않은 경우 hashcode() 호출 결과는 항상 같다.&lt;/li&gt;
-&lt;li&gt;두 객체가 equals()에 의해 동등함이 증명된다면, 두 객체 각자 hashcode()를 호출 했을 때의 결과 값이 항상 같다.&lt;/li&gt;
-&lt;li&gt;두 객체가 equals()에 의해 동등함이 증명되지 않는다면, 두 객체 각자 hashcode()를 호출 했을 때의 결과 값이 항상 같을 필요 없다.
+&lt;li&gt;두 객체가 equals()에 의해 동등함이 증명된다면, 두 객체에서 hashcode()를 호출 했을 때 결과 값은 항상 같다.&lt;/li&gt;
+&lt;li&gt;두 객체가 equals()에 의해 동등함이 증명되지 않는다면, 두 객체 각자 hashcode()를 호출 했을 때 결과 값이 항상 다를순 없다.
 &lt;ul&gt;
-&lt;li&gt;이 경우 hashcode() 결과 값이 완전 달라야 한다고 생각할 수 있지만 hashcode의 범위는 int로 한정되어 있기에 다른 고유한 객체로 부터 같은 hashcode가 생성되는 경우가 있다.&lt;/li&gt;
-&lt;li&gt;이를 이해하기 위해서는 Hash 자료구조의 &lt;strong&gt;충돌&lt;/strong&gt;에 대한 이해가 필요로 된다.&lt;/li&gt;
+&lt;li&gt;이 경우 hashcode() 결과 값이 완전 달라야 한다고 생각할 수 있지만 hashcode의 범위는 자료형의 범위에 한정돼 있기에 다른 고유한 객체로 부터 동일한 hash code가 생성되는 경우도 있다.&lt;/li&gt;
+&lt;li&gt;이 경우 &amp;quot;그러면 Key 값이 충돌하는 건데 어떻게 Hash Based Implementation에 저장할 수 있는 거지?&amp;quot;라고 생각할 수 있는데&lt;/li&gt;
+&lt;li&gt;이를 이해하기 위해서는 Hash 자료구조의 &lt;strong&gt;충돌&lt;/strong&gt;에 대한 이해가 필요하다. 이 내용 역시 본 포스팅에서는 다루지 않는다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
@@ -578,22 +589,22 @@
 &lt;ol&gt;
 &lt;li&gt;equals()를 오버라이딩 하는 프로그래머의 의도
 &lt;ul&gt;
-&lt;li&gt;위에서 다룬 &lt;strong&gt;equals() 기본 동작&lt;/strong&gt;, &lt;strong&gt;equals()를 오버라이딩 하는 경우&lt;/strong&gt; 파트에서도 살펴봤듯 우리는 아래와 같은 사실을 알고 있다.&lt;/li&gt;
+&lt;li&gt;위에서 다룬 &lt;em&gt;equals() 기본 동작&lt;/em&gt;, &lt;em&gt;equals()를 오버라이딩 하는 이유&lt;/em&gt; 파트에서도 살펴봤듯 우리는 아래와 같은 사실을 알고 있다.&lt;/li&gt;
 &lt;li&gt;프로그래머가 정의한 클래스는 equals()를 가지고 있으며 이것을 따로 오버라이딩 하지 않는 이상 Object 클래스에 정의된 대로 동작한다.&lt;/li&gt;
 &lt;li&gt;그러므로 equals()를 오버라이딩 하는 이유는 같은 타입을 가진 두 객체의 동등성을 판단하는 기준을 수정하기 위해서이다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&amp;quot;hashcode()의 결과 값은 Hash Based Implementation의 동작에 영향을 끼친다&amp;quot;는 사실
 &lt;ul&gt;
-&lt;li&gt;hashcode()의 결과 값은 객체 자신에게만 고유한 int 값이다.&lt;/li&gt;
+&lt;li&gt;hashcode()의 결과 값은 객체 자신에 대한 hash code이다.&lt;/li&gt;
 &lt;li&gt;hashcode()의 결과 값은 Hash Based Implementation의 Key값으로 사용된다.&lt;/li&gt;
-&lt;li&gt;hashcode()는 프로그래머에 의해 오버라이딩될 수 있다.&lt;/li&gt;
+&lt;li&gt;hashcode()의 기본 동작은 오버라이딩될 수 있다.&lt;/li&gt;
 &lt;li&gt;hashcode()의 결과 값은 Hash Based Implementation의 동작에 영향을 미친다.&lt;/li&gt;
-&lt;li&gt;즉, 계약을 지키지 않거나 hashcode()를 잘못 오버라이딩 할 경우 Hash Baesd Implementation의 동작에 악영향을 끼친다.
+&lt;li&gt;계약을 지키지 않거나 hashcode()를 잘못된 방식으로 오버라이딩 할 경우 Hash Baesd Implementation의 동작에 악영향을 끼친다.
 &lt;ul&gt;
 &lt;li&gt;이 악영향으로 인해 프로그램이 오동작하게 만든다.&lt;/li&gt;
 &lt;li&gt;즉 불안전한 소프트웨어를 만들게 된다.&lt;/li&gt;
-&lt;li&gt;이에 대한 예시는 다음 파트인 **equals()만 오버라아딩 했을 때의 동작 (계약 위반)**에서 다룬다,
+&lt;li&gt;이에 대한 예시는 다음 파트인 *equals()만 오버라아딩 했을 때의 동작 (계약 위반)*에서 다룬다.
 &lt;ul&gt;
 &lt;li&gt;참고로 equals(), hahscode() 모두 오버라이딩 했지만 hashcode()를 잘못 오버라이딩 한 경우도 계약 위반에 해당한다. 그러나 본 포스팅에서는 이에 대한 내용은 다루지 않는다.&lt;/li&gt;
 &lt;/ul&gt;
@@ -661,21 +672,21 @@
 &lt;span class=&#34;ln&#34;&gt;50&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;위 예제 실행 시 콘솔에 **&amp;quot;같다&amp;quot;**가 출력된다.&lt;/li&gt;
-&lt;li&gt;왜냐하면 danbi와 faeDanbi의 메모리 주소는 다르지만 User 클래스에서 equals()를 오버라이딩 했기 때문이다.&lt;/li&gt;
-&lt;li&gt;이때 프로그래머는 프로그램 내에서 User 객체의 name과 age 두 필드만 같은 값을 가진다면 두 객체는 동등하게 판명나도록 equals()를 구현했다.&lt;/li&gt;
+&lt;li&gt;왜냐하면 danbi와 fakeDanbi의 메모리 주소는 다르지만 User 클래스에서 equals()를 입맞에 맞게 오버라이딩 했기 때문이다.&lt;/li&gt;
+&lt;li&gt;이때 프로그래머는 프로그램 내에서 User 객체의 name과 age 두 필드만 같은 값을 가진다면 두 객체는 동등하게 판명나도록 equals()를 오버라이딩했다.&lt;/li&gt;
 &lt;li&gt;그러면 이 두 객체를 hashmap에 삽입하면 어떻게 동작해야 할까?&lt;/li&gt;
-&lt;li&gt;당연히 계약에 의거하여 두 객체는 같은 hashcode를 가지며 hashmap 내의 같은 버킷에 중복 삽입되어야 한다.&lt;/li&gt;
-&lt;li&gt;그러나 디버거를 통해 메모리를 살펴보면 hashmap은 아래의 상태를 가진다.&lt;/li&gt;
+&lt;li&gt;당연히 계약에 의거하여 두 객체는 같은 hash code를 가지며 hashmap 내의 같은 버킷에 중복 삽입되어야 한다.&lt;/li&gt;
+&lt;li&gt;그러나 디버거를 통해 메모리를 살펴보면 hashmap은 아래 상태를 가진다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img src=&#34;https://sangwoncoco.github.io/images/java/20210121-Java-equals-and-hashcode/hashmap_state.png&#34; alt=&#34;HashMap State&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;분명 두 객체는 프로그램 상에서 동일하게 판명 되어야 하며 Hash Based Implementation의 동일한 버킷에 데이터가 삽입 되어야 한다.&lt;/li&gt;
-&lt;li&gt;그러나 프로그램 상에서 동일하다고 판명난 두 객체 danbi와 fakeDanbi는 HashMap의 다른 버킷에 삽입되 자리잡고 있다.&lt;/li&gt;
+&lt;li&gt;그러나 프로그램 상에서 동일하다고 판명난 두 객체 danbi와 fakeDanbi는 HashMap의 다른 버킷에 삽입돼 자리잡고 있다.&lt;/li&gt;
 &lt;li&gt;이런 현상이 발생한 이유는 프로그래머가 equals()와 hashcode()의 계약을 위반했기 때문이다.&lt;/li&gt;
 &lt;li&gt;Object 클래스에 구현된 equals()와 hashcode()의 기본 동작은 계약을 준수하고 있는 상태이다.&lt;/li&gt;
-&lt;li&gt;그러나 프로그래머가 만든 User 클래스는 equals()의 기본 동작을 자신의 입맞에 맞게 오버라이딩 했지만 hashcode()는 Object() 클래스의 기본 동작을 따른다.&lt;/li&gt;
-&lt;li&gt;즉 User 클래스는 equals()와 hashcode()의 계약을 위반하고 있는 상태이며 프로그래머가 의도하지 않은 동작을 발생시키는 원인이 된 것이다.&lt;/li&gt;
-&lt;li&gt;이러한 현상을 해결하기 위해서는 계약을 준수하도록 hashcode()를 올바른 방법으로 오버라이딩 해줘야 한다.
+&lt;li&gt;그러나 프로그래머가 만든 User 클래스는 equals()의 기본 동작을 자신의 입맞에 맞게 오버라이딩 했지만 hashcode()는 Object 클래스의 기본 동작을 따른다.&lt;/li&gt;
+&lt;li&gt;즉 User 클래스는 equals()와 hashcode()의 계약을 위반하고 있는 상태이며 이는 프로그램이 예상치 못한 동작을 한 원흉이 된 것이다.&lt;/li&gt;
+&lt;li&gt;이러한 현상을 해결하기 위해선 계약을 준수하도록 hashcode()를 올바른 방법으로 오버라이딩 해줘야 한다.
 &lt;ul&gt;
 &lt;li&gt;본 포스팅에서는 hashcode()를 올바르게 오버라이딩 하는 방법에 대해서는 다루지 않는다.&lt;/li&gt;
 &lt;/ul&gt;
@@ -683,10 +694,10 @@
 &lt;/ul&gt;
 &lt;br/&gt;
 &lt;blockquote&gt;
-&lt;h2 id=&#34;hash-based-implementation에서-hashcode를-활용하는지-확인해보자&#34;&gt;Hash Based Implementation에서 hashcode()를 활용하는지 확인해보자&lt;/h2&gt;
+&lt;h2 id=&#34;hash-based-implementation에서-hashcode를-어떻게-활용하는지-확인해보자&#34;&gt;Hash Based Implementation에서 hashcode()를 어떻게 활용하는지 확인해보자&lt;/h2&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;HashMap 클래스의 put() 메서드의 일부를 살펴보며 정말로 hashcode를 활용하여 버켓의 Key 값을 얻어내는지 확인해보자.&lt;/li&gt;
+&lt;li&gt;HashMap 클래스의 put() 메서드의 일부를 살펴보며 정말 hashcode()를 활용하여 버켓의 Key 값을 얻어내는지 확인해보자.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br/&gt;
 &lt;p&gt;&lt;img src=&#34;https://sangwoncoco.github.io/images/java/20210121-Java-equals-and-hashcode/stackframe.png&#34; alt=&#34;stackframe&#34;&gt;&lt;/p&gt;
@@ -697,7 +708,7 @@
 &lt;li&gt;첫 번째 사진은 두 번째 사진에 왔을 때의 stack frame이다.&lt;/li&gt;
 &lt;li&gt;stack frame 확인 결과 main()에서 HashMap 클래스의 put()을 호출했고 put()에서 hash()를 호출한다.&lt;/li&gt;
 &lt;li&gt;그리고 두 번째 사진을 보시면 hash()에서는 Object key를 인자로 받아 key에서 hashcode()를 호출하는 것을 확인할 수 있다.&lt;/li&gt;
-&lt;li&gt;그러면 정말로 여기서 만든 key를 활용하여 데이터를 삽입하는지 살펴보자.&lt;/li&gt;
+&lt;li&gt;이제 정말 여기서 만든 key를 활용하여 데이터를 삽입하는지 살펴보자.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;V&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;putVal&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hash&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;K&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;V&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;boolean&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;onlyIfAbsent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;                   &lt;span class=&#34;kt&#34;&gt;boolean&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;evict&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
@@ -747,46 +758,47 @@
 &lt;span class=&#34;ln&#34;&gt;46&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;putVal()은 hash() 종료 이후 put()에서 호출하는 메서드이다.&lt;/li&gt;
-&lt;li&gt;모든 코드를 살펴볼 순 없고 주석 1, 2, 3번만 간단하게 살펴보자. (&lt;strong&gt;이 모든 것은 나의 추측일 뿐 이다..&lt;/strong&gt;)
+&lt;li&gt;모든 코드를 살펴볼 순 없고 주석 1, 2, 3만 간단하게 살펴보자. (&lt;em&gt;이 모든 것은 나의 추측일 뿐 이다..&lt;/em&gt;)
 &lt;ol&gt;
 &lt;li&gt;테이블이 null이거나 길이가 0일 때 테이블 크기를 초기화 혹은 리사이징 하는 작업인 듯 하다.&lt;/li&gt;
-&lt;li&gt;노드를 삽입하려는 버킷이 null인 경우 해당 버킷은 비어있는 것이니 새로운 노드를 만들어 바로 삽입하는 코드인 듯 하다.&lt;/li&gt;
-&lt;li&gt;노드를 삽입하려는 버킷이 null이 아니기에(이미 어떤 데이터가 들어가 있기에) 충돌이 발생하므로 충돌 회피를 위해 특정 작업을 수행하는 코드인 듯 하다.&lt;/li&gt;
+&lt;li&gt;노드를 삽입하려는 버킷이 null인 경우 해당 버킷은 비어있는 상태를 뜻하니 새로운 노드를 만들어 바로 삽입하는 코드인 듯 하다.&lt;/li&gt;
+&lt;li&gt;노드를 삽입하려는 버킷이 null이 아니기에(이미 어떤 노드가 삽입된 상태를 뜻한다.) 충돌이 발생하므로 충돌 회피를 위해 특정 작업을 수행하는 코드인 듯 하다.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;위-코드에-대한-설명은-지극히-나의-추측일-뿐이라는-것을-명심하자&#34;&gt;&lt;em&gt;위 코드에 대한 설명은 지극히 나의 추측일 뿐이라는 것을 명심하자.&lt;/em&gt;&lt;/h3&gt;
 &lt;br/&gt;
 &lt;blockquote&gt;
-&lt;h2 id=&#34;hashcode를-재정의하는-다양한-방법&#34;&gt;hashcode를 재정의하는 다양한 방법&lt;/h2&gt;
+&lt;h2 id=&#34;hashcode를-오버라이딩하는-다양한-방법&#34;&gt;hashcode를 오버라이딩하는 다양한 방법&lt;/h2&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;마무리 하기 전에 hashcode()를 재정의하는 몇 가지 방법에 대해 언급하겠다.
+&lt;li&gt;간편하게 hashcode()를 오버라이딩하는 몇 가지 방법에 대해 언급하겠다.
 &lt;ol&gt;
-&lt;li&gt;IntelliJ IDE 사용&lt;/li&gt;
+&lt;li&gt;IDE Support&lt;/li&gt;
 &lt;li&gt;lombok&lt;/li&gt;
 &lt;li&gt;org.apache.commons.lang&lt;/li&gt;
 &lt;li&gt;org.apache.commons.lang3&lt;/li&gt;
+&lt;li&gt;com.google.guava&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;br/&gt;
 &lt;blockquote&gt;
-&lt;h2 id=&#34;난-이-객체-hash-based-implentation의-key-값으로-절대-사용하지-않을건데요&#34;&gt;난 이 객체 Hash Based Implentation의 Key 값으로 절대 사용하지 않을건데요?&lt;/h2&gt;
+&lt;h2 id=&#34;난-이-객체-hash-based-implentation의-key-값으로-절대-사용하지-않을건데&#34;&gt;난 이 객체 Hash Based Implentation의 Key 값으로 절대 사용하지 않을건데?&lt;/h2&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;하지 말라는데 하라는 청개구리 같은 사람도 분명 있을 것이다.&lt;/li&gt;
-&lt;li&gt;근거는 &amp;quot;내가 만든 객체는 Hash Based Implementation의 Key 값으로 절대 사용 안할건데?&amp;quot; 이다.&lt;/li&gt;
+&lt;li&gt;의도했든 의도치 않든 하지 말라는데 하는 청개구리 같은 사람은 항상 존재한다.&lt;/li&gt;
+&lt;li&gt;의도적으로 그렇게 하는 그들의 근거는 &amp;quot;내가 만든 객체는 Hash Based Implementation의 Key 값으로 절대 사용 안할건데?&amp;quot; 이다.&lt;/li&gt;
 &lt;li&gt;혼자 만드는 소프트웨어이고 그것을 당신 혼자 사용할 거라면 상관 없다. 마음데로 해라.&lt;/li&gt;
 &lt;li&gt;그러나 회사에서 소프트웨어를 만드는 것이라면 절대 그렇게 하지말았으면 한다.&lt;/li&gt;
 &lt;li&gt;최초에 당신이 그 코드를 짰더라도 당신이 그 회사에서 그 소프트웨어의 명운이 다할 때 까지 있을거란 보장도 없을 뿐 더러 그렇다 하더라도 평생 혼자 작업할게 아니지 않은가.&lt;/li&gt;
 &lt;li&gt;누군가가 실수로 계약을 위반한 객체를 Hash Based Implementation의 Key 값으로 사용하여 장애의 원인이 된다면? 그래서 회사에 악영향을 끼친다면?&lt;/li&gt;
-&lt;li&gt;그리고 그 소프트웨어를 개발하는 당신도 그 실수를 하지 않을거란 장담할 수 없다.&lt;/li&gt;
-&lt;li&gt;그렇기에 이런 계약을 위반하는 것은 시스템에서 언제 터질 지 모르는 지뢰를 설치해 놓은 것이나 다름없단 사실을 명심하자.&lt;/li&gt;
+&lt;li&gt;그리고 그 소프트웨어를 개발하는 당신도 같은 실수를 하지 않을거라고 장담할 수 없다.&lt;/li&gt;
+&lt;li&gt;그렇기에 이 계약을 위반하는 것은 시스템에서 언제 터질 지 모르는 지뢰를 설치해 놓은 것이나 다름없단 사실을 명심하자.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br/&gt;
 &lt;blockquote&gt;
-&lt;h1 id=&#34;결론&#34;&gt;결론&lt;/h1&gt;
+&lt;h2 id=&#34;결론&#34;&gt;결론&lt;/h2&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;equals()와 hashcode()는 계약 이다.
@@ -798,15 +810,15 @@
 &lt;/ul&gt;
 &lt;br/&gt;
 &lt;blockquote&gt;
-&lt;h1 id=&#34;follow-ups&#34;&gt;Follow Ups&lt;/h1&gt;
+&lt;h2 id=&#34;follow-ups&#34;&gt;Follow Ups&lt;/h2&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;Hashcode를 올바르게 오버라이딩하는 규칙&lt;/li&gt;
+&lt;li&gt;hashcode()를 올바르게 오버라이딩하는 규칙&lt;/li&gt;
 &lt;li&gt;native method인 hashcode() 작동 방식&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br/&gt;
 &lt;blockquote&gt;
-&lt;h1 id=&#34;reference&#34;&gt;Reference&lt;/h1&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html&#34;&gt;https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html&lt;/a&gt;&lt;/li&gt;
@@ -898,7 +910,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;blockquote&gt;
-&lt;h2 id=&#34;핵심-아이디어&#34;&gt;핵심 아이디어&lt;/h2&gt;
+&lt;h3 id=&#34;핵심-아이디어&#34;&gt;핵심 아이디어&lt;/h3&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;저는 이 문제를 시간 복잡도 O(n)으로 해결하기 위해 두 개의 HashMap을 사용하였습니다.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://sangwoncoco.github.io/images/leetcode/20210115-leetcode-347/347.png&#34; alt=&#34;Top K Frequent Elements&#34;&gt;&lt;/p&gt;
@@ -1039,7 +1051,7 @@
 &lt;br/&gt;
 &lt;br/&gt;
 &lt;blockquote&gt;
-&lt;h2 id=&#34;구현-코드&#34;&gt;구현 코드&lt;/h2&gt;
+&lt;h3 id=&#34;구현-코드&#34;&gt;구현 코드&lt;/h3&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;java.util.HashMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;java.util.Set&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
@@ -1095,11 +1107,11 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;br/&gt;
 &lt;blockquote&gt;
-&lt;h2 id=&#34;후기&#34;&gt;후기&lt;/h2&gt;
+&lt;h3 id=&#34;후기&#34;&gt;후기&lt;/h3&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;Medium 수준의 문제였지만 2개의 HashMap을 사용하여 주어진 데이터를 어떻게 가공해야 할지만 잘 정의한다면 어렵지 않게 시간 복잡도 O(n)으로 해결할 수 있었습니다.&lt;/li&gt;
-&lt;li&gt;글에서 제시한 솔루션 외에도 리트코드에선 Quick Selection과 Heap을 활용한 솔루션도 제공하니 시간이 충분하다면 다른 두 접근법으로 문제를 풀어보는 것도 추천합니다.&lt;/li&gt;
+&lt;li&gt;글에서 제시한 솔루션 외에도 리트코드에선 Quick Select과 Heap을 활용한 솔루션도 제공하니 시간이 충분하다면 다른 두 접근법으로 문제를 풀어보는 것도 추천합니다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br/&gt;
 

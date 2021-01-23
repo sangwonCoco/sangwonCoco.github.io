@@ -83,16 +83,6 @@
   </url>
   
   <url>
-    <loc>https://sangwoncoco.github.io/tags/hashcode/</loc>
-    <lastmod>2021-01-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sangwoncoco.github.io/tags/java/</loc>
-    <lastmod>2021-01-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sangwoncoco.github.io/categories/java/</loc>
     <lastmod>2021-01-21T00:00:00+00:00</lastmod>
   </url>
@@ -108,7 +98,7 @@
   </url>
   
   <url>
-    <loc>https://sangwoncoco.github.io/tags/priority-queue/</loc>
+    <loc>https://sangwoncoco.github.io/tags/heap/</loc>
     <lastmod>2021-01-15T00:00:00+00:00</lastmod>
   </url>
   

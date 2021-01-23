@@ -51,7 +51,8 @@
   
   
     
-  <body data-code="10" data-lines="true" id="documentTop"> -->
+  
+  <body data-code="15" data-lines="true" id="documentTop"> -->
 
 <header class="nav_header" >
   <nav class="nav">
@@ -140,7 +141,7 @@
       Jan 15, 2021</span>
       <a href='https://sangwoncoco.github.io/tags/hashmap' class="post_tag button button_translucent">hashmap
       </a>
-      <a href='https://sangwoncoco.github.io/tags/priority-queue' class="post_tag button button_translucent">priority queue
+      <a href='https://sangwoncoco.github.io/tags/heap' class="post_tag button button_translucent">heap
       </a>
 </div>
 
@@ -240,7 +241,7 @@
 </code></pre></div><br/>
 <br/>
 <blockquote>
-<h2 id="핵심-아이디어">핵심 아이디어</h2>
+<h3 id="핵심-아이디어">핵심 아이디어</h3>
 </blockquote>
 <p>저는 이 문제를 시간 복잡도 O(n)으로 해결하기 위해 두 개의 HashMap을 사용하였습니다.</p>
 <p><img src="/images/leetcode/20210115-leetcode-347/347.png" alt="Top K Frequent Elements"></p>
@@ -381,7 +382,7 @@
 <br/>
 <br/>
 <blockquote>
-<h2 id="구현-코드">구현 코드</h2>
+<h3 id="구현-코드">구현 코드</h3>
 </blockquote>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
 <span class="ln"> 2</span><span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
@@ -437,11 +438,11 @@
 </code></pre></div><br/>
 <br/>
 <blockquote>
-<h2 id="후기">후기</h2>
+<h3 id="후기">후기</h3>
 </blockquote>
 <ul>
 <li>Medium 수준의 문제였지만 2개의 HashMap을 사용하여 주어진 데이터를 어떻게 가공해야 할지만 잘 정의한다면 어렵지 않게 시간 복잡도 O(n)으로 해결할 수 있었습니다.</li>
-<li>글에서 제시한 솔루션 외에도 리트코드에선 Quick Selection과 Heap을 활용한 솔루션도 제공하니 시간이 충분하다면 다른 두 접근법으로 문제를 풀어보는 것도 추천합니다.</li>
+<li>글에서 제시한 솔루션 외에도 리트코드에선 Quick Select과 Heap을 활용한 솔루션도 제공하니 시간이 충분하다면 다른 두 접근법으로 문제를 풀어보는 것도 추천합니다.</li>
 </ul>
 <br/>
 
@@ -487,23 +488,13 @@
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://sangwoncoco.github.io/tags/hashcode/' class="post_tag button button_translucent">
-          HASHCODE
-          <span class="button_tally">1</span>
-        </a>
-        
         <a href='https://sangwoncoco.github.io/tags/hashmap/' class="post_tag button button_translucent">
           HASHMAP
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://sangwoncoco.github.io/tags/java/' class="post_tag button button_translucent">
-          JAVA
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://sangwoncoco.github.io/tags/priority-queue/' class="post_tag button button_translucent">
-          PRIORITY-QUEUE
+        <a href='https://sangwoncoco.github.io/tags/heap/' class="post_tag button button_translucent">
+          HEAP
           <span class="button_tally">1</span>
         </a>
         
@@ -516,7 +507,7 @@
         <a href="https://sangwoncoco.github.io/post/leetcode/20210121-leetcode-139-word-break/" class="nav-link">[LeetCode] Word Break</a>
       </li>
       <li>
-        <a href="https://sangwoncoco.github.io/post/java/20210121-java-equals-and-hashcode/" class="nav-link">equals()와 hashcode()의 계약</a>
+        <a href="https://sangwoncoco.github.io/post/java/20210121-java-equals-and-hashcode/" class="nav-link">equals()와 hashcode()</a>
       </li>
     </ul>
   </section>
