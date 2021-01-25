@@ -51,6 +51,7 @@
   
   
     
+  
   <body data-code="15" data-lines="true" id="documentTop"> -->
 
 <header class="nav_header" >
@@ -170,23 +171,14 @@
     <h2>Overview</h2>
     <nav id="TableOfContents">
   <ul>
-    <li>
-      <ul>
-        <li></li>
-      </ul>
-    </li>
-    <li><a href="#목차">목차</a></li>
+    <li><a href="#사전-지식">사전 지식</a></li>
     <li><a href="#목적">목적</a></li>
     <li><a href="#equals-기본-동작">equals() 기본 동작</a></li>
     <li><a href="#equals를-오버라이딩-하는-이유">equals()를 오버라이딩 하는 이유</a></li>
     <li><a href="#hashcode-존재-이유와-기본-동작">hashcode() 존재 이유와 기본 동작</a></li>
     <li><a href="#equals와-hashcode는-계약-관계에-있다">equals()와 hashcode()는 계약 관계에 있다</a></li>
     <li><a href="#equals만-오버라이딩-했을-때의-동작-계약-위반">equals()만 오버라이딩 했을 때의 동작 (계약 위반)</a></li>
-    <li><a href="#hash-based-implementation에서-hashcode를-어떻게-활용하는지-확인해보자">Hash Based Implementation에서 hashcode()를 어떻게 활용하는지 확인해보자</a>
-      <ul>
-        <li><a href="#위-코드에-대한-설명은-지극히-나의-추측일-뿐이라는-것을-명심하자"><em>위 코드에 대한 설명은 지극히 나의 추측일 뿐이라는 것을 명심하자.</em></a></li>
-      </ul>
-    </li>
+    <li><a href="#hash-based-implementation에서-hashcode를-어떻게-활용하는지-확인해보자">Hash Based Implementation에서 hashcode()를 어떻게 활용하는지 확인해보자</a></li>
     <li><a href="#hashcode를-오버라이딩하는-다양한-방법">hashcode를 오버라이딩하는 다양한 방법</a></li>
     <li><a href="#난-이-객체-hash-based-implentation의-key-값으로-절대-사용하지-않을건데">난 이 객체 Hash Based Implentation의 Key 값으로 절대 사용하지 않을건데?</a></li>
     <li><a href="#결론">결론</a></li>
@@ -197,8 +189,11 @@
     <!-- page parameters, https://github.com/chipzoller/hugo-clarity#page-parameters -->
 <!-- command: hugo new {archetypes}/{path...}/{post-name.md} -->
 <blockquote>
-<h4 id="본-포스팅은-아래-내용에-대한-지식이-있어야-이해할-수-있는-내용-입니다">본 포스팅은 아래 내용에 대한 지식이 있어야 이해할 수 있는 내용 입니다.</h4>
+<h2 id="사전-지식">사전 지식</h2>
 </blockquote>
+<ul>
+<li>본 포스팅은 아래 내용에 대한 지식이 있어야 이해할 수 있는 내용 입니다.</li>
+</ul>
 <ol>
 <li>Java의 메모리 모델
 <ul>
@@ -211,24 +206,6 @@
 </ul>
 </li>
 </ol>
-<br/>
-<blockquote>
-<h2 id="목차">목차</h2>
-</blockquote>
-<ul>
-<li>목적</li>
-<li>equals() 기본 동작</li>
-<li>equals()를 오버라이딩 하는 이유</li>
-<li>hashcode() 존재 이유와 기본 동작</li>
-<li>equals()와 hashcode()는 계약 관계에 있다</li>
-<li>equals()만 오버라이딩 했을 때의 동작 (계약 위반)</li>
-<li>Hash Based Implementation에서 hashcode()를 어떻게 활용하는지 확인해보자</li>
-<li>hashcode()를 오버라이딩 하는 다양한 방법</li>
-<li>난 이 객체 절대 Hash Based Implementaion의 Key로 사용 안할건데?</li>
-<li>결론</li>
-<li>Follow Ups</li>
-<li>References</li>
-</ul>
 <br/>
 <blockquote>
 <h2 id="목적">목적</h2>
@@ -655,7 +632,7 @@
 </ol>
 </li>
 </ul>
-<h3 id="위-코드에-대한-설명은-지극히-나의-추측일-뿐이라는-것을-명심하자"><em>위 코드에 대한 설명은 지극히 나의 추측일 뿐이라는 것을 명심하자.</em></h3>
+<p><em>위 코드에 대한 설명은 지극히 나의 추측일 뿐이라는 것을 명심하자.</em></p>
 <br/>
 <blockquote>
 <h2 id="hashcode를-오버라이딩하는-다양한-방법">hashcode를 오버라이딩하는 다양한 방법</h2>
@@ -730,12 +707,12 @@
       <nav class="tags_nav">
         <a href='https://sangwoncoco.github.io/categories/leetcode/' class="post_tag button button_translucent">
           LEETCODE
-          <span class="button_tally">2</span>
+          <span class="button_tally">5</span>
         </a>
         
         <a href='https://sangwoncoco.github.io/categories/ps-review/' class="post_tag button button_translucent">
           PS-REVIEW
-          <span class="button_tally">2</span>
+          <span class="button_tally">5</span>
         </a>
         
         <a href='https://sangwoncoco.github.io/categories/java/' class="post_tag button button_translucent">
@@ -749,6 +726,16 @@
     <div>
       <h2 class="mt-4 taxonomy" id="tags-section">Tags</h2>
       <nav class="tags_nav">
+        <a href='https://sangwoncoco.github.io/tags/bfs/' class="post_tag button button_translucent">
+          BFS
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://sangwoncoco.github.io/tags/dfs/' class="post_tag button button_translucent">
+          DFS
+          <span class="button_tally">3</span>
+        </a>
+        
         <a href='https://sangwoncoco.github.io/tags/backtracking/' class="post_tag button button_translucent">
           BACKTRACKING
           <span class="button_tally">1</span>
@@ -769,11 +756,25 @@
           <span class="button_tally">1</span>
         </a>
         
+        <a href='https://sangwoncoco.github.io/tags/tree/' class="post_tag button button_translucent">
+          TREE
+          <span class="button_tally">1</span>
+        </a>
+        
         
       </nav>
     </div>
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
+      <li>
+        <a href="https://sangwoncoco.github.io/post/leetcode/20210125-leetcode-695-max-area-of-island/" class="nav-link">[LeetCode] Max Area of Island</a>
+      </li>
+      <li>
+        <a href="https://sangwoncoco.github.io/post/leetcode/20210125-leetcode-104-maximum-depth-of-binary-tree/" class="nav-link">[LeetCode] Maximum Depth of Binary Tree</a>
+      </li>
+      <li>
+        <a href="https://sangwoncoco.github.io/post/leetcode/20210125-leetcode-200-number-of-island/" class="nav-link">[LeetCode] Number of Islands</a>
+      </li>
       <li>
         <a href="https://sangwoncoco.github.io/post/leetcode/20210121-leetcode-139-word-break/" class="nav-link">[LeetCode] Word Break</a>
       </li>

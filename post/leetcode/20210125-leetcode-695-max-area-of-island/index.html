@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" data-figures="" class="page" data-mode="lit">
   <head>
-<title>[LeetCode] Top K Frequent Elements | Retriever</title>
+<title>[LeetCode] Max Area of Island | Retriever</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.80.0" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -18,13 +18,13 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="LeetCode 347 Top K Frequent Elements hash heap">
+<meta name="description" content="LeetCode 695 Max Area of Island bfs dfs">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@janedoe">
-<meta name="twitter:title" content="[LeetCode] Top K Frequent Elements" />
-<meta property="og:url" content="https://sangwoncoco.github.io/post/leetcode/20210115-leetcode-347-top-k-frequent-elements/" />
-<meta property="og:title" content="[LeetCode] Top K Frequent Elements" />
-<meta property="og:description" content="LeetCode 347 Top K Frequent Elements hash heap" />
+<meta name="twitter:title" content="[LeetCode] Max Area of Island" />
+<meta property="og:url" content="https://sangwoncoco.github.io/post/leetcode/20210125-leetcode-695-max-area-of-island/" />
+<meta property="og:title" content="[LeetCode] Max Area of Island" />
+<meta property="og:description" content="LeetCode 695 Max Area of Island bfs dfs" />
 <meta property="og:image" content="https://sangwoncoco.github.io/images/thumbnail.png" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://sangwoncoco.github.io/icons/apple-touch-icon.png'>
 <link rel="icon" type="image/png" sizes="32x32" href='https://sangwoncoco.github.io/icons/favicon-32x32.png'>
@@ -33,7 +33,7 @@
 <meta name="msapplication-TileColor" content="#002538">
 <meta name="theme-color" content="#002538">
 
-<link rel="canonical" href="https://sangwoncoco.github.io/post/leetcode/20210115-leetcode-347-top-k-frequent-elements/">
+<link rel="canonical" href="https://sangwoncoco.github.io/post/leetcode/20210125-leetcode-695-max-area-of-island/">
 
     
 
@@ -132,28 +132,28 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">[LeetCode] Top K Frequent Elements</h1><div class="post_meta">
+    <h1 class="post_title">[LeetCode] Max Area of Island</h1><div class="post_meta">
   
     <svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg>
     <span class="post_date">
-      Jan 15, 2021</span>
-      <a href='https://sangwoncoco.github.io/tags/hashmap' class="post_tag button button_translucent">hashmap
+      Jan 25, 2021</span>
+      <a href='https://sangwoncoco.github.io/tags/dfs' class="post_tag button button_translucent">dfs
       </a>
-      <a href='https://sangwoncoco.github.io/tags/heap' class="post_tag button button_translucent">heap
+      <a href='https://sangwoncoco.github.io/tags/bfs' class="post_tag button button_translucent">bfs
       </a>
 </div>
 
     
   <div class="post_share">
     Share on:
-    <a href="https://twitter.com/intent/tweet?text=%5bLeetCode%5d%20Top%20K%20Frequent%20Elements&url=https%3a%2f%2fsangwoncoco.github.io%2fpost%2fleetcode%2f20210115-leetcode-347-top-k-frequent-elements%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+    <a href="https://twitter.com/intent/tweet?text=%5bLeetCode%5d%20Max%20Area%20of%20Island&url=https%3a%2f%2fsangwoncoco.github.io%2fpost%2fleetcode%2f20210125-leetcode-695-max-area-of-island%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
     </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fsangwoncoco.github.io%2fpost%2fleetcode%2f20210115-leetcode-347-top-k-frequent-elements%2f&t=%5bLeetCode%5d%20Top%20K%20Frequent%20Elements" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fsangwoncoco.github.io%2fpost%2fleetcode%2f20210125-leetcode-695-max-area-of-island%2f&t=%5bLeetCode%5d%20Max%20Area%20of%20Island" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -163,7 +163,7 @@
   <use xlink:href="#linkedin"></use>
 </svg>
     </a>
-    <a href="https://sangwoncoco.github.io/post/leetcode/20210115-leetcode-347-top-k-frequent-elements/" title="Copy Link" class="link link_yank">
+    <a href="https://sangwoncoco.github.io/post/leetcode/20210125-leetcode-695-max-area-of-island/" title="Copy Link" class="link link_yank">
       <svg class="icon">
   <use xlink:href="#copy"></use>
 </svg>
@@ -186,53 +186,55 @@
 </tr>
 <tr>
 <td><strong>번호</strong></td>
-<td>347</td>
+<td>695</td>
 </tr>
 <tr>
 <td><strong>제목</strong></td>
-<td>Top K Frequent Elements</td>
+<td>Max Area of Island</td>
 </tr>
 <tr>
 <td><strong>유형</strong></td>
-<td>Hash, Heap</td>
+<td>bfs, dfs</td>
 </tr>
 <tr>
 <td><strong>바로가기</strong></td>
-<td><a href="https://leetcode.com/problems/top-k-frequent-elements/">LINK</a></td>
+<td><a href="https://leetcode.com/problems/max-area-of-island/">LINK</a></td>
 </tr>
 </tbody>
 </table>
 <br/>
 <br/>
 <blockquote>
-<h2 id="문제">문제</h2>
+<h3 id="문제">문제</h3>
 </blockquote>
-<p>Given a non-empty array of integers, return the k most frequent elements.</p>
-<p>Note:</p>
-<ul>
-<li>You may assume k is always valid, 1 ≤ k ≤ number of unique elements.</li>
-<li>Your algorithm's time complexity must be better than O(n log n), where n is the array's size.</li>
-<li>It's guaranteed that the answer is unique, in other words the set of the top k frequent elements is unique.</li>
-<li>You can return the answer in any order.</li>
-</ul>
+<p>Given a non-empty 2D array grid of 0's and 1's, an island is a group of 1's (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.</p>
+<p>Find the maximum area of an island in the given 2D array. (If there is no island, the maximum area is 0.)</p>
+<p>Note: The length of each dimension in the given grid does not exceed 50.</p>
 <br/>
 <br/>
 <blockquote>
-<h2 id="기본-테스트-케이스">기본 테스트 케이스</h2>
+<h3 id="기본-테스트-케이스">기본 테스트 케이스</h3>
 </blockquote>
 <p>Example 1:</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>Input: nums = [1,1,1,2,2,3], k = 2
-<span class="ln">2</span>Output: [1,2]
-</code></pre></div><p>Exapmle 2:</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>Input: nums = [1], k = 1
-<span class="ln">2</span>Output: [1]
-</code></pre></div><br/>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>[[0,0,1,0,0,0,0,1,0,0,0,0,0],
+<span class="ln">2</span> [0,0,0,0,0,0,0,1,1,1,0,0,0],
+<span class="ln">3</span> [0,1,1,0,1,0,0,0,0,0,0,0,0],
+<span class="ln">4</span> [0,1,0,0,1,1,0,0,1,0,1,0,0],
+<span class="ln">5</span> [0,1,0,0,1,1,0,0,1,1,1,0,0],
+<span class="ln">6</span> [0,0,0,0,0,0,0,0,0,0,1,0,0],
+<span class="ln">7</span> [0,0,0,0,0,0,0,1,1,1,0,0,0],
+<span class="ln">8</span> [0,0,0,0,0,0,0,1,1,0,0,0,0]]
+</code></pre></div><p>Given the above grid, return 6. Note the answer is not 11, because the island must be connected 4-directionally.</p>
+<p>Exapmle 2:</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>[[0,0,0,0,0,0,0,0]]
+</code></pre></div><p>Given the above grid, return 0.</p>
+<br/>
 <br/>
 <blockquote>
-<h2 id="주어진-코드-스니펫">주어진 코드 스니펫</h2>
+<h3 id="주어진-코드-스니펫">주어진 코드 스니펫</h3>
 </blockquote>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-<span class="ln">2</span>    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">topKFrequent</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">2</span>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxAreaOfIsland</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">grid</span><span class="o">)</span> <span class="o">{</span>
 <span class="ln">3</span>        
 <span class="ln">4</span>    <span class="o">}</span>
 <span class="ln">5</span><span class="o">}</span>
@@ -241,206 +243,100 @@
 <blockquote>
 <h3 id="핵심-아이디어">핵심 아이디어</h3>
 </blockquote>
-<p>저는 이 문제를 시간 복잡도 O(n)으로 해결하기 위해 두 개의 HashMap을 사용하였습니다.</p>
-<p><img src="/images/leetcode/20210115-leetcode-347/347.png" alt="Top K Frequent Elements"></p>
-<p>사용한 HashMap의 의미는 다음과 같습니다.</p>
-<ol>
-<li><strong>HashMap&lt;Integer, Integer&gt; keyIsEle</strong>
 <ul>
-<li>key: nums 배열 내의 고유한 값</li>
-<li>value: 고유한 값이 nums 배열 내에서 등장한 횟수</li>
-</ul>
-</li>
-<li><strong>HashMap&lt;Integer, ArrayList<Integer>&gt; keyIsCnt</strong>
-<ul>
-<li>key: keyIsEle의 value (nums 배열 내에서 등장한 고유한 값의 등장 횟수)</li>
-<li>value: keyIsEle에서 같은 value를 가진 key들을 연결리스트 형태로 묶은 집합</li>
-</ul>
-</li>
-</ol>
-<p>HashMap의 의미를 파악했으니 예시를 살펴보며 1번 프로세스(nums -&gt; keyIsEle)와 2번 프로세스(keyIsEle -&gt; keyIsCnt)를 통해 nums 배열을 keyIsEle와 keyIsCnt로 가공한 후 답까지 도출해 봅시다.</p>
-<blockquote>
-<p><em>예시에 사용되는 nums, k</em></p>
-</blockquote>
-<ul>
-<li>nums = {1, 1, 1, 2, 2, 2, 3}</li>
-<li>k = 2</li>
-</ul>
-<br/>
-<blockquote>
-<p><em>1번 프로세스 (nums -&gt; keyIsEle)</em></p>
-</blockquote>
-<ul>
-<li>nums 배열 내에 고유한 수는 1, 2, 3 총 3개 입니다.</li>
-<li>고유한 수 1은 3번 등장합니다.</li>
-<li>고유한 수 2는 3번 등장합니다.</li>
-<li>고유한 수 3은 1번 등장합니다.</li>
-<li>그럼으로 nums 배열을 keyIsEle로 가공한 결과를 아래 표로 나타낼 수 있습니다.</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th><strong>keyIsEle</strong></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>key</strong> (Integer)</td>
-<td><strong>value</strong> (Integer)</td>
-</tr>
-<tr>
-<td>1</td>
-<td>3</td>
-</tr>
-<tr>
-<td>2</td>
-<td>3</td>
-</tr>
-<tr>
-<td>3</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-<br/>
-<blockquote>
-<p><em>2번 프로세스 (keyIsEle -&gt; keyIsCnt)</em></p>
-</blockquote>
-<ul>
-<li>keyIsEle에서 3번 등장한 고유한 수는 1, 2 입니다.</li>
-<li>kyeIsEle에서 1번 등장한 고유한 수는 3 입니다.</li>
-<li>그럼으로 keyIsEle을 KeyIsCnt로 가공한 결과를 아래 표로 나타낼 수 있습니다.</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th><strong>keyIsCnt</strong></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>key</strong> (Integer)</td>
-<td><strong>value</strong> (ArrayList<Integer>)</td>
-</tr>
-<tr>
-<td>3</td>
-<td>{1, 2}</td>
-</tr>
-<tr>
-<td>1</td>
-<td>{3}</td>
-</tr>
-</tbody>
-</table>
-<br/>
-<blockquote>
-<p><em>keyIsCnt로 부터 답을 도출 해낸다!!</em></p>
-</blockquote>
-<ul>
-<li>nums 배열을 시작으로 keyIsCnt까지 도출해낸 이유는 당연하게도 답을 구하기 위함 입니다.</li>
-<li>그러면 어떻게 keyIsCnt로 부터 답을 도출할 수 있을까요? 같이 알아가 봅시다.</li>
-<li>문제에서 요구하는 것은 nums 배열 내에서 자주 등장하는 고유한 수 k개를 배열로 묶어서 리턴 하는 겁니다.</li>
-<li>그리고 저희는 keyIsCnt를 알고 있으니 여기에 가장 큰 key값에 대응되는 value를 가져와 리턴할 배열에 넣어주기만 하면 됩니다.</li>
-<li>그러나 keyIsCnt는 HashMap 자료구조이고 HashMap으로 부터 value를 가져오기 위해서는 key값을 get() 메서드의 인자로 넣어주어야 하죠?</li>
-<li>어떤 수를 차례대로 get() 메서드의 인자로 넣어줘야 할까요?</li>
-<li>당연하게도 가장 많이 등장한 원소의 횟수부터 key 값으로 집어 넣어 k개 만큼의 고유한 원소를 찾으면 됩니다.</li>
-<li>근데 저희는 가장 많이 등장한 원소의 횟수를 알지 못하잖아요?</li>
-<li>물론 1, 2번 프로세스를 수행하며 가장 많이 등장한 원소의 횟수를 구할 수도 있었지만 사고의 전환을 위해 다른 방식을 설명해보겠습니다.</li>
-<li>아래 3가지 패턴을 살펴봅시다.</li>
-<li>패턴 1) nums 배열이 {1, 1, 1, 1, 1} 이라고 가정해봅시다.
-<ul>
-<li>이때 배열의 길이는 5입니다.</li>
-<li>배열 내의 고유한 원소 1 밖에 없습니다.</li>
-<li>고유한 원소 1은 5번 등장합니다.</li>
-</ul>
-</li>
-<li>패턴 2) nums 배열이 {1, 1, 1, 1, 2} 이라고 가정해봅시다.
-<ul>
-<li>이때 배열의 길이는 5입니다.</li>
-<li>배열 내의 고유한 원소는 1, 2 두 가지 입니다.</li>
-<li>고유한 원소 1은 4번 등장합니다.</li>
-<li>고유한 원소 2는 1번 등장합니다.</li>
-</ul>
-</li>
-<li>패턴 3) nums 배열이 {1, 1, 1, 2, 3} 이라고 가정해봅시다.
-<ul>
-<li>이때 배열의 길이는 5입니다.</li>
-<li>배열 내의 고유한 원소는 1, 2, 3 세 가지 입니다.</li>
-<li>고유한 원소 1은 3번 등장합니다.</li>
-<li>고유한 원소 2은 1번 등장합니다.</li>
-<li>고유한 원소 3은 1번 등장합니다.</li>
-</ul>
-</li>
-<li>패턴이 보이시나요? 위 패턴으로 부터 얻을 수 있는 결론은 <strong>&quot;배열 내의 특정 고유 원소를 a라고 가정할 때 a가 등장하는 횟수는 배열의 길이 n을 넘을 수 없다.&quot;</strong> 입니다.</li>
-<li>그러므로 저희는 최댓값을 배열의 길이 n으로 가정하고 n을 시작으로 1씩 차감하며 키값이 존재하는지 혹은 존재하지 않는지 조사한 후 만약 존재한다면 해당하는 value값을 가져와 리턴할 배열에 넣어주기만 하면 됩니다.</li>
-<li>주의할 점은 n부터 1씩 차감하는 반복문을 리턴할 원소 k개를 찾을 때까지만 수행해야 한다는 겁니다.</li>
+<li>핵심 아이디어는 <a href="https://sangwoncoco.github.io/post/leetcode/20210125-leetcode-200-number-of-island/">200번 문제</a>에 적용한 것과 동일하며, 추가적으로 각 섬에 진입한 이후 탐색한 결과값으로 해당 섬의 Area를 반환하는 코드를 추가해주면 된다.</li>
 </ul>
 <br/>
 <br/>
 <blockquote>
-<h3 id="구현-코드">구현 코드</h3>
+<h3 id="구현-코드-bfs">구현 코드 (bfs)</h3>
 </blockquote>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
-<span class="ln"> 2</span><span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
-<span class="ln"> 3</span><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-<span class="ln"> 4</span>
-<span class="ln"> 5</span><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-<span class="ln"> 6</span>    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">topKFrequent</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln"> 7</span>        <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span> <span class="n">keyIsCnt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
-<span class="ln"> 8</span>        <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">keyIsEle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
-<span class="ln"> 9</span>        
-<span class="ln">10</span>        <span class="c1">// nums -&gt; keyIsEle
-</span><span class="ln">11</span><span class="c1"></span>        <span class="c1">// O(n)
-</span><span class="ln">12</span><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-<span class="ln">13</span>            <span class="n">keyIsEle</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">keyIsEle</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">0</span><span class="o">)+</span><span class="n">1</span><span class="o">);</span>
-<span class="ln">14</span>        <span class="o">}</span>
-<span class="ln">15</span>
-<span class="ln">16</span>        <span class="c1">// keyIsEle -&gt; keyIsCnt
-</span><span class="ln">17</span><span class="c1"></span>        <span class="c1">// O(n)        
-</span><span class="ln">18</span><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="n">var</span> <span class="n">pair</span> <span class="o">:</span> <span class="n">keyIsEle</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
-<span class="ln">19</span>            <span class="k">if</span> <span class="o">(</span><span class="n">keyIsCnt</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">pair</span><span class="o">.</span><span class="na">getValue</span><span class="o">()))</span> <span class="o">{</span>
-<span class="ln">20</span>                <span class="n">keyIsCnt</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">pair</span><span class="o">.</span><span class="na">getValue</span><span class="o">()).</span><span class="na">add</span><span class="o">(</span><span class="n">pair</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
-<span class="ln">21</span>            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-<span class="ln">22</span>                <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">valuelist</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
-<span class="ln">23</span>                <span class="n">valuelist</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pair</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
-<span class="ln">24</span>                <span class="n">keyIsCnt</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">pair</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="n">valuelist</span><span class="o">);</span>
-<span class="ln">25</span>            <span class="o">}</span>
-<span class="ln">26</span>        <span class="o">}</span>
-<span class="ln">27</span>        
-<span class="ln">28</span>        <span class="c1">// 배열의 길이부터 1씩 감소시키며 keyIsCnt에 해당 값을 key값으로 가지고 있는지 확인
-</span><span class="ln">29</span><span class="c1"></span>        <span class="c1">// 최악의 경우 O(n)의 시간 복잡도
-</span><span class="ln">30</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
-<span class="ln">31</span>        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">retlist</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
-<span class="ln">32</span>        <span class="k">while</span> <span class="o">(</span><span class="n">k</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln">33</span>            <span class="k">if</span> <span class="o">(</span><span class="n">keyIsCnt</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">cnt</span><span class="o">)){</span>
-<span class="ln">34</span>                <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">keys</span> <span class="o">=</span> <span class="n">keyIsCnt</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">cnt</span><span class="o">);</span>
-<span class="ln">35</span>                <span class="n">k</span> <span class="o">-=</span> <span class="n">keys</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
-<span class="ln">36</span>                <span class="k">for</span> <span class="o">(</span><span class="n">Integer</span> <span class="n">key</span> <span class="o">:</span> <span class="n">keys</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln">37</span>                    <span class="n">retlist</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
-<span class="ln">38</span>                <span class="o">}</span>    
-<span class="ln">39</span>            <span class="o">}</span>
-<span class="ln">40</span>            <span class="n">cnt</span><span class="o">--;</span>
-<span class="ln">41</span>        <span class="o">}</span>
-<span class="ln">42</span>
-<span class="ln">43</span>        <span class="c1">// 리턴할 배열 만들어주기        
-</span><span class="ln">44</span><span class="c1"></span>        <span class="kt">int</span><span class="o">[]</span> <span class="n">ret</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">retlist</span><span class="o">.</span><span class="na">size</span><span class="o">()];</span>
-<span class="ln">45</span>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ret</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-<span class="ln">46</span>            <span class="n">ret</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">retlist</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-<span class="ln">47</span>        <span class="o">}</span>
-<span class="ln">48</span>        
-<span class="ln">49</span>        <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
-<span class="ln">50</span>    <span class="o">}</span>
-<span class="ln">51</span><span class="o">}</span>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">import</span> <span class="nn">java.util.Queue</span><span class="o">;</span>
+<span class="ln"> 2</span><span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+<span class="ln"> 5</span>    
+<span class="ln"> 6</span>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxAreaOfIsland</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">grid</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 7</span>        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+<span class="ln"> 8</span>        
+<span class="ln"> 9</span>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">grid</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">y</span><span class="o">++)</span> <span class="o">{</span>
+<span class="ln">10</span>            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">grid</span><span class="o">[</span><span class="n">0</span><span class="o">].</span><span class="na">length</span><span class="o">;</span> <span class="n">x</span><span class="o">++)</span> <span class="o">{</span>
+<span class="ln">11</span>                <span class="k">if</span> <span class="o">(</span><span class="n">grid</span><span class="o">[</span><span class="n">y</span><span class="o">][</span><span class="n">x</span><span class="o">]</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">12</span>                    <span class="n">ret</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">ret</span><span class="o">,</span> <span class="n">bfs</span><span class="o">(</span><span class="n">grid</span><span class="o">,</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">));</span>
+<span class="ln">13</span>                <span class="o">}</span>
+<span class="ln">14</span>            <span class="o">}</span>
+<span class="ln">15</span>        <span class="o">}</span>
+<span class="ln">16</span>        
+<span class="ln">17</span>        <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+<span class="ln">18</span>    <span class="o">}</span>
+<span class="ln">19</span>    
+<span class="ln">20</span>    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">dx</span> <span class="o">=</span> <span class="o">{</span><span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="o">-</span><span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">};</span>
+<span class="ln">21</span>    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">dy</span> <span class="o">=</span> <span class="o">{</span><span class="n">0</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="o">-</span><span class="n">1</span><span class="o">};</span>
+<span class="ln">22</span>    <span class="kd">static</span> <span class="kt">int</span> <span class="n">nx</span><span class="o">,</span> <span class="n">ny</span><span class="o">;</span>
+<span class="ln">23</span>    
+<span class="ln">24</span>    <span class="kt">int</span> <span class="nf">bfs</span><span class="o">(</span><span class="kd">final</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">grid</span><span class="o">,</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">25</span>        <span class="n">Queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;();</span>
+<span class="ln">26</span>        
+<span class="ln">27</span>        <span class="n">q</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">});</span>
+<span class="ln">28</span>        <span class="n">grid</span><span class="o">[</span><span class="n">y</span><span class="o">][</span><span class="n">x</span><span class="o">]</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+<span class="ln">29</span>        
+<span class="ln">30</span>        <span class="kt">int</span><span class="o">[]</span> <span class="n">xy</span><span class="o">;</span>
+<span class="ln">31</span>        <span class="kt">int</span> <span class="n">area</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+<span class="ln">32</span>
+<span class="ln">33</span>        <span class="k">while</span> <span class="o">(!</span><span class="n">q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+<span class="ln">34</span>            <span class="n">xy</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+<span class="ln">35</span>            <span class="n">area</span><span class="o">++;</span>
+<span class="ln">36</span>            
+<span class="ln">37</span>            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">4</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+<span class="ln">38</span>                <span class="n">nx</span> <span class="o">=</span> <span class="n">xy</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+<span class="ln">39</span>                <span class="n">ny</span> <span class="o">=</span> <span class="n">xy</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">+</span> <span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+<span class="ln">40</span>                
+<span class="ln">41</span>                <span class="k">if</span> <span class="o">(</span><span class="n">nx</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="n">1</span> <span class="o">||</span> <span class="n">nx</span> <span class="o">&gt;=</span> <span class="n">grid</span><span class="o">[</span><span class="n">0</span><span class="o">].</span><span class="na">length</span><span class="o">)</span> <span class="k">continue</span><span class="o">;</span>
+<span class="ln">42</span>                <span class="k">if</span> <span class="o">(</span><span class="n">ny</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="n">1</span> <span class="o">||</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="n">grid</span><span class="o">.</span><span class="na">length</span><span class="o">)</span>    <span class="k">continue</span><span class="o">;</span>
+<span class="ln">43</span>                
+<span class="ln">44</span>                <span class="k">if</span> <span class="o">(</span><span class="n">grid</span><span class="o">[</span><span class="n">ny</span><span class="o">][</span><span class="n">nx</span><span class="o">]</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">45</span>                    <span class="n">q</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="n">nx</span><span class="o">,</span> <span class="n">ny</span><span class="o">});</span>
+<span class="ln">46</span>                    <span class="n">grid</span><span class="o">[</span><span class="n">ny</span><span class="o">][</span><span class="n">nx</span><span class="o">]</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+<span class="ln">47</span>                <span class="o">}</span>
+<span class="ln">48</span>            <span class="o">}</span>
+<span class="ln">49</span>        <span class="o">}</span>
+<span class="ln">50</span>        
+<span class="ln">51</span>        <span class="k">return</span> <span class="n">area</span><span class="o">;</span>        
+<span class="ln">52</span>    <span class="o">}</span>
+<span class="ln">53</span><span class="o">}</span>
 </code></pre></div><br/>
+<br/>
+<blockquote>
+<h3 id="구현-코드-dfs">구현 코드 (dfs)</h3>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+<span class="ln"> 2</span>    
+<span class="ln"> 3</span>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxAreaOfIsland</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">grid</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 4</span>        <span class="kt">int</span> <span class="n">max_area</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+<span class="ln"> 5</span>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">grid</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+<span class="ln"> 6</span>            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">grid</span><span class="o">[</span><span class="n">0</span><span class="o">].</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span>
+<span class="ln"> 7</span>                <span class="k">if</span><span class="o">(</span><span class="n">grid</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="n">max_area</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">max_area</span><span class="o">,</span> <span class="n">AreaOfIsland</span><span class="o">(</span><span class="n">grid</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">));</span>
+<span class="ln"> 8</span>        <span class="k">return</span> <span class="n">max_area</span><span class="o">;</span>
+<span class="ln"> 9</span>    <span class="o">}</span>
+<span class="ln">10</span>    
+<span class="ln">11</span>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">AreaOfIsland</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">grid</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="kt">int</span> <span class="n">j</span><span class="o">){</span>
+<span class="ln">12</span>        <span class="k">if</span><span class="o">(</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">0</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">grid</span><span class="o">.</span><span class="na">length</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">0</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">grid</span><span class="o">[</span><span class="n">0</span><span class="o">].</span><span class="na">length</span> <span class="o">&amp;&amp;</span> <span class="n">grid</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">==</span> <span class="n">1</span><span class="o">){</span>
+<span class="ln">13</span>            <span class="n">grid</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+<span class="ln">14</span>            <span class="k">return</span> <span class="n">1</span> <span class="o">+</span> <span class="n">AreaOfIsland</span><span class="o">(</span><span class="n">grid</span><span class="o">,</span> <span class="n">i</span><span class="o">+</span><span class="n">1</span><span class="o">,</span> <span class="n">j</span><span class="o">)</span> <span class="o">+</span> <span class="n">AreaOfIsland</span><span class="o">(</span><span class="n">grid</span><span class="o">,</span> <span class="n">i</span><span class="o">-</span><span class="n">1</span><span class="o">,</span> <span class="n">j</span><span class="o">)</span> <span class="o">+</span> <span class="n">AreaOfIsland</span><span class="o">(</span><span class="n">grid</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">-</span><span class="n">1</span><span class="o">)</span> <span class="o">+</span> <span class="n">AreaOfIsland</span><span class="o">(</span><span class="n">grid</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">+</span><span class="n">1</span><span class="o">);</span>
+<span class="ln">15</span>        <span class="o">}</span>
+<span class="ln">16</span>        <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
+<span class="ln">17</span>    <span class="o">}</span>
+<span class="ln">18</span><span class="o">}</span>
+</code></pre></div><ul>
+<li>내가 작성한 코드는 아니지만 정말 깔끔한 DFS 풀이여서 가져와봤다.</li>
+</ul>
+<br/>
 <br/>
 <blockquote>
 <h3 id="후기">후기</h3>
 </blockquote>
 <ul>
-<li>Medium 수준의 문제였지만 2개의 HashMap을 사용하여 주어진 데이터를 어떻게 가공해야 할지만 잘 정의한다면 어렵지 않게 시간 복잡도 O(n)으로 해결할 수 있었습니다.</li>
-<li>글에서 제시한 솔루션 외에도 리트코드에선 Quick Select과 Heap을 활용한 솔루션도 제공하니 시간이 충분하다면 다른 두 접근법으로 문제를 풀어보는 것도 추천합니다.</li>
+<li>200번 문제에서 조금 응용된 형태의 문제이다. 200번 문제를 풀 수 있다면 이 문제 또한 쉽게 풀 수 있을 것이다.</li>
 </ul>
 <br/>
 
@@ -517,9 +413,6 @@
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
       <li>
-        <a href="https://sangwoncoco.github.io/post/leetcode/20210125-leetcode-695-max-area-of-island/" class="nav-link">[LeetCode] Max Area of Island</a>
-      </li>
-      <li>
         <a href="https://sangwoncoco.github.io/post/leetcode/20210125-leetcode-104-maximum-depth-of-binary-tree/" class="nav-link">[LeetCode] Maximum Depth of Binary Tree</a>
       </li>
       <li>
@@ -530,6 +423,9 @@
       </li>
       <li>
         <a href="https://sangwoncoco.github.io/post/java/20210121-java-equals-and-hashcode/" class="nav-link">equals()와 hashcode()</a>
+      </li>
+      <li>
+        <a href="https://sangwoncoco.github.io/post/leetcode/20210115-leetcode-347-top-k-frequent-elements/" class="nav-link">[LeetCode] Top K Frequent Elements</a>
       </li>
     </ul>
   </section>

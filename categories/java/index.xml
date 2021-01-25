@@ -18,8 +18,11 @@
           &lt;!-- page parameters, https://github.com/chipzoller/hugo-clarity#page-parameters --&gt;
 &lt;!-- command: hugo new {archetypes}/{path...}/{post-name.md} --&gt;
 &lt;blockquote&gt;
-&lt;h4 id=&#34;본-포스팅은-아래-내용에-대한-지식이-있어야-이해할-수-있는-내용-입니다&#34;&gt;본 포스팅은 아래 내용에 대한 지식이 있어야 이해할 수 있는 내용 입니다.&lt;/h4&gt;
+&lt;h2 id=&#34;사전-지식&#34;&gt;사전 지식&lt;/h2&gt;
 &lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;본 포스팅은 아래 내용에 대한 지식이 있어야 이해할 수 있는 내용 입니다.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;ol&gt;
 &lt;li&gt;Java의 메모리 모델
 &lt;ul&gt;
@@ -32,24 +35,6 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;br/&gt;
-&lt;blockquote&gt;
-&lt;h2 id=&#34;목차&#34;&gt;목차&lt;/h2&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;목적&lt;/li&gt;
-&lt;li&gt;equals() 기본 동작&lt;/li&gt;
-&lt;li&gt;equals()를 오버라이딩 하는 이유&lt;/li&gt;
-&lt;li&gt;hashcode() 존재 이유와 기본 동작&lt;/li&gt;
-&lt;li&gt;equals()와 hashcode()는 계약 관계에 있다&lt;/li&gt;
-&lt;li&gt;equals()만 오버라이딩 했을 때의 동작 (계약 위반)&lt;/li&gt;
-&lt;li&gt;Hash Based Implementation에서 hashcode()를 어떻게 활용하는지 확인해보자&lt;/li&gt;
-&lt;li&gt;hashcode()를 오버라이딩 하는 다양한 방법&lt;/li&gt;
-&lt;li&gt;난 이 객체 절대 Hash Based Implementaion의 Key로 사용 안할건데?&lt;/li&gt;
-&lt;li&gt;결론&lt;/li&gt;
-&lt;li&gt;Follow Ups&lt;/li&gt;
-&lt;li&gt;References&lt;/li&gt;
-&lt;/ul&gt;
 &lt;br/&gt;
 &lt;blockquote&gt;
 &lt;h2 id=&#34;목적&#34;&gt;목적&lt;/h2&gt;
@@ -476,7 +461,7 @@
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;위-코드에-대한-설명은-지극히-나의-추측일-뿐이라는-것을-명심하자&#34;&gt;&lt;em&gt;위 코드에 대한 설명은 지극히 나의 추측일 뿐이라는 것을 명심하자.&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;위 코드에 대한 설명은 지극히 나의 추측일 뿐이라는 것을 명심하자.&lt;/em&gt;&lt;/p&gt;
 &lt;br/&gt;
 &lt;blockquote&gt;
 &lt;h2 id=&#34;hashcode를-오버라이딩하는-다양한-방법&#34;&gt;hashcode를 오버라이딩하는 다양한 방법&lt;/h2&gt;
