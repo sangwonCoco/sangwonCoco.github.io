@@ -1,8 +1,8 @@
 
 <!DOCTYPE html>
-<html lang="en" data-figures="" data-mode="lit">
+<html lang="en" data-figures="" class="page" data-mode="lit">
   <head>
-<title>dfs | Retriever</title>
+<title>[LeetCode] Word Ladder | Retriever</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.80.0" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -14,16 +14,17 @@
   gtag('js', new Date());
   gtag('config', 'XXXXXXXXXX');
 </script>
+  
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="">
+<meta name="description" content="LeetCode 127 Word Ladder bfs advanced tle">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@janedoe">
-<meta name="twitter:title" content="dfs" />
-<meta property="og:url" content="https://sangwoncoco.github.io/tags/dfs/" />
-<meta property="og:title" content="dfs" />
-<meta property="og:description" content="" />
+<meta name="twitter:title" content="[LeetCode] Word Ladder" />
+<meta property="og:url" content="https://sangwoncoco.github.io/post/0_draft/20210000-leetcode-127-word-ladder/" />
+<meta property="og:title" content="[LeetCode] Word Ladder" />
+<meta property="og:description" content="LeetCode 127 Word Ladder bfs advanced tle" />
 <meta property="og:image" content="https://sangwoncoco.github.io/images/thumbnail.png" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://sangwoncoco.github.io/icons/apple-touch-icon.png'>
 <link rel="icon" type="image/png" sizes="32x32" href='https://sangwoncoco.github.io/icons/favicon-32x32.png'>
@@ -32,8 +33,7 @@
 <meta name="msapplication-TileColor" content="#002538">
 <meta name="theme-color" content="#002538">
 
-<link rel="canonical" href="https://sangwoncoco.github.io/tags/dfs/">
-<link rel="alternate" type="application/rss+xml" href="https://sangwoncoco.github.io/tags/dfs/index.xml" title="Retriever" />
+<link rel="canonical" href="https://sangwoncoco.github.io/post/0_draft/20210000-leetcode-127-word-ladder/">
 
     
 
@@ -129,115 +129,247 @@
 </header>
 
     <main>
-
+  
 <div class="grid-inverse wrap content">
-  <ul class="posts" id="posts">
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://sangwoncoco.github.io/post/leetcode/20210125-leetcode-695-max-area-of-island/">[LeetCode] Max Area of Island</a>
-      </h3>
-      <div class="post_meta">
+  <article class="post_content">
+    <h1 class="post_title">[LeetCode] Word Ladder</h1><div class="post_meta">
   
     <svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg>
     <span class="post_date">
-      Jan 25, 2021</span>
-      <a href='https://sangwoncoco.github.io/tags/dfs' class="post_tag button button_translucent">dfs
-      </a>
+      Jan 26, 2021</span>
       <a href='https://sangwoncoco.github.io/tags/bfs' class="post_tag button button_translucent">bfs
+      </a>
+      <a href='https://sangwoncoco.github.io/tags/hashset' class="post_tag button button_translucent">hashset
       </a>
 </div>
 
-    </div>
-      <div class="excerpt_footer">
-        <div>
-          <p class="pale">
-            
-              완전 탐색! grid 내에서 가장 넓은 Islands를 찾아보자.
-            
-          </p>
-          <a href="https://sangwoncoco.github.io/post/leetcode/20210125-leetcode-695-max-area-of-island/" class="excerpt_more button">Read More</a>
-        </div>
-      </div>
-    </div>
-  </li>
-
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://sangwoncoco.github.io/post/leetcode/20210125-leetcode-104-maximum-depth-of-binary-tree/">[LeetCode] Maximum Depth of Binary Tree</a>
-      </h3>
-      <div class="post_meta">
-  
-    <svg class="icon">
-  <use xlink:href="#calendar"></use>
+    
+  <div class="post_share">
+    Share on:
+    <a href="https://twitter.com/intent/tweet?text=%5bLeetCode%5d%20Word%20Ladder&url=https%3a%2f%2fsangwoncoco.github.io%2fpost%2f0_draft%2f20210000-leetcode-127-word-ladder%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#twitter"></use>
 </svg>
-    <span class="post_date">
-      Jan 25, 2021</span>
-      <a href='https://sangwoncoco.github.io/tags/tree' class="post_tag button button_translucent">tree
-      </a>
-      <a href='https://sangwoncoco.github.io/tags/dfs' class="post_tag button button_translucent">dfs
-      </a>
-      <a href='https://sangwoncoco.github.io/tags/bfs' class="post_tag button button_translucent">bfs
-      </a>
-</div>
-
-    </div>
-      <div class="excerpt_footer">
-        <div>
-          <p class="pale">
-            
-              Binary Tree 탐험 여행! 최하단 leaf 노드의 레벨을 찾아보자.
-            
-          </p>
-          <a href="https://sangwoncoco.github.io/post/leetcode/20210125-leetcode-104-maximum-depth-of-binary-tree/" class="excerpt_more button">Read More</a>
-        </div>
-      </div>
-    </div>
-  </li>
-
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://sangwoncoco.github.io/post/leetcode/20210125-leetcode-200-number-of-island/">[LeetCode] Number of Islands</a>
-      </h3>
-      <div class="post_meta">
-  
-    <svg class="icon">
-  <use xlink:href="#calendar"></use>
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fsangwoncoco.github.io%2fpost%2f0_draft%2f20210000-leetcode-127-word-ladder%2f&t=%5bLeetCode%5d%20Word%20Ladder" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#facebook"></use>
 </svg>
-    <span class="post_date">
-      Jan 25, 2021</span>
-      <a href='https://sangwoncoco.github.io/tags/dfs' class="post_tag button button_translucent">dfs
-      </a>
-      <a href='https://sangwoncoco.github.io/tags/bfs' class="post_tag button button_translucent">bfs
-      </a>
-</div>
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#linkedin"></use>
+</svg>
+    </a>
+    <a href="https://sangwoncoco.github.io/post/0_draft/20210000-leetcode-127-word-ladder/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <use xlink:href="#copy"></use>
+</svg>
+    </a>
+  </div>
 
-    </div>
-      <div class="excerpt_footer">
-        <div>
-          <p class="pale">
-            
-              완전 탐색 기본! grid 내에서 Islands의 갯수를 찾아보자.
-            
-          </p>
-          <a href="https://sangwoncoco.github.io/post/leetcode/20210125-leetcode-200-number-of-island/" class="excerpt_more button">Read More</a>
-        </div>
-      </div>
-    </div>
-  </li>
+    
+    <br/>
+<table>
+<thead>
+<tr>
+<th><strong>항목</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>플랫폼</strong></td>
+<td>LeetCode</td>
+</tr>
+<tr>
+<td><strong>번호</strong></td>
+<td>127</td>
+</tr>
+<tr>
+<td><strong>제목</strong></td>
+<td>Word Ladder</td>
+</tr>
+<tr>
+<td><strong>유형</strong></td>
+<td>BFS</td>
+</tr>
+<tr>
+<td><strong>바로가기</strong></td>
+<td><a href="https://leetcode.com/problems/word-ladder">LINK</a></td>
+</tr>
+</tbody>
+</table>
+<br/>
+<br/>
+<blockquote>
+<h3 id="문제">문제</h3>
+</blockquote>
+<p>A transformation sequence from word beginWord to word endWord using a dictionary wordList is a sequence of words such that:</p>
+<ul>
+<li>The first word in the sequence is beginWord.</li>
+<li>The last word in the sequence is endWord.</li>
+<li>Only one letter is different between each adjacent pair of words in the sequence.</li>
+<li>Every word in the sequence is in wordList.</li>
+</ul>
+<p>Given two words, beginWord and endWord, and a dictionary wordList, return the number of words in the shortest transformation sequence from beginWord to endWord, or 0 if no such sequence exists.</p>
+<p>Constraints:</p>
+<ul>
+<li>1 &lt;= beginWord.length &lt;= 10</li>
+<li>endWord.length == beginWord.length</li>
+<li>1 &lt;= wordList.length &lt;= 5000</li>
+<li>wordList[i].length == beginWord.length</li>
+<li>beginWord, endWord, and wordList[i] consist of lowercase English letters.</li>
+<li>beginWord != endWord</li>
+<li>All the strings in wordList are unique.</li>
+</ul>
+<br/>
+<br/>
+<blockquote>
+<h3 id="기본-테스트-케이스">기본 테스트 케이스</h3>
+</blockquote>
+<p>Example 1:</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>Input: beginWord = &#34;hit&#34;, endWord = &#34;cog&#34;, wordList = [&#34;hot&#34;,&#34;dot&#34;,&#34;dog&#34;,&#34;lot&#34;,&#34;log&#34;,&#34;cog&#34;]
+<span class="ln">2</span>Output: 5
+<span class="ln">3</span>Explanation: One shortest transformation is &#34;hit&#34; -&gt; &#34;hot&#34; -&gt; &#34;dot&#34; -&gt; &#34;dog&#34; -&gt; &#34;cog&#34; with 5 words.
+</code></pre></div><p>Exapmle 2:</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>Input: beginWord = &#34;hit&#34;, endWord = &#34;cog&#34;, wordList = [&#34;hot&#34;,&#34;dot&#34;,&#34;dog&#34;,&#34;lot&#34;,&#34;log&#34;]
+<span class="ln">2</span>Output: 0
+<span class="ln">3</span>Explanation: The endWord &#34;cog&#34; is not in wordList, therefore there is no possible transformation.
+</code></pre></div><br/>
+<br/>
+<blockquote>
+<h3 id="주어진-코드-스니펫">주어진 코드 스니펫</h3>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+<span class="ln">2</span>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">ladderLength</span><span class="o">(</span><span class="n">String</span> <span class="n">beginWord</span><span class="o">,</span> <span class="n">String</span> <span class="n">endWord</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">wordList</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">3</span>        
+<span class="ln">4</span>    <span class="o">}</span>
+<span class="ln">5</span><span class="o">}</span>
+</code></pre></div><br/>
+<br/>
+<blockquote>
+<h3 id="핵심-아이디어">핵심 아이디어</h3>
+</blockquote>
+<ul>
+<li>기본적으로 두 개의 단어 셋을 사용한다.
+<ul>
+<li>reached: 특정 레벨로 도달할 때 변환된 단어 SET 이다.</li>
+<li>wordDict: 아직까지 도달하지 못한 단어 SET 이다.</li>
+</ul>
+</li>
+<li>자세한 설명은 <em>구현 코드 파트의 주석</em>과 <em>후기 파트</em>를 참고한다.</li>
+</ul>
+<br/>
+<br/>
+<blockquote>
+<h3 id="구현-코드">구현 코드</h3>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+<span class="ln"> 2</span>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">ladderLength</span><span class="o">(</span><span class="n">String</span> <span class="n">beginWord</span><span class="o">,</span> <span class="n">String</span> <span class="n">endWord</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">wordList</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 3</span>        <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">wordSet</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;(</span><span class="n">wordList</span><span class="o">);</span> <span class="c1">// 아직 도달하지 못한 단어 set
+</span><span class="ln"> 4</span><span class="c1"></span>        <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">reachedSet</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;();</span>      <span class="c1">// 특정 레벨에 도달했을 때 변환된 단어 set
+</span><span class="ln"> 5</span><span class="c1"></span>        
+<span class="ln"> 6</span>        <span class="c1">// 초기화
+</span><span class="ln"> 7</span><span class="c1"></span>        <span class="n">reachedSet</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">beginWord</span><span class="o">);</span>
+<span class="ln"> 8</span>        <span class="n">wordSet</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">beginWord</span><span class="o">);</span>
+<span class="ln"> 9</span>        <span class="kt">int</span> <span class="n">level</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+<span class="ln">10</span>        
+<span class="ln">11</span>        <span class="c1">// reachedSet에 원소가 있다는 것의 의미: level n에서 level n+1로 변환될 수 있는 단어가 있다.
+</span><span class="ln">12</span><span class="c1"></span>        <span class="k">while</span> <span class="o">(!</span><span class="n">reachedSet</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+<span class="ln">13</span>            <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">reachedNextSet</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;();</span>
+<span class="ln">14</span>            <span class="cm">/*
+</span><span class="ln">15</span><span class="cm">            현재 레벨에 존재하는 reachedSet의 단어들의 각 문자 요소들을 모두 변경해보며 
+</span><span class="ln">16</span><span class="cm">            아직 방문하지 않은 단어인지 체크한다. 만약 아직 방문하지 않은 단어라면 다음 레벨에 들어갈
+</span><span class="ln">17</span><span class="cm">            reachedSet의 요소로 넣어준다. 이후 변환 가능한 단어가 정답이라면? 정답(현재 레벨+1)을 반환
+</span><span class="ln">18</span><span class="cm">            */</span>
+<span class="ln">19</span>            <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">r</span> <span class="o">:</span> <span class="n">reachedSet</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">20</span>                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>  
+<span class="ln">21</span>                    <span class="kt">char</span><span class="o">[]</span> <span class="n">rarray</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
+<span class="ln">22</span>                    <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">&#39;a&#39;</span><span class="o">;</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="sc">&#39;z&#39;</span><span class="o">;</span> <span class="n">c</span><span class="o">++)</span> <span class="o">{</span>
+<span class="ln">23</span>                        <span class="n">rarray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">c</span><span class="o">;</span>
+<span class="ln">24</span>                        <span class="n">String</span> <span class="n">newString</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">rarray</span><span class="o">);</span>
+<span class="ln">25</span>                        <span class="k">if</span> <span class="o">(</span><span class="n">wordSet</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">newString</span><span class="o">))</span> <span class="o">{</span>     <span class="c1">// 만약 아직 방문하지 않은 단어라면
+</span><span class="ln">26</span><span class="c1"></span>                            <span class="n">reachedNextSet</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">newString</span><span class="o">);</span>   <span class="c1">// 다음 레벨에 들어갈 reachedSet의 요소로 넣어줌
+</span><span class="ln">27</span><span class="c1"></span>                            <span class="k">if</span> <span class="o">(</span><span class="n">endWord</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">newString</span><span class="o">))</span> <span class="o">{</span> <span class="c1">// 만약 정답이라면
+</span><span class="ln">28</span><span class="c1"></span>                                <span class="k">return</span> <span class="n">level</span><span class="o">+</span><span class="n">1</span><span class="o">;</span>              <span class="c1">// 정답 (가장 짧은 변환 시퀀스 수) 
+</span><span class="ln">29</span><span class="c1"></span>                            <span class="o">}</span>
+<span class="ln">30</span>                        <span class="o">}</span>
+<span class="ln">31</span>                    <span class="o">}</span>
+<span class="ln">32</span>                    
+<span class="ln">33</span>                <span class="o">}</span>
+<span class="ln">34</span>                
+<span class="ln">35</span>            <span class="o">}</span>
+<span class="ln">36</span>            <span class="n">reachedSet</span> <span class="o">=</span> <span class="n">reachedNextSet</span><span class="o">;</span>
+<span class="ln">37</span>            <span class="n">level</span><span class="o">++;</span>
+<span class="ln">38</span>        <span class="o">}</span>
+<span class="ln">39</span>        <span class="k">return</span> <span class="n">0</span><span class="o">;</span>        
+<span class="ln">40</span>    <span class="o">}</span>
+<span class="ln">41</span><span class="o">}</span>
+</code></pre></div><br/>
+<br/>
+<blockquote>
+<h3 id="후기">후기</h3>
+</blockquote>
+<ul>
+<li>처음엔 아무 생각 없이 DFS로 풀었다. 정답은 도출할 수 있는 코드였지만 내 딴에는 할 수 있는 최적화를 다 했는데도 끝내 TLE를 해결하지 못했다.</li>
+<li>도저히 못풀겠어서 Disscuss를 보니 대부분의 사람들이 BFS로 풀었었다. 그래서 나도 다시 BFS로 풀어봤다. 그러나 이번에도 끝내 TLE를 해결하지 못했다.</li>
+<li>모든 문제가 그렇듯 한 번 이해하면 정말 쉽지만 그 과정은 결코 쉽지 않다. 나의 경우는 아래 2가지를 이해하는 것이 정말 힘들었다. 이 문제 같은 경우는 Solution 부분이 비공개 되어 있어서 시각 자료를 참조할 수 없었는데, 이해를 돕기 위한 시각 자료 없이 한글로 천천히 읽어봐도 어려운 내용을 못하는 영어로 읽으며 이해하려 했기 때문인 것 같다.
+<ol>
+<li>다음 레벨로 진입할 때 변환 가능한 단어를 찾기 위해 비교하는 방법을 이해하지 못했다.
+<ul>
+<li>왜 각 단어의 각 문자를 하나씩 바꿔가면서 비교하는지 이해할 수 없었는데 아래 설명을 보고 이해할 수 있었다.
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>// 링크: https://leetcode.com/problems/word-ladder/discuss/40704/Java-Solution-using-BFS-with-explanation
+<span class="ln">2</span>ps: I get TLE at the first two submissions, 
+<span class="ln">3</span>because when I check if wordDict has any matches with reached set, 
+<span class="ln">4</span>I use two for loops and determine if any pair of words differ by one. 
+<span class="ln">5</span>That&#39;s a huge slow-down because it&#39;ll takes m (size of reached) * n (size of wordDict) * l (length of words) time, 
+<span class="ln">6</span>while in this solution, it takes 26 * l * m time. So when n is huge, 
+<span class="ln">7</span>this solution will be (n/26) times faster. 
+</code></pre></div></li>
+<li>정리하자면 이 사람도 나와 같이 2개의 문자열을 비교하기 위해 이중 루프를 이용했었고 이로 인해 TLE가 발생했었다고 한다.</li>
+<li>왜냐하면 현재 레벨에서의 모든 문자 set에서 다음 레벨로 변형될 수 있는 모든 문자 set을 찾기 위해서는 연산 횟수가 n * l * m 이다. 그러나 각 단어의 각 문자를 하나씩 바꿔가면서 비교할 때의 연산 횟수는 26 * l * m 이다.
+<ul>
+<li>n: wordDict의 크기</li>
+<li>l: 각 단어의 길이</li>
+<li>m: 각 레벨에서의 reached의 크기</li>
+</ul>
+</li>
+<li>n(wordDict의 크기)이 거대할 때, 후자가 전자보다 n/26 만큼 빠르다.</li>
+</ul>
+</li>
+<li>각 하위 레벨로 진입할 때 마다 그 길 만의 고유한 path를 유지해야 한다고 생각했다. 즉, 각 레벨로 진입하는 노드마다 그 노드까지 도달하기 위한 고유한 HashSet(path)를 가지고 있어야 한다고 생각했다.
+<ul>
+<li>풀다가 말리다 보니 문제에서 요구하는 것이 'shortest transformation sequence'라는 것을 어느 순간부터 놓치고 있었다. 정확히는 알고는 있었지만 이것으로 부터 아래의 전제를 도출할 수 있다는 것까지 연결시키지 못했다.
+<ul>
+<li>문제에서 요구하는 것은 'shortest transformation sequence'이다.</li>
+<li>BFS 방식으로 접근시, 레벨은 순차적으로 증가하며 각 레벨에 진입할 때 마다 변환 가능한 단어들을 모두 찾을 수 있다.</li>
+<li>이런 상황에서 모든 path에서 wordDict와 reachedSet을 공유해도 되는 이유는 다음과 같다.
+<ul>
+<li>level 1, beginWord = &quot;abe&quot;, wordDict = {&quot;abc&quot;, &quot;abg&quot;, &quot;abf&quot;}인 상황에서</li>
+<li>level 2로 진입 시 reachedSet은 {&quot;abc&quot;, &quot;abg&quot;, abf&quot;}가 된다</li>
+<li>이때 level 2에서 level 3으로 갈 때 &quot;abc&quot;는 &quot;abg&quot;, &quot;abf&quot;가 될 수 있다.</li>
+<li>근데 잘 생각해보면 level 2의 &quot;abg&quot;든 level 3의 &quot;abg&quot;든 그 하위에 나올 하위 path의 모습은 똑같다.</li>
+<li>문제에서 요구하는 것은 beginWord에서 endWord까지 가장 짧은 변형 시퀀스를 구하는 것이므로 더 낮은 레벨에서 이미 나온 단어가 더 높은 레벨에서 똑같이 등장하는 경우는 배제해도 된다는 의미이다.</li>
+<li>그러므로 아직 지나지 않은 단어 set을 의미하는 wordDict와 현재 레벨에서의 단어 set을 의미하는 reachedSet을 모든 경로에서 공유해도 상관 없다는 결론이다.
+<img src="/images/leetcode/20210126-leetcode-127/127.png" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<br/>
 
-    <li>
-
-
-    </li>
-  </ul>
+    
+      
+    
+  </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
     
@@ -247,12 +379,12 @@
       <nav class="tags_nav">
         <a href='https://sangwoncoco.github.io/categories/leetcode/' class="post_tag button button_translucent">
           LEETCODE
-          <span class="button_tally">7</span>
+          <span class="button_tally">6</span>
         </a>
         
         <a href='https://sangwoncoco.github.io/categories/ps-review/' class="post_tag button button_translucent">
           PS-REVIEW
-          <span class="button_tally">7</span>
+          <span class="button_tally">6</span>
         </a>
         
         <a href='https://sangwoncoco.github.io/categories/java/' class="post_tag button button_translucent">
@@ -278,7 +410,7 @@
         
         <a href='https://sangwoncoco.github.io/tags/backtracking/' class="post_tag button button_translucent">
           BACKTRACKING
-          <span class="button_tally">2</span>
+          <span class="button_tally">1</span>
         </a>
         
         <a href='https://sangwoncoco.github.io/tags/dp/' class="post_tag button button_translucent">
@@ -312,12 +444,6 @@
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
       <li>
-        <a href="https://sangwoncoco.github.io/post/leetcode/20210126-leetcode-22-generate-parentheses/" class="nav-link">[LeetCode] Generate Parentheses</a>
-      </li>
-      <li>
-        <a href="https://sangwoncoco.github.io/post/leetcode/20210126-leetcode-127-word-ladder/" class="nav-link">[LeetCode] Word Ladder</a>
-      </li>
-      <li>
         <a href="https://sangwoncoco.github.io/post/leetcode/20210125-leetcode-695-max-area-of-island/" class="nav-link">[LeetCode] Max Area of Island</a>
       </li>
       <li>
@@ -340,8 +466,6 @@
 </aside>
 
 </div>
-
-
     </main><svg width="0" height="0" class="hidden">
   <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
     <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>

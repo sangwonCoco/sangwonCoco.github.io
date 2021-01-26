@@ -6,7 +6,349 @@
     <description>Recent content in Posts on Retriever</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021–2021, sangwon lee.</copyright>
-    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sangwoncoco.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sangwoncoco.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[LeetCode] Generate Parentheses</title>
+      <link>https://sangwoncoco.github.io/post/leetcode/20210126-leetcode-22-generate-parentheses/</link>
+      <pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sangwoncoco.github.io/post/leetcode/20210126-leetcode-22-generate-parentheses/</guid>
+      <description>
+        
+          &lt;!-- &lt;span style=&#34;color:red&#34;&gt;red&lt;/span&gt; --&gt;
+&lt;!-- &lt;span style=&#34;color:red&#34;&gt;red&lt;/span&gt; --&gt;
+&lt;br/&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;항목&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;플랫폼&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;LeetCode&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;번호&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;22&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;제목&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Generate Parentheses&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;유형&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Backtracking&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;바로가기&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://leetcode.com/problems/generate-parentheses&#34;&gt;LINK&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;문제&#34;&gt;문제&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.&lt;/p&gt;
+&lt;p&gt;Constraints:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1 &amp;lt;= n &amp;lt;= 8&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;기본-테스트-케이스&#34;&gt;기본 테스트 케이스&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Example 1:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;Input: n = 3
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;Output: [&amp;#34;((()))&amp;#34;,&amp;#34;(()())&amp;#34;,&amp;#34;(())()&amp;#34;,&amp;#34;()(())&amp;#34;,&amp;#34;()()()&amp;#34;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Exapmle 2:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;Input: n = 1
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;Output: [&amp;#34;()&amp;#34;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;주어진-코드-스니펫&#34;&gt;주어진 코드 스니펫&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Solution&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;generateParenthesis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;        
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;핵심-아이디어&#34;&gt;핵심 아이디어&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;백트래킹 기본 문제이다. 탐색 순서, 리턴 조건 만 잘 정의하면 쉽게 풀 수 있다.&lt;/li&gt;
+&lt;li&gt;탐색 순서
+&lt;ol&gt;
+&lt;li&gt;왼쪽&lt;/li&gt;
+&lt;li&gt;오른쪽&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;리턴 조건
+&lt;ul&gt;
+&lt;li&gt;&#39;)&#39;의 수가 &#39;(&#39;의 수 보다 적어질 때&lt;/li&gt;
+&lt;li&gt;&#39;(&#39;의 수가 n보다 커질 때&lt;/li&gt;
+&lt;li&gt;&#39;(&#39;의 수가 n, &#39;)&#39;의 수와 같을 때 (이때 유효한 parentheses를 완성한 것이므로 ret에 추가)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;구현-코드&#34;&gt;구현 코드&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;java.util.List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Solution&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;generateParenthesis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ArrayList&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;backtrack&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;    
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;backtrack&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parentheses&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;openCnt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;closeCnt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;openCnt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;closeCnt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;openCnt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;openCnt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;openCnt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;closeCnt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;add&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parentheses&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;            
+&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;backtrack&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parentheses&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;(&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;openCnt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;closeCnt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;backtrack&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parentheses&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;)&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;openCnt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;closeCnt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;후기&#34;&gt;후기&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;백트래킹에 대한 감 익히기 적합한 기본 문제이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br/&gt;
+
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>[LeetCode] Word Ladder</title>
+      <link>https://sangwoncoco.github.io/post/leetcode/20210126-leetcode-127-word-ladder/</link>
+      <pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sangwoncoco.github.io/post/leetcode/20210126-leetcode-127-word-ladder/</guid>
+      <description>
+        
+          &lt;br/&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;항목&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;플랫폼&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;LeetCode&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;번호&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;127&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;제목&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Word Ladder&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;유형&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;BFS&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;바로가기&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://leetcode.com/problems/word-ladder&#34;&gt;LINK&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;문제&#34;&gt;문제&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A transformation sequence from word beginWord to word endWord using a dictionary wordList is a sequence of words such that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The first word in the sequence is beginWord.&lt;/li&gt;
+&lt;li&gt;The last word in the sequence is endWord.&lt;/li&gt;
+&lt;li&gt;Only one letter is different between each adjacent pair of words in the sequence.&lt;/li&gt;
+&lt;li&gt;Every word in the sequence is in wordList.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Given two words, beginWord and endWord, and a dictionary wordList, return the number of words in the shortest transformation sequence from beginWord to endWord, or 0 if no such sequence exists.&lt;/p&gt;
+&lt;p&gt;Constraints:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1 &amp;lt;= beginWord.length &amp;lt;= 10&lt;/li&gt;
+&lt;li&gt;endWord.length == beginWord.length&lt;/li&gt;
+&lt;li&gt;1 &amp;lt;= wordList.length &amp;lt;= 5000&lt;/li&gt;
+&lt;li&gt;wordList[i].length == beginWord.length&lt;/li&gt;
+&lt;li&gt;beginWord, endWord, and wordList[i] consist of lowercase English letters.&lt;/li&gt;
+&lt;li&gt;beginWord != endWord&lt;/li&gt;
+&lt;li&gt;All the strings in wordList are unique.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;기본-테스트-케이스&#34;&gt;기본 테스트 케이스&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Example 1:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;Input: beginWord = &amp;#34;hit&amp;#34;, endWord = &amp;#34;cog&amp;#34;, wordList = [&amp;#34;hot&amp;#34;,&amp;#34;dot&amp;#34;,&amp;#34;dog&amp;#34;,&amp;#34;lot&amp;#34;,&amp;#34;log&amp;#34;,&amp;#34;cog&amp;#34;]
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;Output: 5
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;Explanation: One shortest transformation is &amp;#34;hit&amp;#34; -&amp;gt; &amp;#34;hot&amp;#34; -&amp;gt; &amp;#34;dot&amp;#34; -&amp;gt; &amp;#34;dog&amp;#34; -&amp;gt; &amp;#34;cog&amp;#34; with 5 words.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Exapmle 2:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;Input: beginWord = &amp;#34;hit&amp;#34;, endWord = &amp;#34;cog&amp;#34;, wordList = [&amp;#34;hot&amp;#34;,&amp;#34;dot&amp;#34;,&amp;#34;dog&amp;#34;,&amp;#34;lot&amp;#34;,&amp;#34;log&amp;#34;]
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;Output: 0
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;Explanation: The endWord &amp;#34;cog&amp;#34; is not in wordList, therefore there is no possible transformation.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;주어진-코드-스니펫&#34;&gt;주어진 코드 스니펫&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Solution&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;ladderLength&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;beginWord&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endWord&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;wordList&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;        
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;핵심-아이디어&#34;&gt;핵심 아이디어&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;기본적으로 두 개의 단어 셋을 사용한다.
+&lt;ul&gt;
+&lt;li&gt;reached: 특정 레벨로 도달할 때 변환된 단어 SET 이다.&lt;/li&gt;
+&lt;li&gt;wordDict: 아직까지 도달하지 못한 단어 SET 이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;자세한 설명은 &lt;em&gt;구현 코드 파트의 주석&lt;/em&gt;과 &lt;em&gt;후기 파트&lt;/em&gt;를 참고한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;구현-코드&#34;&gt;구현 코드&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Solution&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;ladderLength&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;beginWord&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endWord&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;wordList&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;Set&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;wordSet&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HashSet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wordList&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 아직 도달하지 못한 단어 set
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;Set&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;reachedSet&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HashSet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;      &lt;span class=&#34;c1&#34;&gt;// 특정 레벨에 도달했을 때 변환된 단어 set
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// 초기화
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;reachedSet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;add&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;beginWord&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;wordSet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;remove&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;beginWord&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;        &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;level&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;        
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// reachedSet에 원소가 있다는 것의 의미: level n에서 level n+1로 변환될 수 있는 단어가 있다.
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reachedSet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;isEmpty&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;())&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;Set&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;reachedNextSet&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HashSet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;            &lt;span class=&#34;cm&#34;&gt;/*
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;            현재 레벨에 존재하는 reachedSet의 단어들의 각 문자 요소들을 모두 변경해보며 
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;            아직 방문하지 않은 단어인지 체크한다. 만약 아직 방문하지 않은 단어라면 다음 레벨에 들어갈
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;            reachedSet의 요소로 넣어준다. 이후 변환 가능한 단어가 정답이라면? 정답(현재 레벨+1)을 반환
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;            */&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;            &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;r&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;reachedSet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;                &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;  
+&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;                    &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rarray&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;toCharArray&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;                    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;&amp;#39;z&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;                        &lt;span class=&#34;n&#34;&gt;rarray&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;                        &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;newString&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rarray&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;                        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wordSet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;remove&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;newString&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;     &lt;span class=&#34;c1&#34;&gt;// 만약 아직 방문하지 않은 단어라면
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;26&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;                            &lt;span class=&#34;n&#34;&gt;reachedNextSet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;add&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;newString&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;// 다음 레벨에 들어갈 reachedSet의 요소로 넣어줌
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;27&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;                            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endWord&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;equals&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;newString&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 만약 정답이라면
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;28&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;                                &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;level&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;              &lt;span class=&#34;c1&#34;&gt;// 정답 (가장 짧은 변환 시퀀스 수) 
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;29&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;                            &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;30&lt;/span&gt;                        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;31&lt;/span&gt;                    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;32&lt;/span&gt;                    
+&lt;span class=&#34;ln&#34;&gt;33&lt;/span&gt;                &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;34&lt;/span&gt;                
+&lt;span class=&#34;ln&#34;&gt;35&lt;/span&gt;            &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;36&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;reachedSet&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;reachedNextSet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;37&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;level&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;38&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;39&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;        
+&lt;span class=&#34;ln&#34;&gt;40&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;41&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;후기&#34;&gt;후기&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;처음엔 아무 생각 없이 DFS로 풀었다. 정답은 도출할 수 있는 코드였지만 내 딴에는 할 수 있는 최적화를 다 했는데도 끝내 TLE를 해결하지 못했다.&lt;/li&gt;
+&lt;li&gt;도저히 못풀겠어서 Disscuss를 보니 대부분의 사람들이 BFS로 풀었었다. 그래서 나도 다시 BFS로 풀어봤다. 그러나 이번에도 끝내 TLE를 해결하지 못했다.&lt;/li&gt;
+&lt;li&gt;이후 다른 사람 코드를 보고 이해 한 후 결국 풀어내긴 했다...&lt;/li&gt;
+&lt;li&gt;모든 문제가 그렇듯 한 번 이해하면 정말 쉽지만 그 과정은 결코 쉽지 않다. 나의 경우는 아래 2가지를 이해하는 것이 정말 힘들었다. 이 문제 같은 경우는 Solution 부분이 비공개 되어 있어서 시각 자료를 참조할 수 없었는데, 이해를 돕기 위한 시각 자료 없이 한글로 천천히 읽어봐도 어려운 내용을 못하는 영어로 읽으며 이해하려 했기 때문인 것 같다.
+&lt;ol&gt;
+&lt;li&gt;다음 레벨로 진입할 때 변환 가능한 단어를 찾기 위해 비교하는 방법을 이해하지 못했다.
+&lt;ul&gt;
+&lt;li&gt;왜 각 단어의 각 문자를 하나씩 바꿔가면서 비교하는지 이해할 수 없었는데 아래 설명을 보고 이해할 수 있었다.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;// 링크: https://leetcode.com/problems/word-ladder/discuss/40704/Java-Solution-using-BFS-with-explanation
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;ps: I get TLE at the first two submissions, 
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;because when I check if wordDict has any matches with reached set, 
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;I use two for loops and determine if any pair of words differ by one. 
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;That&amp;#39;s a huge slow-down because it&amp;#39;ll takes m (size of reached) * n (size of wordDict) * l (length of words) time, 
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;while in this solution, it takes 26 * l * m time. So when n is huge, 
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;this solution will be (n/26) times faster. 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;정리하자면 이 사람도 나와 같이 2개의 문자열을 비교하기 위해 이중 루프를 이용했었고 이로 인해 TLE가 발생했었다고 한다.&lt;/li&gt;
+&lt;li&gt;왜냐하면 현재 레벨에서의 모든 문자 set에서 다음 레벨로 변형될 수 있는 모든 문자 set을 찾기 위해서는 연산 횟수가 n * l * m 이다. 그러나 각 단어의 각 문자를 하나씩 바꿔가면서 비교할 때의 연산 횟수는 26 * l * m 이다.
+&lt;ul&gt;
+&lt;li&gt;n: wordDict의 크기&lt;/li&gt;
+&lt;li&gt;l: 각 단어의 길이&lt;/li&gt;
+&lt;li&gt;m: 각 레벨에서의 reached의 크기&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;n(wordDict의 크기)이 거대할 때, 후자가 전자보다 n/26 만큼 빠르다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;각 하위 레벨로 진입할 때 마다 그 길 만의 고유한 path를 유지해야 한다고 생각했다. 즉, 각 레벨로 진입하는 노드마다 그 노드까지 도달하기 위한 고유한 HashSet(path)를 가지고 있어야 한다고 생각했다.
+&lt;ul&gt;
+&lt;li&gt;풀다가 말리다 보니 문제에서 요구하는 것이 &#39;shortest transformation sequence&#39;라는 것을 어느 순간부터 놓치고 있었다. 정확히는 알고는 있었지만 이것으로 부터 아래의 전제를 도출할 수 있다는 것까지 연결시키지 못했다.
+&lt;ul&gt;
+&lt;li&gt;문제에서 요구하는 것은 &#39;shortest transformation sequence&#39;이다.&lt;/li&gt;
+&lt;li&gt;BFS 방식으로 접근시, 레벨은 순차적으로 증가하며 각 레벨에 진입할 때 마다 변환 가능한 단어들을 모두 찾을 수 있다.&lt;/li&gt;
+&lt;li&gt;이런 상황에서 모든 path에서 wordDict와 reachedSet을 공유해도 되는 이유는 다음과 같다.
+&lt;ul&gt;
+&lt;li&gt;level 1, beginWord = &amp;quot;abe&amp;quot;, wordDict = {&amp;quot;abc&amp;quot;, &amp;quot;abg&amp;quot;, &amp;quot;abf&amp;quot;}인 상황에서&lt;/li&gt;
+&lt;li&gt;level 2로 진입 시 reachedSet은 {&amp;quot;abc&amp;quot;, &amp;quot;abg&amp;quot;, abf&amp;quot;}가 된다&lt;/li&gt;
+&lt;li&gt;이때 level 2에서 level 3으로 갈 때 &amp;quot;abc&amp;quot;는 &amp;quot;abg&amp;quot;, &amp;quot;abf&amp;quot;가 될 수 있다.&lt;/li&gt;
+&lt;li&gt;이때 level 2, 3 모두에서 &amp;quot;abg&amp;quot;, &amp;quot;abf&amp;quot;가 중복 등장한다.&lt;/li&gt;
+&lt;li&gt;근데 잘 생각해보면 level 2의 &amp;quot;abg&amp;quot;든 level 3의 &amp;quot;abg&amp;quot;든 그 하위에 나올 하위 path의 모습은 똑같다. (&amp;quot;abf&amp;quot;도 마찬가지)&lt;/li&gt;
+&lt;li&gt;문제에서 요구하는 것은 beginWord에서 endWord까지 가장 짧은 변형 시퀀스를 구하는 것이므로 더 낮은 레벨에서 이미 나온 단어가 더 높은 레벨에서 똑같이 등장하는 경우는 배제해도 된다는 의미이다.&lt;/li&gt;
+&lt;li&gt;그러므로 아직 지나지 않은 단어 set을 의미하는 wordDict와 현재 레벨에서의 단어 set을 의미하는 reachedSet을 모든 경로에서 공유해도 상관 없다는 결론을 도출 할 수 있다.
+&lt;img src=&#34;https://sangwoncoco.github.io/images/leetcode/20210126-leetcode-127/127.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br/&gt;
+
+        
+      </description>
+    </item>
+    
     <item>
       <title>[LeetCode] Max Area of Island</title>
       <link>https://sangwoncoco.github.io/post/leetcode/20210125-leetcode-695-max-area-of-island/</link>
