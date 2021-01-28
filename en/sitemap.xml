@@ -3,6 +3,71 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://sangwoncoco.github.io/categories/</loc>
+    <lastmod>2021-01-28T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://sangwoncoco.github.io/ko/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sangwoncoco.github.io/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://sangwoncoco.github.io/categories/computer/</loc>
+    <lastmod>2021-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sangwoncoco.github.io/tags/parallel/</loc>
+    <lastmod>2021-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sangwoncoco.github.io/post/</loc>
+    <lastmod>2021-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sangwoncoco.github.io/</loc>
+    <lastmod>2021-01-28T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://sangwoncoco.github.io/ko/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sangwoncoco.github.io/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://sangwoncoco.github.io/tags/</loc>
+    <lastmod>2021-01-28T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://sangwoncoco.github.io/ko/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sangwoncoco.github.io/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://sangwoncoco.github.io/post/computer/20210128-parallel/</loc>
+    <lastmod>2021-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sangwoncoco.github.io/post/leetcode/20210126-leetcode-22-generate-parentheses/</loc>
     <lastmod>2021-01-26T00:00:00+00:00</lastmod>
   </url>
@@ -23,21 +88,6 @@
   </url>
   
   <url>
-    <loc>https://sangwoncoco.github.io/categories/</loc>
-    <lastmod>2021-01-26T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ko"
-                href="https://sangwoncoco.github.io/ko/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sangwoncoco.github.io/categories/"
-                />
-  </url>
-  
-  <url>
     <loc>https://sangwoncoco.github.io/tags/hashset/</loc>
     <lastmod>2021-01-26T00:00:00+00:00</lastmod>
   </url>
@@ -48,43 +98,8 @@
   </url>
   
   <url>
-    <loc>https://sangwoncoco.github.io/post/</loc>
-    <lastmod>2021-01-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sangwoncoco.github.io/categories/ps-review/</loc>
     <lastmod>2021-01-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sangwoncoco.github.io/</loc>
-    <lastmod>2021-01-26T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ko"
-                href="https://sangwoncoco.github.io/ko/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sangwoncoco.github.io/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://sangwoncoco.github.io/tags/</loc>
-    <lastmod>2021-01-26T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ko"
-                href="https://sangwoncoco.github.io/ko/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sangwoncoco.github.io/tags/"
-                />
   </url>
   
   <url>
@@ -150,6 +165,10 @@
   <url>
     <loc>https://sangwoncoco.github.io/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sangwoncoco.github.io/post/blog/20210127-blog-direction/</loc>
   </url>
   
   <url>

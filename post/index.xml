@@ -6,7 +6,325 @@
     <description>Recent content in Posts on Retriever</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021–2021, sangwon lee.</copyright>
-    <lastBuildDate>Tue, 26 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sangwoncoco.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sangwoncoco.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>컴퓨터 성능 향상 역사와 다양한 병렬 컴퓨팅 기법</title>
+      <link>https://sangwoncoco.github.io/post/computer/20210128-parallel/</link>
+      <pubDate>Thu, 28 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sangwoncoco.github.io/post/computer/20210128-parallel/</guid>
+      <description>
+        
+          &lt;!-- &lt;span style=&#34;color:red&#34;&gt;red&lt;/span&gt; --&gt;
+&lt;!-- &lt;span style=&#34;color:red&#34;&gt;red&lt;/span&gt; --&gt;
+&lt;h2 id=&#34;배경&#34;&gt;배경&lt;/h2&gt;
+&lt;p&gt;&#39;쉽게 배우는 운영체제&#39;책의 &#39;병렬 처리&#39; 부분을 읽고 있었다. 그러다 문득 &amp;quot;병렬 처리에 대해 더 알아보고 싶다.&amp;quot;라는 생각이 들었고, 구글링을 해보니 삼성 SDS 뉴스룸에 기고된 &amp;quot;병렬 컴퓨팅 시리즈&amp;quot;를 발견했다. 이 시리즈는 아래의 내용들을 다루며, 이번 포스팅은 1, 2, 3편에 해당하는 글에 대한 중요 키워드 및 개념 등을 정리하고자 작성하는 글이다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;컴퓨터의 성능 향상&lt;/li&gt;
+&lt;li&gt;병렬 컴퓨팅의 다양한 기법 1
+&lt;ul&gt;
+&lt;li&gt;싱글 코어에 적용되는 하드웨어 수준의 병렬 컴퓨팅 기법&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;병렬 컴퓨팅의 다양한 기법 2
+&lt;ul&gt;
+&lt;li&gt;멀티 코어에 적용되는 스레드 수준의 병렬 컴퓨팅 기법&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;병렬 컴퓨터&lt;/li&gt;
+&lt;li&gt;병렬 프로그래밍&lt;/li&gt;
+&lt;li&gt;병렬 컴퓨팅의 미래와 전망&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;h2 id=&#34;ps&#34;&gt;PS&lt;/h2&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;본 글은 나 스스로를 위한 글이며 거의 대다수의 내용이 본문을 인용한 것임을 미리 말해둔다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h2 id=&#34;목표&#34;&gt;목표&lt;/h2&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;컴퓨터 성능 향상을 실현하기 위한 두 가지 관심사를 알아본다.&lt;/li&gt;
+&lt;li&gt;마이크로 아키텍처에서의 성능 향상 기법을 알아본다.&lt;/li&gt;
+&lt;li&gt;병렬 컴퓨팅과 병렬화를 이해한다.&lt;/li&gt;
+&lt;li&gt;&#39;하드웨어 수준의 병렬화(싱글 코어)&#39;와 &#39;프로세스, 스레드 수준의 병렬화(멀티 코어)&#39;를 이해한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;h2 id=&#34;컴퓨터-성능-향상을-실현하기-위한-두-가지-관심사&#34;&gt;컴퓨터 성능 향상을 실현하기 위한 두 가지 관심사&lt;/h2&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;컴퓨터 성능 향상
+&lt;ol&gt;
+&lt;li&gt;소자의 집적도 기술 발전
+&lt;ul&gt;
+&lt;li&gt;클럭 주파수 향상 및 컴퓨터의 병렬성 향상에 기여&lt;/li&gt;
+&lt;li&gt;한계 존재&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;마이크로 아키텍처에 대한 성능 향상&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;h2 id=&#34;명령어-집합-구조와-마이크로-아키텍처&#34;&gt;명령어 집합 구조와 마이크로 아키텍처&lt;/h2&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;명령어 집합 구조란?
+&lt;ul&gt;
+&lt;li&gt;프로세서가 인식하여 실행할 수 있는 기계어 명령 집합&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;명령어 집합구조는 명령어와 레지스터 및 메모리 상호작용 등에 관한 모든 내용을 포함하고 있으며, CISC나 RISC 등의 아키텍처에 따라 여러 형태로 구성될 수 있다.&lt;/li&gt;
+&lt;li&gt;&#39;마이크로 아키텍처&#39;는 이런 명령어 집합 구조를 조직하고, 프로세서를 운영하기 위한 하드웨어 수준의 구조를 정의하는 개념이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;h2 id=&#34;마이크로-아키텍처의-성능-향상-기법&#34;&gt;마이크로 아키텍처의 성능 향상 기법&lt;/h2&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;마이크로 아키텍처의 성능은 명령어를 얼마나 최소의 시간 내에 실행할 수 있느냐가 중요한 척도가 되어 발전해왔다.&lt;/li&gt;
+&lt;li&gt;마이크로 아키텍처의 성능 향상 기법은 여러가지가 있지만, 여기선 중요한 3가지만 살펴보도록 하자.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;연산 장치의 고속화
+&lt;ul&gt;
+&lt;li&gt;프로세서의 부하에 많은 영향을 미치는 부분이 연산 장치이다.&lt;/li&gt;
+&lt;li&gt;프로세서에는 연산 처리를 위해 ALU라는 유닛을 두고 있으며, 마이크로 아키텍처는 연산을 고속화하기 위한 다양한 알고리즘을 제공한다.&lt;/li&gt;
+&lt;li&gt;초기에는 ALU만을 사용했으나, 부동 소수점 등 복잡한 연산을 고속 처리하기 위한 전용 하드웨어인 FPU라는 장치가 만들어졌다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;캐시 기술
+&lt;ul&gt;
+&lt;li&gt;메모리에 프로세서 사이에 SRAM을 두어 자주 사용되는 데이터를 저장해서 메모리 액세스를 최대한 고속으로 처리하는 기술이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;병렬 처리 기술
+&lt;ul&gt;
+&lt;li&gt;마이크로 아키텍처에서 처리해야 할 명령어를 최대한 동시에 실행하는 방법을 사용하여 처리 시간을 단축 시키는 기술이다.&lt;/li&gt;
+&lt;li&gt;이는 하드웨어 수준(마이크로 아키텍처)에서 구현된 병렬 처리 기법이며, &amp;quot;명령어 수준 병렬성&amp;quot;이라 부른다.&lt;/li&gt;
+&lt;li&gt;&amp;quot;명령어 수준 병렬성&amp;quot;을 실현하기 위해 파이프라인, 슈퍼스칼라 등의 기법을 적용한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;h2 id=&#34;병렬-컴퓨팅&#34;&gt;병렬 컴퓨팅&lt;/h2&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;병렬 컴퓨팅 이란?
+&lt;ul&gt;
+&lt;li&gt;여러 개의 연산을 동시에 병렬적으로 처리하는 방법을 의미한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;여러 개의 연산을 병렬로 처리하기 위해서는 동시에 처리하는 연산 간에 의존성이 없어야 한다. 그래야 한 개 연산을 수행할 때 동시에 다른 연산도 수행 가능하다.&lt;/li&gt;
+&lt;li&gt;병렬 처리의 시작점은 동시에 수행할 수 있는 대상(의존성이 없는 명령어)을 찾는 것이다.&lt;/li&gt;
+&lt;li&gt;이러한 일련의 과정을 &#39;병렬화&#39;라고 한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://sangwoncoco.github.io/images/computer/20210128-parallel/parallel_basic.png&#34; alt=&#34;parallel&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h2 id=&#34;하드웨어-수준의-병렬-처리-기법-종류&#34;&gt;하드웨어 수준의 병렬 처리 기법 종류&lt;/h2&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;하드웨어 수준의 병렬 처리 기법으로는 2가지가 있다.
+&lt;ol&gt;
+&lt;li&gt;비트 수준 병렬 처리 기법&lt;/li&gt;
+&lt;li&gt;명령어 수준 병렬 처리 기법&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;비트-수준-병렬-처리-기법&#34;&gt;비트 수준 병렬 처리 기법&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;한 번에 처리되는 word량을 늘리기 위해 버스의 대역폭을 늘리고, 레지스터나 메모리와 같은 장치의 용량을 넓히는 방법을 사용하는 기법&lt;/li&gt;
+&lt;li&gt;word란?
+&lt;ul&gt;
+&lt;li&gt;CPU에서 2진 데이터를 처리하는 단위&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;명령어-수준-병렬-처리-기법&#34;&gt;명령어 수준 병렬 처리 기법&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;다수의 명령어(마이크로 아키텍처의 여산 처리 기본 단위가 되는 명령어)들을 동시에 수행하기 위한 기법&lt;/li&gt;
+&lt;li&gt;파이프라이닝, 비순차 실행, 데이터 병렬 처리&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;cpu의-명령어-처리-과정&#34;&gt;CPU의 명령어 처리 과정&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;명령어 수준 병렬 처리 기법의 종류에 대해 알아보기 이전에 &amp;quot;CPU의 명령어 처리 과정&amp;quot;을 살펴본다.&lt;/li&gt;
+&lt;li&gt;CPU는 일반적으로 명령어의 실행을 제어하는 Control Unit과 데이터의 연산 처리를 담당하는 Data Path로 구성되어 있다.&lt;/li&gt;
+&lt;li&gt;명령어 처리 과정
+&lt;ol&gt;
+&lt;li&gt;Fetch: Control Unit은 RAM에 적재된 명령어를 하나씩 가져온다.&lt;/li&gt;
+&lt;li&gt;Decode: 패치한 명령어를 해석하고, 적당한 마이크로 명령어를 찾아 Datapath로 전달한다.&lt;/li&gt;
+&lt;li&gt;Memory Access: Datapath는 Control Unit으로부터 명령어를 전달받아, 연산에 필요한 데이터는 RAM이나 Register에 적재한다.&lt;/li&gt;
+&lt;li&gt;Execution: ALU에서 실제 연산을 수행한다.&lt;/li&gt;
+&lt;li&gt;Write Back: 연산을 마친 후 연산 결과는 Register에 저장되고, Store 명령을 통해 최종적으로 메모리에 저장된다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;파이프라이닝&#34;&gt;파이프라이닝&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;명령어를 단계별로 나누어 한 단계씩 순차적(코드의 흐름에 따라 처리)으로 진행함으로써 명령어가 마치 동시에 실행되는 것처럼 하여 처리 성능을 높이는 기법이다.&lt;/li&gt;
+&lt;li&gt;하지만 아래의 경우 &#39;파이프라인 해저드&#39; 문제 발생
+&lt;ul&gt;
+&lt;li&gt;명령어 간 동일한 자원을 사용&lt;/li&gt;
+&lt;li&gt;하나의 명령어가 앞선 명령어의 연산 결과에 종속되는 경우&lt;/li&gt;
+&lt;li&gt;조건 분기에 따른 후속 명령 대기&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;비순차-실행&#34;&gt;비순차 실행&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;명령어의 순서와 상관없이 빨리 처리할 수 있는 순서대로 재배열하는 방법을 사용하여 처리 성능을 높이는 기법이다.&lt;/li&gt;
+&lt;li&gt;예시
+&lt;ul&gt;
+&lt;li&gt;현재 실행되고 있는 명령어 A와 나중에 실행될 명령어 B간에 의존성이 없다면, B의 순서를 앞으로 당겨 A와 B를 동시에 실행하는 방식으로 처리하여 속도를 향상시킨다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;핵심
+&lt;ul&gt;
+&lt;li&gt;동시에 실행 가능한 명령어를 최대한 많이 찾아내는 것이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;이를 실현하기 위해 &#39;슈퍼 스칼라&#39;라는 기술을 사용한다.
+&lt;ul&gt;
+&lt;li&gt;슈퍼 스칼라
+&lt;ul&gt;
+&lt;li&gt;파이프라인 자체를 여러 개 두어 1사이클에 더 많은 명령어를 처리하도록 하는 기술이다.&lt;/li&gt;
+&lt;li&gt;이때 각 파이프라인에서 동시에 실행되는 명령은 서로 의존성이 없어야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;데이터-병렬-처리&#34;&gt;데이터 병렬 처리&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;하나의 명령어에 대해서 여러 데이터를 병렬 처리하는 것은 SIMD(Single Instruction Multiple Data Stream) 구조 내에서 실현된다.&lt;/li&gt;
+&lt;li&gt;반대로 지금까지 살펴본 하나의 명령어에 대하여 하나의 데이터를 처리하는 것은 SISD(Single Instruction Single Data Stream) 구조 내에서 실현된다.&lt;/li&gt;
+&lt;li&gt;SISD 구조 내에서는 길이가 n인 배열의 모든 요소에 대해 &amp;quot;a[i] = b[i] + c[i]&amp;quot;를 처리하려면 n 만큼 연산을 반복해야 한다.&lt;/li&gt;
+&lt;li&gt;그러나 SIMD 구조 내에서는 이러한 배열 연산을 단 하나의 명령어로 수행가능하다.&lt;/li&gt;
+&lt;li&gt;SIMD 구조의 핵심은 &#39;연속적인 복수의 데이터를 처리하는 전용 레지스터 집합(Vector Register)&#39;과 &#39;연산의 병렬 처리&#39;라고 볼 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;h2 id=&#34;싱글-코어의-한계와-멀티-코어의-등장&#34;&gt;싱글 코어의 한계와 멀티 코어의 등장&lt;/h2&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;싱글 코어 환경에선 아래와 같은 하드웨어 수준의 병렬 처리 기법을 통해 성능을 향상시켰다.
+&lt;ul&gt;
+&lt;li&gt;비트 수준 병렬 처리&lt;/li&gt;
+&lt;li&gt;명령어 수준 병렬 처리&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;그러나 클럭 속도의 향상은 전력 소비량, 발열량의 증가로 이어졌고, 또한 하드웨어의 제약으로 인해 명령어를 동시에 처리할 수 있는 명령어 수준 병렬성 또한 한계성을 드러냈다.&lt;/li&gt;
+&lt;li&gt;이런 상황에서 칩 하나에 다수에 프로세서를 결합한 형태의 멀티 코어 프로세서가 등장하게 된다.&lt;/li&gt;
+&lt;li&gt;멀티 코어는 다수의 코어에 의한 병렬 처리를 통해 성능 향상을 꾀하기에 싱글 코어에서 나타났던 문제를 해소할 수 있다.&lt;/li&gt;
+&lt;li&gt;또한 다수의 코어를 사용함으로 처리 능력을 극대화하고 스레드 수준 병렬성을 제공하여 프로그래밍을 통한 성능 향상이 더욱 유연해 지게 되었다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;h2 id=&#34;병렬-컴퓨터와-멀티-코어&#34;&gt;병렬 컴퓨터와 멀티 코어&lt;/h2&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;병렬 컴퓨터 정의
+&lt;ul&gt;
+&lt;li&gt;다수의 프로세서들이 수 많은 연산을 동시에 병렬 처리할 수 있는 형태로 조직된 컴퓨터&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;결합 구조에 따라 강 결합 구조, 약 결합 구조로 구분된다.
+&lt;ul&gt;
+&lt;li&gt;강 결합 구조
+&lt;ul&gt;
+&lt;li&gt;다수의 프로세서가 주기억장치 및 IO를 공유하며, 하나의 OS가 모든 프로세서를 관리하는 구조이다.&lt;/li&gt;
+&lt;li&gt;SMP(Symmetric Multi-Processor)라고도 한다.&lt;/li&gt;
+&lt;li&gt;멀티 코어는 SMP의 한 예시이다.
+&lt;ul&gt;
+&lt;li&gt;여러 개의 코어(프로세서)가 하나의 칩에 집적된 방식으로 CMP(Chip Multi Processor)라고도 부르며 일반 PC에 가장 많이 적용되어 있는 병렬 컴퓨터 형태이다.&lt;/li&gt;
+&lt;li&gt;즉, 멀티 코어를 구성하는 각 코어들은 하나의 칩에 집적되어 있다는 말이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;약 결합 구조
+&lt;ul&gt;
+&lt;li&gt;다수의 프로세서가 독립적인 주기억장치와 IO를 가지고 있으며, 각각의 OS를 지닌 구조이다.&lt;/li&gt;
+&lt;li&gt;독립적인 PC들이 네트워크를 통해 상호 연결되는 클러스터나 그리드 컴퓨터 등이 이러한 약 결합 구조로 분류될 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;h2 id=&#34;멀티-프로세싱-멀티-코어-시대의-병렬-처리-기법&#34;&gt;멀티 프로세싱! 멀티 코어 시대의 병렬 처리 기법&lt;/h2&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;멀티 프로세싱
+&lt;ul&gt;
+&lt;li&gt;다수의 프로세서가 장착된 컴퓨터에서 프로세서 간의 협력을 통해 연산을 처리하는 방식을 의미한다.&lt;/li&gt;
+&lt;li&gt;즉, 멀티 코어에서는 소프트웨어 수준의 멀티 프로세싱을 통해 다수의 코어를 활용하여 병렬 처리하는 방식으로 성능을 향상시킨다.&lt;/li&gt;
+&lt;li&gt;다만, 제대로 활용하기 위해서는 처리하고자 하는 연산을 각 코어에 효율적으로 배분할 수 있도록 프로그램을 구현해야 한다. -&amp;gt; &lt;em&gt;병렬 프로그래밍의 중요성이 매우 커짐&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;멀티-프로세싱은-어떻게-이뤄지는가&#34;&gt;&lt;em&gt;멀티 프로세싱은 어떻게 이뤄지는가?&lt;/em&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;우선 싱글 코어와 병행성(Concurrency, 동시성)에 대해 알아보자.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;싱글 코어는 코어가 하나이기에 여러 개의 작업을 병렬적으로 수행할 수 없다!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;따라서 싱글 코어에서는 여러 개의 작업을 동시에 수행하는 방법으로 OS 수준에서 &lt;em&gt;멀티 태스킹&lt;/em&gt;이라는 기법을 제공한다.&lt;/li&gt;
+&lt;li&gt;멀티 태스킹
+&lt;ul&gt;
+&lt;li&gt;다수 개의 작업들을 작업 내용이나 우선순위에 따라 일정 시간을 배분하고, 배분된 시간만큼 CPU를 번갈아가며 점유할 수 있도록 스케줄링하는 방식이다.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;병행성(Concurrency, 동시성)&lt;/em&gt; 이라는 특징을 가진다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;멀티 코어는 &lt;em&gt;멀티 태스킹&lt;/em&gt;은 물론 &lt;em&gt;각 코어마다 작업을 나누어 배분하여 병렬적인 처리가 가능&lt;/em&gt;하다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;병행성(Concurrency, 동시성)&lt;/em&gt;, &lt;em&gt;병렬성(Parallelism)&lt;/em&gt; 이라는 특징을 가진다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;멀티 프로세싱 기반에서 각 코어로 배분되는 작업은 프로세스 또는 스레드 단위로 처리된다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;프로세스
+&lt;ul&gt;
+&lt;li&gt;메모리에 적재되어 현재 OS에 의해 실행 중인 프로그램&lt;/li&gt;
+&lt;li&gt;프로세스는 또 다시 &lt;em&gt;스레드&lt;/em&gt;라고 하는 &lt;em&gt;경령화된 프로세스들&lt;/em&gt;로 나눠진다.&lt;/li&gt;
+&lt;li&gt;스레드를 여러 개 생성하여 동시에 수행하는 기법을 멀티 스레딩이라고 한다.
+&lt;img src=&#34;https://sangwoncoco.github.io/images/computer/20210128-parallel/multi_threading.png&#34; alt=&#34;multi-threading&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;싱글 코어에서는 스레드들이 멀티 태스킹을 통해 동시적(Concurrency)으로 처리되는 반면, 멀티 코어에서는 스레드가 각 코어로 배분되어 병렬적으로 처리될 수 있다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OS는 이러한 코어의 전반적인 리소스 상황을 모니터링하여 스레드를 최적의 코어에 배분하기 위한 스케줄링 작업을 수행한다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;이렇게 멀티 코어 환경에서는 컴퓨터가 알아서 병렬 처리를 해 주는 것이 아니라, 프로그램을 구현할 때 동시에 수행될 수 있는 대상을 찾아 스레드를 만드는 작업, 스레드 간의 자원 경쟁을 해소하기 위한 동기화 작업 등을 반드시 수행해야 한다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;h2 id=&#34;follow-ups&#34;&gt;Follow Ups&lt;/h2&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.samsungsds.com/kr/story/1233715_4655.html?referrer=https://www.samsungsds.com/app//?p=878&#34;&gt;[삼성 SDS] 병렬 컴퓨터&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.samsungsds.com/kr/story/1233713_4655.html&#34;&gt;[삼성 SDS] 병렬 프로그래밍&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.samsungsds.com/kr/story/1233727_4655.html&#34;&gt;https://www.samsungsds.com/kr/story/1233727_4655.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.samsungsds.com/kr/story/1233724_4655.html&#34;&gt;https://www.samsungsds.com/kr/story/1233724_4655.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.samsungsds.com/kr/story/1233719_4655.html&#34;&gt;https://www.samsungsds.com/kr/story/1233719_4655.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+        
+      </description>
+    </item>
+    
     <item>
       <title>[LeetCode] Generate Parentheses</title>
       <link>https://sangwoncoco.github.io/post/leetcode/20210126-leetcode-22-generate-parentheses/</link>
@@ -1989,6 +2307,89 @@
 &lt;li&gt;글에서 제시한 솔루션 외에도 리트코드에선 Quick Select과 Heap을 활용한 솔루션도 제공하니 시간이 충분하다면 다른 두 접근법으로 문제를 풀어보는 것도 추천합니다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br/&gt;
+
+        
+      </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://sangwoncoco.github.io/post/blog/20210127-blog-direction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sangwoncoco.github.io/post/blog/20210127-blog-direction/</guid>
+      <description>
+        
+          &lt;h3 id=&#34;블로그-방향성&#34;&gt;블로그 방향성&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;h2 id=&#34;결론부터-말하자면-나를-위한-글을-쓰자&#34;&gt;결론부터 말하자면 나를 위한 글을 쓰자&lt;/h2&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;최근 블로깅을 시작했다. 동시에 신기한 현상이 발생했다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;강제 인풋 -&amp;gt; 더 깊게 알아본&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;아무리 글이 허접해도 기술의 등장 배경, 필요 이유, 활용법 등과 같은 주요 내용은 포함시키자!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;그래도 항상 그렇게 할 순 없겠지만 그렇게 하도록 노력하자&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;억지로 예제를 만들게 된다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;습관이 변한건지 예제를 어느 순간 부터 안돌려보고 머리로 이해만했다 착각하고 넘어가기 시작 -&amp;gt; 블로깅을 하려면 잘 도는 코드를 예제로 제시해야 함 -&amp;gt; 예제 만들게 됨&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;최근 노션에 작성하는 것 보다 블로그에 작성하는 것이 기억에 더 잘 남는다고 느꼈다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;노션에 아무리 기록해도 내가 다시 찾아보지 않는다&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;결국은 구글로 가더라...&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;특별한 일이 아니면 절대 찾아보지 않더라&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;습관의 문젠가??&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;근데 블로그를 쓰기 시작하니 내가 내 글을 자꾸 읽기 시작한다 -&amp;gt; 복습의 과정. 이상한 문장 찾아내기&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;점진적인 글 수정 혹은 defrated&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.outsider.ne.kr/1150&#34;&gt;https://blog.outsider.ne.kr/1150&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.outsider.ne.kr/1269&#34;&gt;https://blog.outsider.ne.kr/1269&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://minieetea.com/2015/05/archives/3125&#34;&gt;https://minieetea.com/2015/05/archives/3125&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.44bits.io/ko/post/8-suggestions-for-tech-programming-blog&#34;&gt;https://www.44bits.io/ko/post/8-suggestions-for-tech-programming-blog&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://taegon.kim/archives/7107&#34;&gt;https://taegon.kim/archives/7107&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;모범으로-삼을-블로그&#34;&gt;모범으로 삼을 블로그&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://goodgid.github.io/category/#OS&#34;&gt;https://goodgid.github.io/category/#OS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://haejun0317.tistory.com/m/category/%5BC%2B%2B%5D%20%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4&#34;&gt;https://haejun0317.tistory.com/m/category/%5BC%2B%2B%5D%20%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tjdrnr05571.tistory.com/18?category=876333&#34;&gt;https://tjdrnr05571.tistory.com/18?category=876333&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hyuntaeknote.tistory.com/&#34;&gt;https://hyuntaeknote.tistory.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.f-lab.kr/2020/11/24/how-write-blog.html?fbclid=IwAR1n0XDMyhN58iDWNXmtZOKngbbHUtakPTF3kUoT5BFmw5R5pkstXrKcGjY&#34;&gt;https://blog.f-lab.kr/2020/11/24/how-write-blog.html?fbclid=IwAR1n0XDMyhN58iDWNXmtZOKngbbHUtakPTF3kUoT5BFmw5R5pkstXrKcGjY&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://engineering.linecorp.com/ko/blog/why-are-engineers-so-bad-at-writing/&#34;&gt;https://engineering.linecorp.com/ko/blog/why-are-engineers-so-bad-at-writing/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codingdog.tistory.com/entry/mybatis-generictokenparser-sql%EB%AC%B8%EC%9C%BC%EB%A1%9C-%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%88%EB%95%8C-%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8C%80%EC%B9%98%EB%90%A0%EA%B9%8C%EC%9A%94?category=1123160&#34;&gt;https://codingdog.tistory.com/entry/mybatis-generictokenparser-sql%EB%AC%B8%EC%9C%BC%EB%A1%9C-%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%88%EB%95%8C-%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8C%80%EC%B9%98%EB%90%A0%EA%B9%8C%EC%9A%94?category=1123160&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
         
       </description>
