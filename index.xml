@@ -8,11 +8,11 @@
     <copyright>Copyright © 2021–2021, sangwon lee.</copyright>
     <lastBuildDate>Thu, 28 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sangwoncoco.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>컴퓨터 성능 향상 역사와 다양한 병렬 컴퓨팅 기법</title>
-      <link>https://sangwoncoco.github.io/post/computer/20210128-parallel/</link>
+      <title>컴퓨터 성능 향상의 역사와 다양한 병렬 컴퓨팅 기법</title>
+      <link>https://sangwoncoco.github.io/post/computer/20210128-computer-performence-history-and-parallel-technique/</link>
       <pubDate>Thu, 28 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://sangwoncoco.github.io/post/computer/20210128-parallel/</guid>
+      <guid>https://sangwoncoco.github.io/post/computer/20210128-computer-performence-history-and-parallel-technique/</guid>
       <description>
         
           &lt;!-- &lt;span style=&#34;color:red&#34;&gt;red&lt;/span&gt; --&gt;
@@ -117,7 +117,7 @@
 &lt;li&gt;병렬 처리의 시작점은 동시에 수행할 수 있는 대상(의존성이 없는 명령어)을 찾는 것이다.&lt;/li&gt;
 &lt;li&gt;이러한 일련의 과정을 &#39;병렬화&#39;라고 한다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://sangwoncoco.github.io/images/computer/20210128-parallel/parallel_basic.png&#34; alt=&#34;parallel&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sangwoncoco.github.io/images/computer/20210128-computer-performence-history-and-parallel-technique/parallel_basic.png&#34; alt=&#34;parallel&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;h2 id=&#34;하드웨어-수준의-병렬-처리-기법-종류&#34;&gt;하드웨어 수준의 병렬 처리 기법 종류&lt;/h2&gt;
 &lt;/blockquote&gt;
@@ -290,7 +290,7 @@
 &lt;li&gt;메모리에 적재되어 현재 OS에 의해 실행 중인 프로그램&lt;/li&gt;
 &lt;li&gt;프로세스는 또 다시 &lt;em&gt;스레드&lt;/em&gt;라고 하는 &lt;em&gt;경령화된 프로세스들&lt;/em&gt;로 나눠진다.&lt;/li&gt;
 &lt;li&gt;스레드를 여러 개 생성하여 동시에 수행하는 기법을 멀티 스레딩이라고 한다.
-&lt;img src=&#34;https://sangwoncoco.github.io/images/computer/20210128-parallel/multi_threading.png&#34; alt=&#34;multi-threading&#34;&gt;&lt;/li&gt;
+&lt;img src=&#34;https://sangwoncoco.github.io/images/computer/20210128-computer-performence-history-and-parallel-technique/multi_threading.png&#34; alt=&#34;multi-threading, 출처: https://www.samsungsds.com/kr/story/1233719_4655.html&#34;&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -2307,89 +2307,6 @@
 &lt;li&gt;글에서 제시한 솔루션 외에도 리트코드에선 Quick Select과 Heap을 활용한 솔루션도 제공하니 시간이 충분하다면 다른 두 접근법으로 문제를 풀어보는 것도 추천합니다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br/&gt;
-
-        
-      </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://sangwoncoco.github.io/post/blog/20210127-blog-direction/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sangwoncoco.github.io/post/blog/20210127-blog-direction/</guid>
-      <description>
-        
-          &lt;h3 id=&#34;블로그-방향성&#34;&gt;블로그 방향성&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;h2 id=&#34;결론부터-말하자면-나를-위한-글을-쓰자&#34;&gt;결론부터 말하자면 나를 위한 글을 쓰자&lt;/h2&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;최근 블로깅을 시작했다. 동시에 신기한 현상이 발생했다.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;강제 인풋 -&amp;gt; 더 깊게 알아본&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;아무리 글이 허접해도 기술의 등장 배경, 필요 이유, 활용법 등과 같은 주요 내용은 포함시키자!&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;그래도 항상 그렇게 할 순 없겠지만 그렇게 하도록 노력하자&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;억지로 예제를 만들게 된다.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;습관이 변한건지 예제를 어느 순간 부터 안돌려보고 머리로 이해만했다 착각하고 넘어가기 시작 -&amp;gt; 블로깅을 하려면 잘 도는 코드를 예제로 제시해야 함 -&amp;gt; 예제 만들게 됨&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;최근 노션에 작성하는 것 보다 블로그에 작성하는 것이 기억에 더 잘 남는다고 느꼈다.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;노션에 아무리 기록해도 내가 다시 찾아보지 않는다&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;결국은 구글로 가더라...&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;특별한 일이 아니면 절대 찾아보지 않더라&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;습관의 문젠가??&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;근데 블로그를 쓰기 시작하니 내가 내 글을 자꾸 읽기 시작한다 -&amp;gt; 복습의 과정. 이상한 문장 찾아내기&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;점진적인 글 수정 혹은 defrated&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.outsider.ne.kr/1150&#34;&gt;https://blog.outsider.ne.kr/1150&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.outsider.ne.kr/1269&#34;&gt;https://blog.outsider.ne.kr/1269&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://minieetea.com/2015/05/archives/3125&#34;&gt;https://minieetea.com/2015/05/archives/3125&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.44bits.io/ko/post/8-suggestions-for-tech-programming-blog&#34;&gt;https://www.44bits.io/ko/post/8-suggestions-for-tech-programming-blog&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://taegon.kim/archives/7107&#34;&gt;https://taegon.kim/archives/7107&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;모범으로-삼을-블로그&#34;&gt;모범으로 삼을 블로그&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://goodgid.github.io/category/#OS&#34;&gt;https://goodgid.github.io/category/#OS&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://haejun0317.tistory.com/m/category/%5BC%2B%2B%5D%20%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4&#34;&gt;https://haejun0317.tistory.com/m/category/%5BC%2B%2B%5D%20%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://tjdrnr05571.tistory.com/18?category=876333&#34;&gt;https://tjdrnr05571.tistory.com/18?category=876333&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://hyuntaeknote.tistory.com/&#34;&gt;https://hyuntaeknote.tistory.com/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.f-lab.kr/2020/11/24/how-write-blog.html?fbclid=IwAR1n0XDMyhN58iDWNXmtZOKngbbHUtakPTF3kUoT5BFmw5R5pkstXrKcGjY&#34;&gt;https://blog.f-lab.kr/2020/11/24/how-write-blog.html?fbclid=IwAR1n0XDMyhN58iDWNXmtZOKngbbHUtakPTF3kUoT5BFmw5R5pkstXrKcGjY&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://engineering.linecorp.com/ko/blog/why-are-engineers-so-bad-at-writing/&#34;&gt;https://engineering.linecorp.com/ko/blog/why-are-engineers-so-bad-at-writing/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://codingdog.tistory.com/entry/mybatis-generictokenparser-sql%EB%AC%B8%EC%9C%BC%EB%A1%9C-%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%88%EB%95%8C-%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8C%80%EC%B9%98%EB%90%A0%EA%B9%8C%EC%9A%94?category=1123160&#34;&gt;https://codingdog.tistory.com/entry/mybatis-generictokenparser-sql%EB%AC%B8%EC%9C%BC%EB%A1%9C-%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%88%EB%95%8C-%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8C%80%EC%B9%98%EB%90%A0%EA%B9%8C%EC%9A%94?category=1123160&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 
         
       </description>

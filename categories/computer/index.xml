@@ -8,11 +8,11 @@
     <copyright>Copyright © 2021–2021, sangwon lee.</copyright>
     <lastBuildDate>Thu, 28 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sangwoncoco.github.io/categories/computer/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>컴퓨터 성능 향상 역사와 다양한 병렬 컴퓨팅 기법</title>
-      <link>https://sangwoncoco.github.io/post/computer/20210128-parallel/</link>
+      <title>컴퓨터 성능 향상의 역사와 다양한 병렬 컴퓨팅 기법</title>
+      <link>https://sangwoncoco.github.io/post/computer/20210128-computer-performence-history-and-parallel-technique/</link>
       <pubDate>Thu, 28 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://sangwoncoco.github.io/post/computer/20210128-parallel/</guid>
+      <guid>https://sangwoncoco.github.io/post/computer/20210128-computer-performence-history-and-parallel-technique/</guid>
       <description>
         
           &lt;!-- &lt;span style=&#34;color:red&#34;&gt;red&lt;/span&gt; --&gt;
@@ -117,7 +117,7 @@
 &lt;li&gt;병렬 처리의 시작점은 동시에 수행할 수 있는 대상(의존성이 없는 명령어)을 찾는 것이다.&lt;/li&gt;
 &lt;li&gt;이러한 일련의 과정을 &#39;병렬화&#39;라고 한다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://sangwoncoco.github.io/images/computer/20210128-parallel/parallel_basic.png&#34; alt=&#34;parallel&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sangwoncoco.github.io/images/computer/20210128-computer-performence-history-and-parallel-technique/parallel_basic.png&#34; alt=&#34;parallel&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;h2 id=&#34;하드웨어-수준의-병렬-처리-기법-종류&#34;&gt;하드웨어 수준의 병렬 처리 기법 종류&lt;/h2&gt;
 &lt;/blockquote&gt;
@@ -290,7 +290,7 @@
 &lt;li&gt;메모리에 적재되어 현재 OS에 의해 실행 중인 프로그램&lt;/li&gt;
 &lt;li&gt;프로세스는 또 다시 &lt;em&gt;스레드&lt;/em&gt;라고 하는 &lt;em&gt;경령화된 프로세스들&lt;/em&gt;로 나눠진다.&lt;/li&gt;
 &lt;li&gt;스레드를 여러 개 생성하여 동시에 수행하는 기법을 멀티 스레딩이라고 한다.
-&lt;img src=&#34;https://sangwoncoco.github.io/images/computer/20210128-parallel/multi_threading.png&#34; alt=&#34;multi-threading&#34;&gt;&lt;/li&gt;
+&lt;img src=&#34;https://sangwoncoco.github.io/images/computer/20210128-computer-performence-history-and-parallel-technique/multi_threading.png&#34; alt=&#34;multi-threading, 출처: https://www.samsungsds.com/kr/story/1233719_4655.html&#34;&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
