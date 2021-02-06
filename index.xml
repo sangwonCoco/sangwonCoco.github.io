@@ -6,7 +6,195 @@
     <description>Recent content on Retriever</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021–2021, sangwon lee.</copyright>
-    <lastBuildDate>Sat, 30 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sangwoncoco.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sangwoncoco.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[LeetCode] Restore IP Address</title>
+      <link>https://sangwoncoco.github.io/post/leetcode/20210206-leetcode-93-restore-ip-address/</link>
+      <pubDate>Sat, 06 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sangwoncoco.github.io/post/leetcode/20210206-leetcode-93-restore-ip-address/</guid>
+      <description>
+        
+          &lt;br/&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;항목&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;플랫폼&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;LeetCode&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;번호&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;93&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;제목&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Restore IP Address&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;유형&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Backtracking&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;바로가기&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://leetcode.com/problems/restore-ip-addresses/&#34;&gt;LINK&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;문제&#34;&gt;문제&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Given a string s containing only digits, return all possible valid IP addresses that can be obtained from s. You can return them in any order.&lt;/p&gt;
+&lt;p&gt;A valid IP address consists of exactly four integers, each integer is between 0 and 255, separated by single dots and cannot have leading zeros. For example, &amp;quot;0.1.2.201&amp;quot; and &amp;quot;192.168.1.1&amp;quot; are valid IP addresses and &amp;quot;0.011.255.245&amp;quot;, &amp;quot;192.168.1.312&amp;quot; and &amp;quot;192.168@1.1&amp;quot; are invalid IP addresses.&lt;/p&gt;
+&lt;p&gt;Constraints:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;0 &amp;lt;= s.length &amp;lt;= 3000&lt;/li&gt;
+&lt;li&gt;s consists of digits only.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;기본-테스트-케이스&#34;&gt;기본 테스트 케이스&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Example 1:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;Input: s = &amp;#34;25525511135&amp;#34;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;Output: [&amp;#34;255.255.11.135&amp;#34;,&amp;#34;255.255.111.35&amp;#34;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Exapmle 2:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;Input: s = &amp;#34;0000&amp;#34;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;Output: [&amp;#34;0.0.0.0&amp;#34;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Exapmle 3:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;Input: s = &amp;#34;1111&amp;#34;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;Output: [&amp;#34;1.1.1.1&amp;#34;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Exapmle 4:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;Input: s = &amp;#34;010010&amp;#34;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;Output: [&amp;#34;0.10.0.10&amp;#34;,&amp;#34;0.100.1.0&amp;#34;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Exapmle 5:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;Input: s = &amp;#34;101023&amp;#34;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;Output: [&amp;#34;1.0.10.23&amp;#34;,&amp;#34;1.0.102.3&amp;#34;,&amp;#34;10.1.0.23&amp;#34;,&amp;#34;10.10.2.3&amp;#34;,&amp;#34;101.0.2.3&amp;#34;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;주어진-코드-스니펫&#34;&gt;주어진 코드 스니펫&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Solution&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;restoreIpAddresses&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;        
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;문제-분석&#34;&gt;문제 분석&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;주어진 문자열 s(숫자로 구성됨)로 부터 만들 수 있는 유효한 IP 주소를 모두 찾는 완전 탐색 문제이다. 문자열 s의 가장 첫 번째 문자부터 탐색하면서 문제를 풀 수 있다.&lt;/p&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;핵심-아이디어&#34;&gt;핵심 아이디어&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;완전 탐색 기법 중 백트래킹 기법을 적용하여 해결할 수 있다. 백트래킹 솔루션을 적용할 때 고려해야 하는 사항은 아래와 같다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;어떻게 탐색할 것 인가?&lt;/li&gt;
+&lt;li&gt;탐색을 중단할 경우는 언제인가?
+&lt;ul&gt;
+&lt;li&gt;원하는 것을 찾았을 때&lt;/li&gt;
+&lt;li&gt;탐색을 더 진행해봤자 원하는 것을 찾지 못한다는 판단이 들 때&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;현재 상태 및 다음 상태로 전이 시에 변하는 것&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;어떻게 탐색할 것 인가?&lt;/em&gt;
+문제에서 요구하는 것은 주어진 문자로 부터 유효한 IP 주소를 찾는 것이다. 그러므로 문자의 앞단 부터 1~3길이 단위로 문자를 끊어냄으로써 숫자를 추출하는 방식으로 탐색한다. 만약 끊어낸 문자열이 유효하다면 숫자로 변환한 후 배열(int[4])에 기록하도록 한다.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;탐색을 중단할 경우는 언제인가?&lt;/em&gt;
+탐색을 중단할 경우는 &#39;원하는 것을 찾았을 때&#39; 와 &#39;탐색을 더 진행해봤자 원하는 것을 찾지 못한다는 판단이 들 때&#39; 이다. 각각의 경우는 아래의 기준으로 판단한다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;원하는 것을 찾았을 때&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;pIdx 값이 4가 될 때 탐색을 중단하도록 한다. 왜 이때 탐색을 중단하는지는 part 배열과 pIdx값의 의미를 알아보면 이해할 수 있다.&lt;/p&gt;
+&lt;p&gt;parts 배열은 IP 주소를 의미하며, pIdx는 parts 배열의 인덱스로 쓰이는 값이다. 아래 예시를 확인해보자.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;예시
+&lt;ul&gt;
+&lt;li&gt;parts[0] == 123&lt;/li&gt;
+&lt;li&gt;parts[1] == 0&lt;/li&gt;
+&lt;li&gt;parts[2] == 0&lt;/li&gt;
+&lt;li&gt;parts[3] == 1&lt;/li&gt;
+&lt;li&gt;일 때의 IP 주소는 &#39;123.0.0.1&#39; 이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;예시에서 확인할 수 있듯이, 각 parts 배열의 크기는 4이며, 각 요소의 값은 IP 주소의 구분자(.)로 구별되는 값들로 표현된다.&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;탐색을 더 진행해봤자 원하는 것을 찾지 못한다는 판단이 들 때&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;이 문제의 목표는 주어진 문자 s로 부터 만들 수 있는 모든 IP 주소를 찾는 문제이다. 그렇기 때문에 유효한 IP 주소를 만들 수 없다는 판단이 들 때 탐색을 그만두고 현재 상태에서 이전 상태로 돌아가면 된다.&lt;/p&gt;
+&lt;p&gt;이 문제의 경우는 IP 주소의 구분자로 구별되는 값들이 유효한지를 하기의 질문으로 판단하면 된다. 질문의 답이 yes라면 탐색을 중단하고 이전 상태로 돌아가도록 한다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;값이 [0, 255] 을 벗어나는가?&lt;/li&gt;
+&lt;li&gt;값이 leading-zero 인가?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;현재 상태 및 다음 상태로 전이 시에 변하는 것&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;이는 탐색을 위해 구현하는 함수와 관련 있다. 나의 경우는 아래 처럼 함수를 정의했으며, 현재 상태에서 다음 상태로 전이될 때 변하는 값은 idx, pIdx이다. 그리고 나머지(s,parts,ret)는 단순히 참조(참조 주소의 실제 값들은 함수의 동작에 따라 변한다.)만 넘겨주도록 한다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;backtrack&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parts&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pIdx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;pIdx에 대한 설명은 &lt;em&gt;원하는 것을 찾았을 때&lt;/em&gt; 파트에서 설명했으니 idx의 의미만 간단하게 설명하자면, idx는 현재 상태에서 문자열(s)를 탐색할 때의 기준이 되는 인덱스 값이다.&lt;/p&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;구현-코드&#34;&gt;구현 코드&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;java.util.List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;java.util.ArrayList&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Solution&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;restoreIpAddresses&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ArrayList&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;4&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;          &lt;span class=&#34;n&#34;&gt;backtrack&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;    
+&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;backtrack&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parts&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pIdx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;        
+&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pIdx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;                &lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;add&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;format&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;%d.%d.%d.%d&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parts&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parts&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parts&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parts&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]));&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;            &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;            &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;                &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;part&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Integer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;valueOf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;substring&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;));&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;part&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;part&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;255&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;continue&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;charAt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;26&lt;/span&gt;                
+&lt;span class=&#34;ln&#34;&gt;27&lt;/span&gt;                &lt;span class=&#34;n&#34;&gt;parts&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pIdx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;part&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;28&lt;/span&gt;                &lt;span class=&#34;n&#34;&gt;backtrack&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parts&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pIdx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;29&lt;/span&gt;            &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;30&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;31&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;32&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
+&lt;br/&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;후기&#34;&gt;후기&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;주어진 문자열로부터 유효한 IP 주소를 찾기 위해 완전 탐색으로 접근해야 한다는 것만 캐치한다면 손쉽게 풀 수 있는 문제이다.&lt;/p&gt;
+&lt;br/&gt;
+
+        
+      </description>
+    </item>
+    
     <item>
       <title>[LeetCode] Find the Duplicate Number</title>
       <link>https://sangwoncoco.github.io/post/leetcode/20210130-leetcode-287-find-the-duplicate-number/</link>
@@ -243,13 +431,14 @@
 &lt;li&gt;배열 nums은 n+1개의 정수를 포함하고 있으며, 각 요소의 범위는 [1, n]이다.
 &lt;ul&gt;
 &lt;li&gt;모든 배열 내의 요소들은 양수이다. (음수는 배열의 인덱스로 유효하지 않다.)&lt;/li&gt;
+&lt;li&gt;즉, ret은 배열의 인덱스로 쓰이기에 유효하다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;nums.length == n + 1 &amp;amp;&amp;amp; 1 &amp;lt;= nums[i] &amp;lt;= n
 &lt;ul&gt;
 &lt;li&gt;n이 5일 때, 임의의 nums[i]의 범위는 [1, 5]이고, 배열의 길이는 6이다.&lt;/li&gt;
 &lt;li&gt;그렇기에 ret에 들어갈 수 있는 최솟값은 1, 최댓값은 5가 된다.&lt;/li&gt;
-&lt;li&gt;그러므로 ret은 nums 배열의 인덱스로 쓰이기에 유효하다.&lt;/li&gt;
+&lt;li&gt;즉, ret은 nums 배열의 인덱스로 쓰이기에 유효하다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
@@ -385,7 +574,7 @@
 &lt;ul&gt;
 &lt;li&gt;주어진 nums 배열에서 모든 subset을 찾는 탐색 문제이다.&lt;/li&gt;
 &lt;li&gt;순서가 없는 subset을 찾는 것이였기에 별다른 고민 없이 간단히 풀 수 있었다.&lt;/li&gt;
-&lt;li&gt;backtrack() 메서드를 호출할 때 넘기는 3번째 파라미터인 array를 매번 deep copy 했다. 사실 매번 새로운 ArrayList를 생성하고 모든 값을 복사하는 deep copy 보다는 shallow copy 더 효율적이다.&lt;/li&gt;
+&lt;li&gt;backtrack() 메서드를 호출할 때 넘기는 3번째 파라미터인 array를 매번 deep copy 했다. 사실 매번 새로운 ArrayList를 생성하고 모든 값을 복사하는 deep copy 보다는, shallow copy가 더 효율적이다. 단 shallow copy를 적용하기 위해서는 backtrack() 호출 이전에 값을 추가하도, 호출 이후에 값을 제거하는 코드가 들어가야하기 때문에 그냥 deep copy로 문제를 풀었다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br/&gt;
 

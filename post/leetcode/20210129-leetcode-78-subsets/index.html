@@ -277,7 +277,7 @@
 <ul>
 <li>주어진 nums 배열에서 모든 subset을 찾는 탐색 문제이다.</li>
 <li>순서가 없는 subset을 찾는 것이였기에 별다른 고민 없이 간단히 풀 수 있었다.</li>
-<li>backtrack() 메서드를 호출할 때 넘기는 3번째 파라미터인 array를 매번 deep copy 했다. 사실 매번 새로운 ArrayList를 생성하고 모든 값을 복사하는 deep copy 보다는 shallow copy 더 효율적이다.</li>
+<li>backtrack() 메서드를 호출할 때 넘기는 3번째 파라미터인 array를 매번 deep copy 했다. 사실 매번 새로운 ArrayList를 생성하고 모든 값을 복사하는 deep copy 보다는, shallow copy가 더 효율적이다. 단 shallow copy를 적용하기 위해서는 backtrack() 호출 이전에 값을 추가하도, 호출 이후에 값을 제거하는 코드가 들어가야하기 때문에 그냥 deep copy로 문제를 풀었다.</li>
 </ul>
 <br/>
 
@@ -292,6 +292,9 @@
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://sangwoncoco.github.io/post/leetcode/20210206-leetcode-93-restore-ip-address/" class="nav-link">[LeetCode] Restore IP Address</a>
+      </li>
+      <li>
         <a href="https://sangwoncoco.github.io/post/leetcode/20210130-leetcode-287-find-the-duplicate-number/" class="nav-link">[LeetCode] Find the Duplicate Number</a>
       </li>
       <li>
@@ -300,21 +303,13 @@
       <li>
         <a href="https://sangwoncoco.github.io/post/leetcode/20210126-leetcode-22-generate-parentheses/" class="nav-link">[LeetCode] Generate Parentheses</a>
       </li>
-      <li>
-        <a href="https://sangwoncoco.github.io/post/leetcode/20210126-leetcode-127-word-ladder/" class="nav-link">[LeetCode] Word Ladder</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">Categories</h2>
       <nav class="tags_nav">
         <a href='https://sangwoncoco.github.io/categories/leetcode/' class="post_tag button button_translucent">
           LEETCODE
-          <span class="button_tally">9</span>
-        </a>
-        
-        <a href='https://sangwoncoco.github.io/categories/ps-review/' class="post_tag button button_translucent">
-          PS-REVIEW
-          <span class="button_tally">9</span>
+          <span class="button_tally">10</span>
         </a>
         
         <a href='https://sangwoncoco.github.io/categories/computer/' class="post_tag button button_translucent">
@@ -333,14 +328,14 @@
     <div>
       <h2 class="mt-4 taxonomy" id="tags-section">Tags</h2>
       <nav class="tags_nav">
-        <a href='https://sangwoncoco.github.io/tags/bfs/' class="post_tag button button_translucent">
-          BFS
+        <a href='https://sangwoncoco.github.io/tags/backtracking/' class="post_tag button button_translucent">
+          BACKTRACKING
           <span class="button_tally">4</span>
         </a>
         
-        <a href='https://sangwoncoco.github.io/tags/backtracking/' class="post_tag button button_translucent">
-          BACKTRACKING
-          <span class="button_tally">3</span>
+        <a href='https://sangwoncoco.github.io/tags/bfs/' class="post_tag button button_translucent">
+          BFS
+          <span class="button_tally">4</span>
         </a>
         
         <a href='https://sangwoncoco.github.io/tags/dfs/' class="post_tag button button_translucent">

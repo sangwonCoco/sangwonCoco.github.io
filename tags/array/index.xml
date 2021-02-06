@@ -243,13 +243,14 @@
 &lt;li&gt;배열 nums은 n+1개의 정수를 포함하고 있으며, 각 요소의 범위는 [1, n]이다.
 &lt;ul&gt;
 &lt;li&gt;모든 배열 내의 요소들은 양수이다. (음수는 배열의 인덱스로 유효하지 않다.)&lt;/li&gt;
+&lt;li&gt;즉, ret은 배열의 인덱스로 쓰이기에 유효하다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;nums.length == n + 1 &amp;amp;&amp;amp; 1 &amp;lt;= nums[i] &amp;lt;= n
 &lt;ul&gt;
 &lt;li&gt;n이 5일 때, 임의의 nums[i]의 범위는 [1, 5]이고, 배열의 길이는 6이다.&lt;/li&gt;
 &lt;li&gt;그렇기에 ret에 들어갈 수 있는 최솟값은 1, 최댓값은 5가 된다.&lt;/li&gt;
-&lt;li&gt;그러므로 ret은 nums 배열의 인덱스로 쓰이기에 유효하다.&lt;/li&gt;
+&lt;li&gt;즉, ret은 nums 배열의 인덱스로 쓰이기에 유효하다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
